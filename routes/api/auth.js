@@ -1,7 +1,8 @@
 var router = require('koa-router')();
 var parse = require('co-body');
+var jwt = require('jsonwebtoken');
 
-module.exports = function(User) {
+module.exports = function(User, secret) {
 
   router.post('/auth', function* () {
     
@@ -19,7 +20,7 @@ module.exports = function(User) {
 
           this.body = { token: jwt.sign(claim, secret) };
         })
-        .catch(() => {
+        .catch(() => { 
           this.status = 401;
           this.body = { message: 'invalid username or password, try again.' };
         })
