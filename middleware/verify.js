@@ -10,6 +10,11 @@ var Promise = require('bluebird');
 var jwt = require('jsonwebtoken');
 var verify = Promise.promisify(jwt.verify);
 
+/**
+ * [authorizes each request]
+ * @param  {string}
+ * @return {Generator}
+ */
 module.exports = function verifyRequest(secret) {
   return function* (next) {
 
