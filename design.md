@@ -4,7 +4,7 @@ this section talk's about the **MUST HAVE** top hierarchy app features.
 
 #### the unlogged user
 
-* can view logged user submitted content
+* can view other users submissions & comments
 
 #### the logged in user
 
