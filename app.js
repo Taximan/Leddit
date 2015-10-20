@@ -15,6 +15,10 @@ var knex = require('knex')(knexConfig);
 var bookshelf = require('bookshelf')(knex);
 bookshelf.plugin('visibility');
 
+
+/*
+| Models
+*/
 var models = require('./models/index')(bookshelf);
 var User = models.User;
 var Submission = models.Submission;
