@@ -23,6 +23,7 @@ this section talk's about the **MUST HAVE** top hierarchy app features.
 ### a submission
 
 * is likeable
+* can have comments
 
 ### an comment
 
