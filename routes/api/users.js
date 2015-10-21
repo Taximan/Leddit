@@ -1,31 +1,12 @@
 var router = require('koa-router')();
 var parse = require('co-body');
+var resource = require('../../middleware/resource');
 
 module.exports = function(User) {
   
-    router.get('/users', function* () {
-      yield User
-        .fetchAll({ require: true })
-        .then(users => this.body = users.toJSON())
-        .catch(err => this.body = err);
-    }); 
-
-
-    router.get('/users/:id', function* () {
-      var userId = this.params.id;
-
-      yield User.forge({ id: userId })
-        .fetch({ require: true, withRelated: ['submissions']})
-        .then(user => this.body = user.toJSON())
-        .catch(err => {
-          this.status = 404;
-          this.body = {
-            message: 'no such resource'
-          };
-        });
-
-    });
-
+    router.get('/users', resource.fetchAll(User, []));
+    router.get('/users/:id', resource.fetchOne(User, ['submissions']))
+    
     router.post('/users', function* () {
       var request = yield parse(this);
 

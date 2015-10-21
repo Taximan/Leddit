@@ -2,15 +2,12 @@ var router = require('koa-router')();
 var parse = require('co-body');
 var _ = require('lodash');
 var requireAuth = require('../../middleware/requireAuth');
+var resource = require('../../middleware/resource');
 
 module.exports = function (Comment) {
-
-  router.get('/comments', function* () {
-    yield Comment
-      .fetchAll({ require: true, withRelated: ['user'] })
-      .then(comments => this.body = comments.toJSON())
-      .catch(err => this.body = err);
-  });
+  
+  router.get('/comments', resource.fetchAll(Comment, ['user']))
+  router.get('/comments/:id', resource.fetchOne(Comment, ['user']));
 
   router.post('/comments/:submission', requireAuth(), function* () {
     var subId = this.params.submission;
@@ -38,19 +35,7 @@ module.exports = function (Comment) {
 
   });
 
-  router.get('/comments/:id', function* () {
-    var commentId = this.params.id;
-
-    yield Comment.forge({ id: commentId })
-      .fetch({ require: true, withRelated: ['user'] })
-      .then(comments => this.body = comments.toJSON())
-      .catch(err => {
-        this.status = 404;
-        this.body = {
-          message: 'no such resource'
-        };
-      });
-  });
+    
 
   return router;
 }
