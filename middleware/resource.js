@@ -19,7 +19,7 @@ exports.fetchAll = function(Model, related) {
 };
 
 /**
- * Fetch one the given Model, requires /:id in the url.
+ * Fetch one record by id of the given Model, requires /:id in the url.
  * @param  {[BookshelfModel]} Model  [The model to use]
  * @param  {[Array]} related [Relatinshipts to be resolved]
  * @return {[Generator]}  [The route handler]
