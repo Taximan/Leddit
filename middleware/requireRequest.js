@@ -17,12 +17,7 @@ var _ = require('lodash');
 module.exports = function requireRequest(fieldsRequired) {
   return function* (next) {
     var requestbody = yield parse(this);
-
-    this.body = {
-      a: fieldsRequired,
-      b: requestbody
-    };
-
+    
     if(_.every(fieldsRequired, _.partial(_.has, requestbody)))  {
     
       this.parsedRequest = requestbody;
