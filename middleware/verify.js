@@ -12,7 +12,7 @@ var verify = Promise.promisify(jwt.verify);
 
 /**
  * [authorizes each request]
- * @param  {string}
+ * @param  {String}
  * @return {Generator}
  */
 module.exports = function verifyRequest(secret) {

@@ -10,8 +10,8 @@ var _ = require('lodash');
 /**
  * passes only requests that have given fields specified in the fieldsRequired param. 
  * If it passes it will created an parsedRequest Object on the context for convinence.
- * @param  {[Array]} fieldsRequired [the fields that you depend on]
- * @return {[Generator]}  this is the middleware that will get returned. 
+ * @param  {Array} fieldsRequired [the fields that you depend on]
+ * @return {Generator}  this is the middleware that will get returned. 
  */
 module.exports = function requireRequest(fieldsRequired) {
   return function* (next) {

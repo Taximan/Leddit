@@ -2,9 +2,9 @@ var exports = {};
 
 /**
  * Fetches all data from the model
- * @param  {[BookshelfModel]} Model  [The model to use]
- * @param  {[Array]} related [Relatinshipts to be resolved]
- * @return {[Generator]}  [The route handler]
+ * @param  {BookshelfModel} Model  The model to use
+ * @param  {Array} related Relatinshipts to be resolved
+ * @return {Generator}  The route handler
  */
 exports.fetchAll = function(Model, related) {
   return function* () {
@@ -20,9 +20,9 @@ exports.fetchAll = function(Model, related) {
 
 /**
  * Fetch one record by id of the given Model, requires /:id in the url.
- * @param  {[BookshelfModel]} Model  [The model to use]
- * @param  {[Array]} related [Relatinshipts to be resolved]
- * @return {[Generator]}  [The route handler]
+ * @param  {BookshelfModel} Model  The model to use
+ * @param  {Array} related Relatinshipts to be resolved
+ * @return {Generator}  The route handler
  */
 exports.fetchOne = function(Model, related) {
   return function* () {
