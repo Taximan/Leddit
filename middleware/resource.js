@@ -1,3 +1,7 @@
+/*
+| This is an helper middleware for simple resources
+*/
+
 var exports = {};
 
 /**
