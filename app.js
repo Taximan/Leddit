@@ -4,7 +4,9 @@
 */
 
 var app = require('koa')();
+var serve = require('koa-static');
 var secret = require('./config').APP_SECRET;
+
 
 /*
 | Database related modules
@@ -31,6 +33,7 @@ var Comment = models.Comment;
 
 var verify = require('./middleware/verify');
 
+app.use(serve('./public'));
 app.use(verify(secret));
 
 
