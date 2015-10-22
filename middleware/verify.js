@@ -11,7 +11,7 @@ var jwt = require('jsonwebtoken');
 var verify = Promise.promisify(jwt.verify);
 
 /**
- * [authorizes each request]
+ * authorizes each request
  * @param  {String}
  * @return {Generator}
  */
