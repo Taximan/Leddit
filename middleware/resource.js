@@ -36,8 +36,8 @@ exports.fetchOne = function(Model, related) {
       .fetch({ require: true, withRelated: related })
       .then(data => this.body = data.toJSON())
       .catch(err => {
-        console.log(err);
-        this.body = 'oopss..??';
+        this.status = 404;
+        this.body = { message: 'not found' };
       }); 
   };
 };
