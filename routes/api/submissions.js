@@ -2,9 +2,12 @@ var router = require('koa-router')();
 var parse = require('co-body');
 var requireAuth = require('../../middleware/requireAuth');
 var resource = require('../../middleware/resource');
+var comments = require('./comments');
 
-module.exports = function(Submission) {
-
+module.exports = function(Submission, Comment) {
+    
+  comments = comments(Comment);  
+    
   router.get('/submissions', resource.fetchAll(Submission, ['user']));
   router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
 
@@ -42,6 +45,8 @@ module.exports = function(Submission) {
     }
 
   });
-
+  
+  router.use('/submissions/:subId/comments', comments.routes());
+  
   return router;
 }

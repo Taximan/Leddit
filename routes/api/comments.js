@@ -2,15 +2,19 @@ var router = require('koa-router')();
 var parse = require('co-body');
 var _ = require('lodash');
 var requireAuth = require('../../middleware/requireAuth');
-var resource = require('../../middleware/resource');
 
 module.exports = function (Comment) {
   
-  router.get('/comments', resource.fetchAll(Comment, ['user']))
-  router.get('/comments/:id', resource.fetchOne(Comment, ['user']));
-
-  router.post('/comments/:submission', requireAuth(), function* () {
-    var subId = this.params.submission;
+  router.get('/', function*() {
+     yield Comment.where('submission_id', this.params.subId)
+      .fetchAll()
+      .then(data => this.body = data.toJSON())
+      .catch( e => this.body = e);  
+    
+  });
+  
+  router.post('/', requireAuth(), function* () {
+    var subId = this.params.subId;
     var requestBody = yield parse(this);
 
     if(_.has(requestBody, ['body'])) {
@@ -30,7 +34,7 @@ module.exports = function (Comment) {
       
     } else {
       this.status = 400;
-      this.body = { message: 'missing one of title|description|link_to fields' };
+      this.body = { message: 'missing one of body' };
     }
 
   });

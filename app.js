@@ -39,14 +39,12 @@ app.use(verify(secret));
 */
 
 var users = require('./routes/api/users')(User);
-var submissions = require('./routes/api/submissions')(Submission);
+var submissions = require('./routes/api/submissions')(Submission, Comment);
 var auth = require('./routes/api/auth')(User, secret);
-var comments = require('./routes/api/comments')(Comment);
 
 app.use(users.prefix('/api').routes());
 app.use(submissions.prefix('/api').routes());
 app.use(auth.prefix('/api').routes());
-app.use(comments.prefix('/api').routes());
 
 /*
 | Bootstrap app
