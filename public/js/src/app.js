@@ -1,3 +1,5 @@
+import '../../css/src/test.css';
+
 import angular from 'angular';
 
 
