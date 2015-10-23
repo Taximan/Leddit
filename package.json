@@ -9,10 +9,10 @@
   "author": "Dawid C.",
   "license": "MIT",
   "dependencies": {
-    "angular": "^1.4.7",
     "bluebird": "^2.10.2",
     "bookshelf": "^0.8.2",
     "co-body": "^4.0.0",
+    "jquery": "^2.1.4",
     "jsonwebtoken": "^5.4.0",
     "knex": "^0.8.6",
     "koa": "^1.1.0",

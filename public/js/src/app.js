@@ -1,10 +1,10 @@
-import '../../css/src/test.css';
-
-import angular from 'angular';
+import '../../css/src/global.css';
 
 
-const app = angular.module('APP', []);
+import $ from 'jquery';
 
-app.controller('test', function($scope) {
-  $scope.msg = 'hi';
+import navigation from './navigation';
+
+$(document).ready(() => {
+  navigation.init();
 });

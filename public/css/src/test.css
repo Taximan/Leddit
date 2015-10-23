@@ -1,8 +1,0 @@
-body {
-  font-size: responsive;
-  clear: fix-legacy;
-}
-
-input::placeholder {
-  color: black;
-}

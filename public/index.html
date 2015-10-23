@@ -3,11 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>leddit</title>
+  <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
-  <div ng-controller="test">
-    {{msg}}
-  </div>
+  
+  <nav role='navigation'>
+    <ul class="nav-right">
+      <li class="active"><a href="#">Hot</a></li>
+      <li><a href="#">Latest</a></li>
+      <li><a href="#">All time</a></li>
+    </ul>
+    <ul class="nav-left">
+      <li><a href="#">login</a></li>
+      <li><a href="#" class="highlight">register</a></li>
+    </ul>
+  </nav>  
+
   <script src="/js/bundle.js"></script>
 </body>
 </html>
