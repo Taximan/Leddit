@@ -35,6 +35,10 @@ nav[role="navigation"] ul {
       -ms-flex-pack: start;
           justify-content: flex-start;
   height: 100%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 nav[role="navigation"] ul li a {
@@ -61,6 +65,7 @@ nav[role="navigation"] ul.nav-right li :hover {
 nav[role="navigation"] ul.nav-right li.active {
   color: #009688;
   border-bottom: 3px solid #009688;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 nav[role="navigation"] ul.nav-left {
@@ -84,5 +89,4 @@ nav[role="navigation"] ul.nav-left li a  {
 
 nav[role="navigation"] ul.nav-left .highlight {
   background-color: #009688;
-
 }

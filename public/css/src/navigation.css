@@ -17,6 +17,7 @@ nav[role="navigation"] ul {
   flex-flow: row no-wrap;
   justify-content: flex-start;
   height: 100%;
+  user-select: none;
 }
 
 nav[role="navigation"] ul li a {
@@ -43,6 +44,7 @@ nav[role="navigation"] ul.nav-right li :hover {
 nav[role="navigation"] ul.nav-right li.active {
   color: #009688;
   border-bottom: 3px solid #009688;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 
 nav[role="navigation"] ul.nav-left {
@@ -66,5 +68,4 @@ nav[role="navigation"] ul.nav-left li a  {
 
 nav[role="navigation"] ul.nav-left .highlight {
   background-color: #009688;
-
 }

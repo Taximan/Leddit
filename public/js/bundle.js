@@ -50,11 +50,11 @@
 
 	__webpack_require__(1);
 
-	var _jquery = __webpack_require__(7);
+	var _jquery = __webpack_require__(5);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
-	var _navigation = __webpack_require__(8);
+	var _navigation = __webpack_require__(6);
 
 	var _navigation2 = _interopRequireDefault(_navigation);
 
@@ -73,13 +73,6 @@
 /* 3 */,
 /* 4 */,
 /* 5 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 6 */,
-/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9295,7 +9288,7 @@
 
 
 /***/ },
-/* 8 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -9306,9 +9299,9 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	__webpack_require__(5);
+	__webpack_require__(7);
 
-	var _jquery = __webpack_require__(7);
+	var _jquery = __webpack_require__(5);
 
 	var _jquery2 = _interopRequireDefault(_jquery);
 
@@ -9336,6 +9329,12 @@
 
 	exports['default'] = navigation;
 	module.exports = exports['default'];
+
+/***/ },
+/* 7 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);
