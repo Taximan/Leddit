@@ -8,7 +8,7 @@ module.exports = function(Submission, Comment) {
     
   comments = comments(Comment);  
     
-  router.get('/submissions', resource.fetchAll(Submission, ['user']));
+  router.get('/submissions', resource.fetchAll(Submission, ['user', 'comments']));
   router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
 
 
