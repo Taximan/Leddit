@@ -28,11 +28,11 @@
 }
 
 .container .submissions li .description {
-
+  margin-top: 12px;
 }
 
 .container .submissions li .submission-footer {
-  
+  margin-top: 12px;
 }
 
 .container .submissions li .submission-footer a {
@@ -43,5 +43,5 @@
   display: inline-block;
   padding: 13px;
   font-family: 'Roboto';
-  background: rgba(233, 233, 233, 0.3);;
+  background: rgba(233, 233, 233, 0.6);;
 }

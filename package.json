@@ -18,6 +18,9 @@
     "koa-router": "^5.2.3",
     "koa-static": "^1.5.1",
     "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-router": "1.0.0-rc3",
     "sqlite3": "^3.1.0"
   },
   "devDependencies": {
