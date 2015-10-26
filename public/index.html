@@ -4,21 +4,39 @@
   <meta charset="UTF-8">
   <title>leddit</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="/css/app.css">
 </head>
 <body>
   
   <nav role='navigation'>
     <ul class="nav-right">
-      <li class="active"><a href="#">Hot</a></li>
-      <li><a href="#">Latest</a></li>
-      <li><a href="#">All time</a></li>
+      <li class="active"><a href="#/hot">Hot</a></li>
+      <li><a href="#/latest">Latest</a></li>
+      <li><a href="#/alltime">All time</a></li>
     </ul>
     <ul class="nav-left">
-      <li><a href="#">login</a></li>
-      <li><a href="#" class="highlight">register</a></li>
+      <li><a href="#/login">login</a></li>
+      <li><a href="#/register" class="highlight">register</a></li>
     </ul>
   </nav>  
+  
+  <div class="container">
+    <ul class="submissions">
+      <li>
+        <h3 class="title"><a href="">Some very nice title, really!</a></h3>
+        <div class="subtitle">by <a href="#">McsomeGuy</a> 3 hours ago, source <a href="#">google.pl</a></div>
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum dolorem adipisci vel eveniet, voluptatibus illo alias molestias, voluptatum, iure mollitia placeat voluptatem rem vero. Similique quisquam natus ipsam, illo mollitia.</p>
+        <div class="submission-footer"><a href="#">13 comments</a> <a href="">share</a></div>
+      </li>
+            <li>
+        <h3 class="title"><a href="">Anoter but with a slighty longer title article xd</a></h3>
+        <div class="subtitle">by <a href="#">McsomeGuy</a> 3 hours ago, source <a href="#">google.pl</a></div>
+        <p class="description">yet the descrpition is short as f.</p>
+        <div class="submission-footer"><a href="#">0 comments</a> <a href="">share</a></div>
+      </li>
+    </ul>
+  </div>
 
   <script src="/js/bundle.js"></script>
 </body>
