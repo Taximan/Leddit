@@ -170,13 +170,13 @@ form.form-auth .input-group input {
   display: block;
   width: 100%;
   padding: 7px 3px;
-  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
 
   form.form-auth .input-group input {
-    font-size: 23px;
+    font-size: 21px;
   }
 }
 

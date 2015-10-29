@@ -1,3 +1,5 @@
+/// <reference path="../../../typings/angularjs/angular.d.ts" />
+
 /*
 | core modules
 */
@@ -23,10 +25,12 @@ app.config(function($routeProvider) {
       redirectTo: '/hot'
     })
     .when('/login', {
-      templateUrl: '/templates/login.html'
+      templateUrl: '/templates/login.html',
+      controller: 'LoginController'
     })
     .when('/register', {
-      templateUrl: '/templates/register.html'  
+      templateUrl: '/templates/register.html',
+      controller: 'RegisterController'  
     })
     .when('/hot', {
       templateUrl: '/templates/submissions.html',
@@ -81,4 +85,12 @@ app.controller('LatestController', function($scope) {
 
 app.controller('AlltimeController', function($scope) {
   $scope.msg = 'from the alltime controller!';
+});
+
+app.controller('LoginController', function($scope) {
+  $scope.on('')
+});
+
+app.controller('RegisterController', function() {
+  
 });

@@ -44,6 +44,8 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/// <reference path="../../../typings/angularjs/angular.d.ts" />
+
 	/*
 	| core modules
 	*/
@@ -81,9 +83,11 @@
 	  $routeProvider.when('/', {
 	    redirectTo: '/hot'
 	  }).when('/login', {
-	    templateUrl: '/templates/login.html'
+	    templateUrl: '/templates/login.html',
+	    controller: 'LoginController'
 	  }).when('/register', {
-	    templateUrl: '/templates/register.html'
+	    templateUrl: '/templates/register.html',
+	    controller: 'RegisterController'
 	  }).when('/hot', {
 	    templateUrl: '/templates/submissions.html',
 	    controller: 'HotController',
@@ -138,6 +142,12 @@
 	app.controller('AlltimeController', function ($scope) {
 	  $scope.msg = 'from the alltime controller!';
 	});
+
+	app.controller('LoginController', function ($scope) {
+	  $scope.on('');
+	});
+
+	app.controller('RegisterController', function () {});
 
 /***/ },
 /* 1 */
