@@ -152,4 +152,62 @@ nav[role="navigation"] ul.nav-left .highlight {
   padding: 13px;
   font-family: 'Roboto';
   background: rgba(233, 233, 233, 0.6);;
+}form.form-auth {
+  
+}
+
+form.form-auth .input-group {
+  width: 100%;
+  margin: 1.2em 0;
+}
+
+form.form-auth .input-group label {
+  display: block;
+}
+
+form.form-auth .input-group input {
+  display: block;
+  width: 100%;
+  padding: 7px 3px;
+  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
+}
+
+@media screen and (min-width: 1280px) {
+
+  form.form-auth .input-group input {
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  form.form-auth .input-group input {
+    font-size: 17px;
+  }
+}
+form.form-auth button[type="submit"] {
+  background: #009688;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .86);
+  width: 75%;
+  min-width: 12em;
+  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
+  display: block;
+  margin: 1.5em auto;
+  padding: 1em 0px;
+  
+}
+@media screen and (min-width: 1280px) {
+
+  form.form-auth button[type="submit"] {
+    font-size: 23px;
+  }
+}
+@media screen and (max-width: 420px) {
+
+  form.form-auth button[type="submit"] {
+    font-size: 17px;
+  }
 }

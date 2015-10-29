@@ -44,6 +44,9 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/*
+	| core modules
+	*/
 	'use strict';
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
@@ -56,7 +59,85 @@
 
 	var _angularRoute2 = _interopRequireDefault(_angularRoute);
 
-	_angular2['default'].module('Leddit', [_angularRoute2['default']]);
+	/*
+	| import styles here
+	| this gets extracted to app.css latter.
+	*/
+
+	__webpack_require__(5);
+
+	__webpack_require__(9);
+
+	__webpack_require__(11);
+
+	__webpack_require__(13);
+
+	__webpack_require__(15);
+
+	var app = _angular2['default'].module('Leddit', [_angularRoute2['default']]);
+
+	app.config(function ($routeProvider) {
+
+	  $routeProvider.when('/', {
+	    redirectTo: '/hot'
+	  }).when('/login', {
+	    templateUrl: '/templates/login.html'
+	  }).when('/register', {
+	    templateUrl: '/templates/register.html'
+	  }).when('/hot', {
+	    templateUrl: '/templates/submissions.html',
+	    controller: 'HotController',
+	    resolve: {
+	      submissions: function submissions(Submissions) {
+	        return Submissions.getSubmissions();
+	      }
+	    }
+	  }).when('/latest', {
+	    templateUrl: '/templates/submissions.html',
+	    controller: 'LatestController'
+	  }).when('/alltime', {
+	    templateUrl: '/templates/submissions.html',
+	    controller: 'AlltimeController'
+	  });
+	});
+
+	app.factory('Submissions', function ($http, $location) {
+	  var model = {};
+	  var cache = {};
+	  var endpoint = '/api/submissions';
+
+	  model.getSubmissions = function () {
+	    if (cache['submissions']) return Promise.resolve(cache['submissions']);else return $http.get(endpoint).then(function (raw) {
+	      return raw.data;
+	    }).then(function (data) {
+	      cache['submissions'] = data;
+	      return Promise.resolve(data);
+	    });
+	  };
+
+	  return model;
+	});
+
+	app.controller('NavigationController', function ($location) {
+	  var vm = this;
+	  vm.isActive = function (route) {
+	    return $location.path() === route;
+	  };
+	  return vm;
+	});
+
+	app.controller('HotController', function ($scope, submissions) {
+	  $scope.msg = 'from the hot controller';
+	  $scope.submissions = submissions;
+	});
+
+	app.controller('LatestController', function ($scope) {
+	  $scope.msg = 'from the latest controller';
+	});
+
+	app.controller('AlltimeController', function ($scope) {
+	  $scope.msg = 'from the alltime controller!';
+	});
 
 /***/ },
 /* 1 */
@@ -29979,6 +30060,42 @@
 
 	})(window, window.angular);
 
+
+/***/ },
+/* 5 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 6 */,
+/* 7 */,
+/* 8 */,
+/* 9 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 10 */,
+/* 11 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 12 */,
+/* 13 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 14 */,
+/* 15 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

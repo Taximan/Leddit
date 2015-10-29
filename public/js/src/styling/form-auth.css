@@ -1,0 +1,33 @@
+form.form-auth {
+  
+}
+
+form.form-auth .input-group {
+  width: 100%;
+  margin: 1.2em 0;
+}
+
+form.form-auth .input-group label {
+  display: block;
+}
+
+form.form-auth .input-group input {
+  display: block;
+  width: 100%;
+  padding: 7px 3px;
+  font-size: responsive;
+}
+form.form-auth button[type="submit"] {
+  background: #009688;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .86);
+  width: 75%;
+  min-width: 12em;
+  font-size: responsive 17px 23px;
+  display: block;
+  margin: 1.5em auto;
+  padding: 1em 0px;
+  
+}

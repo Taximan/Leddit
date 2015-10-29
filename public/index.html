@@ -9,6 +9,22 @@
 </head>
 <body>
   
+  <nav role='navigation' ng-controller="NavigationController as nav">
+    <ul class="nav-right">
+      <li ng-class="{active: nav.isActive('/hot')}"><a href="#/hot">Hot</a></li>
+      <li ng-class="{active: nav.isActive('/latest')}"><a href="#/latest">Latest</a></li>
+      <li ng-class="{active: nav.isActive('/alltime')}"><a href="#/alltime">All time</a></li>
+    </ul>
+    <ul class="nav-left">
+      <li><a href="#/login">login</a></li>
+      <li><a href="#/register" class="highlight">register</a></li>
+    </ul>
+  </nav>  
+  
+  <div class="container">
+    <ng-view></ng-view>
+  </div>
+  
   <script src="/js/bundle.js"></script>
 </body>
 </html>
