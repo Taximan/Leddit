@@ -163,6 +163,7 @@ form.form-auth .input-group {
 
 form.form-auth .input-group label {
   display: block;
+  margin: 3px 0;
 }
 
 form.form-auth .input-group input {
@@ -197,7 +198,6 @@ form.form-auth button[type="submit"] {
   display: block;
   margin: 1.5em auto;
   padding: 1em 0px;
-  
 }
 @media screen and (min-width: 1280px) {
 
@@ -210,4 +210,10 @@ form.form-auth button[type="submit"] {
   form.form-auth button[type="submit"] {
     font-size: 17px;
   }
+}
+
+form.form-auth button[type="submit"]:active {
+  background-color: rgba(255, 255, 255, .86);
+  color: #009688;
+  box-shadow: 0 0 0 5px #009688;
 }
