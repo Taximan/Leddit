@@ -24,6 +24,7 @@ module.exports = function(User) {
         yield new User({ name: request.username, password: request.password, email: request.email })
           .save()
           .then(() => {
+            this.status = 201;
             this.body = { message: 'user successfully registered.' };
           })
           .catch((err) => {
