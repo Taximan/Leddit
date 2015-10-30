@@ -61,6 +61,8 @@
 
 	var _angularRoute2 = _interopRequireDefault(_angularRoute);
 
+	var _utils = __webpack_require__(17);
+
 	/*
 	| import styles here
 	| this gets extracted to app.css latter.
@@ -105,6 +107,31 @@
 	  });
 	});
 
+	app.directive('isUnique', function ($http) {
+	  return {
+	    require: 'ngModel',
+	    link: function link(scope, elem, attrs, ngModel) {
+	      var resource = attrs.isUnique;
+
+	      var evHandler = (0, _utils.debounce)(function (e) {
+	        var val = e.target.value;
+	        var target = resource.replace('???', val);
+	        if (val.length > 0) {
+	          $http.head(target).then(function (d) {
+	            return ngModel.$setValidity('ununique', false);
+	          })['catch'](function (e) {
+	            return ngModel.$setValidity('ununique', true);
+	          });
+	        } else {
+	          ngModel.$setValidity('ununique', false);
+	        }
+	      }, 200);
+
+	      elem.on('keyup', evHandler);
+	    }
+	  };
+	});
+
 	app.factory('Submissions', function ($http, $location) {
 	  var model = {};
 	  var cache = {};
@@ -117,6 +144,17 @@
 	      cache['submissions'] = data;
 	      return Promise.resolve(data);
 	    });
+	  };
+
+	  return model;
+	});
+
+	app.factory('User', function ($http) {
+	  var model = {};
+	  var endPoint = '/api/users';
+
+	  model.create = function (credentials) {
+	    return $http.post(endPoint, credentials);
 	  };
 
 	  return model;
@@ -143,11 +181,21 @@
 	  $scope.msg = 'from the alltime controller!';
 	});
 
-	app.controller('LoginController', function ($scope) {
-	  $scope.on('');
-	});
+	app.controller('LoginController', function ($scope) {});
 
-	app.controller('RegisterController', function () {});
+	app.controller('RegisterController', function ($scope, User) {
+	  $scope.credentials = {
+	    username: '',
+	    email: '',
+	    password: '',
+	    passconf: ''
+	  };
+
+	  $scope.submit = function () {
+
+	    console.log($scope.registerForm);
+	  };
+	});
 
 /***/ },
 /* 1 */
@@ -30106,6 +30154,36 @@
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 16 */,
+/* 17 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	exports.debounce = debounce;
+
+	function debounce(func, wait, immediate) {
+		var timeout;
+		return function () {
+			var context = this,
+			    args = arguments;
+			var later = function later() {
+				timeout = null;
+				if (!immediate) func.apply(context, args);
+			};
+			var callNow = immediate && !timeout;
+			clearTimeout(timeout);
+			timeout = setTimeout(later, wait);
+			if (callNow) func.apply(context, args);
+		};
+	}
+
+	;
 
 /***/ }
 /******/ ]);
