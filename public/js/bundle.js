@@ -132,6 +132,23 @@
 	  };
 	});
 
+	app.directive('pwMatch', function () {
+	  return {
+	    require: 'ngModel',
+	    scope: {
+	      otherInputValue: '=pwMatch'
+	    },
+	    link: function link(scope, elem, attrs, ngModel) {
+	      ngModel.$validators.pwMatch = function (modelValue) {
+	        return scope.otherInputValue.$modelValue === modelValue;
+	      };
+	      scope.$watch("otherInputValue", function () {
+	        ngModel.$validate();
+	      });
+	    }
+	  };
+	});
+
 	app.factory('Submissions', function ($http, $location) {
 	  var model = {};
 	  var cache = {};

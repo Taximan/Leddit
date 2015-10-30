@@ -76,6 +76,24 @@ app.directive('isUnique', function($http) {
   };
 });
 
+
+app.directive('pwMatch', function() {
+  return {
+    require: 'ngModel',
+    scope: {
+      otherInputValue: '=pwMatch'
+    },
+    link: function(scope, elem, attrs, ngModel) {
+      ngModel.$validators.pwMatch = modelValue => {
+        return scope.otherInputValue.$modelValue === modelValue;
+      };
+      scope.$watch("otherInputValue", function() {
+        ngModel.$validate();
+      });  
+    } 
+  };
+});
+
 app.factory('Submissions', function($http, $location) {
   var model = {};
   var cache = {};

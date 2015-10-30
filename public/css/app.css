@@ -170,13 +170,13 @@ form.form-auth .input-group input {
   display: block;
   width: 100%;
   padding: 7px 3px;
-  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
 
   form.form-auth .input-group input {
-    font-size: 21px;
+    font-size: 23px;
   }
 }
 
@@ -187,7 +187,7 @@ form.form-auth .input-group input {
   }
 }
 form.form-auth button[type="submit"] {
-  background: #009688;
+  background: rgba(0, 150, 136, 0.7);;
   outline: none;
   border: none;
   cursor: pointer;
@@ -198,6 +198,7 @@ form.form-auth button[type="submit"] {
   display: block;
   margin: 1.5em auto;
   padding: 1em 0px;
+  pointer-events: none;
 }
 @media screen and (min-width: 1280px) {
 
@@ -216,4 +217,30 @@ form.form-auth button[type="submit"]:active {
   background-color: rgba(255, 255, 255, .86);
   color: #009688;
   box-shadow: 0 0 0 5px #009688;
+}
+
+form.form-auth .input-group input.ng-valid {
+  border: 3px solid #009688;
+}
+
+form.form-auth .input-group input.ng-invalid {
+  border: 3px solid #FF5722;
+}
+
+form.form-auth .input-group input.ng-pristine {
+  border: 1px solid rgb(218, 218, 218) !important;
+}
+
+
+.form-errors div {
+  background-color: #FF9E80;
+  color: #DD2C00;
+  font-weight: bold;
+  padding: 5px 13px;
+  margin-top: 5px;
+}
+
+form.form-auth button[type="submit"].active {
+  background-color: rgba(0, 150, 136, 1);
+  pointer-events: all !important;
 }
