@@ -15,9 +15,13 @@
       <li ng-class="{active: nav.isActive('/latest')}"><a href="#/latest">Latest</a></li>
       <li ng-class="{active: nav.isActive('/alltime')}"><a href="#/alltime">All time</a></li>
     </ul>
-    <ul class="nav-left">
+    <ul class="nav-left" ng-if="!nav.Login.isLoggedIn">
       <li><a href="#/login">login</a></li>
       <li><a href="#/register" class="highlight">register</a></li>
+    </ul>
+    <ul class="nav-left" ng-if="nav.Login.isLoggedIn">
+      <li><a href="#/logout">logout</a></li>
+      <li><a href="#/register" class="highlight">SKURWSYN</a></li>
     </ul>
   </nav>  
   

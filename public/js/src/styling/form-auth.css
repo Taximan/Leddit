@@ -33,9 +33,9 @@ form.form-auth button[type="submit"] {
   pointer-events: none;
 }
 
-form.form-auth button[type="submit"]:active {
-  background-color: rgba(255, 255, 255, .86);
-  color: #009688;
+html body form.form-auth button[type="submit"]:active {
+  background-color: rgba(255, 255, 255, .86) !important;
+  color: #009688 !important;
   box-shadow: 0 0 0 5px #009688;
 }
 

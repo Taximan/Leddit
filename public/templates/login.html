@@ -1,17 +1,26 @@
-<form class="form-auth">
+<form class="form-auth"
+  novalidate="novalidate"
+  ng-submit="submit()"
+  name="loginForm">
   
   <h3 class="form-title">Login</h3>
   
+  <div class="form-errors">
+    <div ng-show="errmsg">{{errmsg}}</div>
+  </div>
+  
   <div class="input-group">
     <label for="">username</label>
-    <input type="text">
+    <input type="text" name="username" ng-model="credentials.username" required>
   </div>
   
   <div class="input-group">
     <label for="">password</label>
-    <input type="password">
+    <input type="password" name="password" ng-model="credentials.password" required>
   </div>
-    
-  <button type="submit">Let me in!</button>
+  
+  <button type="submit"
+   ng-class="{active: loginForm.$valid}"
+   ng-disabled="loginForm.$invalid"">Let me in!</button>
   
 </form>

@@ -33,6 +33,10 @@
   </div>
  
    
-  <button type="submit" ng-class="{active: registerForm.$valid}" ng-disabled="registerForm.$valid">Register now!</button>
+  <button 
+   type="submit"
+   ng-class="{active: registerForm.$valid}"
+   ng-disabled="registerForm.$invalid"
+   >Register now!</button>
   
 </form>

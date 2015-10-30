@@ -61,26 +61,28 @@
 
 	var _angularRoute2 = _interopRequireDefault(_angularRoute);
 
-	var _utils = __webpack_require__(17);
+	var _utils = __webpack_require__(5);
 
 	/*
 	| import styles here
 	| this gets extracted to app.css latter.
 	*/
 
-	__webpack_require__(5);
+	__webpack_require__(6);
 
-	__webpack_require__(9);
+	__webpack_require__(10);
 
-	__webpack_require__(11);
+	__webpack_require__(12);
 
-	__webpack_require__(13);
+	__webpack_require__(14);
 
-	__webpack_require__(15);
+	__webpack_require__(16);
 
 	var app = _angular2['default'].module('Leddit', [_angularRoute2['default']]);
 
-	app.config(function ($routeProvider) {
+	app.config(function ($routeProvider, $httpProvider) {
+
+	  $httpProvider.interceptors.push('authInterceptor');
 
 	  $routeProvider.when('/', {
 	    redirectTo: '/hot'
@@ -98,6 +100,9 @@
 	        return Submissions.getSubmissions();
 	      }
 	    }
+	  }).when('/logout', {
+	    controller: 'LogoutController',
+	    template: 'loggin you out...'
 	  }).when('/latest', {
 	    templateUrl: '/templates/submissions.html',
 	    controller: 'LatestController'
@@ -107,6 +112,42 @@
 	  });
 	});
 
+	app.factory('authInterceptor', function ($window) {
+	  return {
+	    request: function request(config) {
+	      if ($window.localStorage.token) {
+	        config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+	      }
+	      return config;
+	    }
+	  };
+	});
+
+	app.factory('Login', function ($window, $http) {
+	  var endPoint = 'api/auth';
+
+	  return {
+	    isLoggedIn: !!window.localStorage.token,
+
+	    attempt: function attempt(credentials) {
+	      var _this = this;
+
+	      return $http.post(endPoint, credentials).then(function (resp) {
+	        var token = resp.token;
+	        $window.localStorage.token = token;
+	        _this.isLoggedIn = true;
+	        return Promise.resolve(true);
+	      });
+	    },
+
+	    logout: function logout() {
+	      this.isLoggedIn = false;
+	      delete $window.localStorage.token;
+	    }
+
+	  };
+	});
+
 	app.directive('isUnique', function ($http) {
 	  return {
 	    require: 'ngModel',
@@ -114,17 +155,19 @@
 	      var resource = attrs.isUnique;
 
 	      var evHandler = (0, _utils.debounce)(function (e) {
-	        var val = e.target.value;
-	        var target = resource.replace('???', val);
-	        if (val.length > 0) {
-	          $http.head(target).then(function (d) {
-	            return ngModel.$setValidity('ununique', false);
-	          })['catch'](function (e) {
-	            return ngModel.$setValidity('ununique', true);
-	          });
-	        } else {
-	          ngModel.$setValidity('ununique', false);
-	        }
+	        scope.$apply(function () {
+	          var val = e.target.value;
+	          var target = resource.replace('???', val);
+	          if (val.length > 0) {
+	            $http.head(target).then(function (d) {
+	              return ngModel.$setValidity('ununique', false);
+	            })['catch'](function (e) {
+	              return ngModel.$setValidity('ununique', true);
+	            });
+	          } else {
+	            ngModel.$setValidity('ununique', false);
+	          }
+	        });
 	      }, 200);
 
 	      elem.on('keyup', evHandler);
@@ -177,11 +220,12 @@
 	  return model;
 	});
 
-	app.controller('NavigationController', function ($location) {
+	app.controller('NavigationController', function ($location, Login) {
 	  var vm = this;
 	  vm.isActive = function (route) {
 	    return $location.path() === route;
 	  };
+	  vm.Login = Login;
 	  return vm;
 	});
 
@@ -198,9 +242,32 @@
 	  $scope.msg = 'from the alltime controller!';
 	});
 
-	app.controller('LoginController', function ($scope) {});
+	app.controller('LoginController', function ($scope, $http, Login) {
+	  $scope.errmsg = '';
 
-	app.controller('RegisterController', function ($scope, User) {
+	  $scope.credentials = {
+	    username: '',
+	    password: ''
+	  };
+
+	  $scope.submit = function () {
+	    Login.attempt($scope.credentials).then(function (isLoggedIn) {
+	      $scope.errmsg = '';
+	    })['catch'](function (err) {
+
+	      $scope.errmsg = err.data.message;
+	    });
+	  };
+	});
+
+	app.controller('LogoutController', function (Login, $timeout, $location) {
+	  $timeout(function () {
+	    Login.logout();
+	    $location.path('/');
+	  }, 500);
+	});
+
+	app.controller('RegisterController', function ($scope, User, $http, $window, Login, $location) {
 	  $scope.credentials = {
 	    username: '',
 	    email: '',
@@ -209,8 +276,18 @@
 	  };
 
 	  $scope.submit = function () {
-
-	    console.log($scope.registerForm);
+	    User.create($scope.credentials) // create user
+	    .then(function (r) {
+	      // login him in wih the registered credentials
+	      if (r.status === 201) {
+	        return Login.attempt($scope.credentials);
+	      }
+	    }).then(function () {
+	      $location.path('/');
+	    })['catch'](function (e) {
+	      alert('some wierd error occured, try again.');
+	      console.log(e);
+	    });
 	  };
 	});
 
@@ -30140,43 +30217,6 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 10 */,
-/* 11 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 12 */,
-/* 13 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 14 */,
-/* 15 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 16 */,
-/* 17 */
-/***/ function(module, exports) {
-
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
@@ -30201,6 +30241,42 @@
 	}
 
 	;
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 7 */,
+/* 8 */,
+/* 9 */,
+/* 10 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 11 */,
+/* 12 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 13 */,
+/* 14 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 15 */,
+/* 16 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

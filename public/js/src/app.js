@@ -19,7 +19,9 @@ import './styling/form-auth.css';
 
 const app = angular.module('Leddit', [ngRoute]);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, $httpProvider) {
+   
+   $httpProvider.interceptors.push('authInterceptor');
    
    $routeProvider
     .when('/', {
@@ -42,6 +44,10 @@ app.config(function($routeProvider) {
         }
       }
     })
+    .when('/logout', {
+      controller: 'LogoutController',
+      template: 'loggin you out...'
+    })
     .when('/latest', {
       templateUrl: '/templates/submissions.html',
       controller: 'LatestController'
@@ -53,6 +59,43 @@ app.config(function($routeProvider) {
     
 });
 
+
+app.factory('authInterceptor', function ($window) {
+  return {
+    request(config) {
+      if($window.localStorage.token) {
+        config.headers.Authorization = `Bearer ${$window.localStorage.token}`;
+      }
+      return config;
+    }
+  };
+});
+
+app.factory('Login', function ($window, $http) {
+  const endPoint = 'api/auth';
+  
+  return {
+    isLoggedIn: !!window.localStorage.token,
+    
+    attempt(credentials) {
+      return $http.post(endPoint, credentials)
+        .then(resp => {
+          var token = resp.token;
+          $window.localStorage.token = token;
+          this.isLoggedIn = true;
+          return Promise.resolve(true);
+        });  
+    },
+    
+    logout() {
+      this.isLoggedIn = false;
+      delete $window.localStorage.token;
+    }
+    
+  };
+   
+});
+
 app.directive('isUnique', function($http) {
   return {
     require: 'ngModel',
@@ -60,15 +103,17 @@ app.directive('isUnique', function($http) {
       var resource = attrs.isUnique;
           
       const evHandler = debounce(e => {
-        var val = e.target.value;
-        var target = resource.replace('???', val);
-        if(val.length > 0) {
-            $http.head(target)
-              .then(d => ngModel.$setValidity('ununique', false))
-              .catch(e => ngModel.$setValidity('ununique', true));
-        } else {
-          ngModel.$setValidity('ununique', false)
-        }
+        scope.$apply(() => { 
+          var val = e.target.value;
+          var target = resource.replace('???', val);
+          if(val.length > 0) {
+              $http.head(target)
+                .then(d => ngModel.$setValidity('ununique', false))
+                .catch(e => ngModel.$setValidity('ununique', true));
+          } else {
+            ngModel.$setValidity('ununique', false)
+          }
+        });
       }, 200);
       
       elem.on('keyup', evHandler);
@@ -122,9 +167,10 @@ app.factory('User', function($http) {
   return model;
 });
 
-app.controller('NavigationController', function($location) {
+app.controller('NavigationController', function($location, Login) {
   var vm = this;
   vm.isActive = (route) => $location.path() === route;
+  vm.Login  = Login;
   return vm;
 });
 
@@ -141,13 +187,35 @@ app.controller('AlltimeController', function($scope) {
   $scope.msg = 'from the alltime controller!';
 });
 
-app.controller('LoginController', function($scope) {
+app.controller('LoginController', function($scope, $http, Login) {
+  $scope.errmsg = '';
+   
+  $scope.credentials = {
+    username: '',
+    password: ''
+  };
   
+  $scope.submit = () => {
+    Login.attempt($scope.credentials)
+      .then(isLoggedIn => {
+        $scope.errmsg = '';
+      })
+      .catch(err => {
+        
+        $scope.errmsg = err.data.message
+        
+      });      
+  };
 });
 
+app.controller('LogoutController', function(Login, $timeout, $location) {
+  $timeout(() => {
+     Login.logout();
+     $location.path('/');
+  }, 500);
+});
 
-
-app.controller('RegisterController', function($scope, User) {
+app.controller('RegisterController', function($scope, User, $http, $window, Login, $location) {
   $scope.credentials = {
     username: '',
     email: '',
@@ -156,8 +224,19 @@ app.controller('RegisterController', function($scope, User) {
   };
   
   $scope.submit = () => {
-    
-    console.log($scope.registerForm);
+    User.create($scope.credentials) // create user
+      .then(r => { // login him in wih the registered credentials
+        if(r.status === 201) {
+          return Login.attempt($scope.credentials);
+        }
+      })
+      .then(() => {
+        $location.path('/');
+      })
+      .catch(e => {
+        alert('some wierd error occured, try again.');
+        console.log(e);
+      });
   }
  
 });
