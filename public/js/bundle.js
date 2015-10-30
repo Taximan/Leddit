@@ -128,14 +128,16 @@
 
 	  return {
 	    isLoggedIn: !!window.localStorage.token,
+	    username: 'TODO_THIS_USERNAME_YOOO',
 
 	    attempt: function attempt(credentials) {
 	      var _this = this;
 
 	      return $http.post(endPoint, credentials).then(function (resp) {
-	        var token = resp.token;
+	        var token = resp.data.token;
 	        $window.localStorage.token = token;
 	        _this.isLoggedIn = true;
+
 	        return Promise.resolve(true);
 	      });
 	    },
@@ -242,7 +244,7 @@
 	  $scope.msg = 'from the alltime controller!';
 	});
 
-	app.controller('LoginController', function ($scope, $http, Login) {
+	app.controller('LoginController', function ($scope, $http, Login, $location) {
 	  $scope.errmsg = '';
 
 	  $scope.credentials = {
@@ -253,6 +255,7 @@
 	  $scope.submit = function () {
 	    Login.attempt($scope.credentials).then(function (isLoggedIn) {
 	      $scope.errmsg = '';
+	      $location.path('/');
 	    })['catch'](function (err) {
 
 	      $scope.errmsg = err.data.message;
@@ -30217,30 +30220,50 @@
 /* 5 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
-	Object.defineProperty(exports, "__esModule", {
-		value: true
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
 	});
 	exports.debounce = debounce;
+	exports.decodeToken = decodeToken;
 
 	function debounce(func, wait, immediate) {
-		var timeout;
-		return function () {
-			var context = this,
-			    args = arguments;
-			var later = function later() {
-				timeout = null;
-				if (!immediate) func.apply(context, args);
-			};
-			var callNow = immediate && !timeout;
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-			if (callNow) func.apply(context, args);
-		};
+	  var timeout;
+	  return function () {
+	    var context = this,
+	        args = arguments;
+	    var later = function later() {
+	      timeout = null;
+	      if (!immediate) func.apply(context, args);
+	    };
+	    var callNow = immediate && !timeout;
+	    clearTimeout(timeout);
+	    timeout = setTimeout(later, wait);
+	    if (callNow) func.apply(context, args);
+	  };
 	}
 
 	;
+
+	function decodeToken(token) {
+	  var parts, header, claim, signature;
+	  token = token || '';
+	  parts = token.split('.');
+	  if (parts.length === 3) {
+	    header = parts[0];
+	    claim = parts[1];
+	    signature = parts[2];
+	    header = JSON.parse(decodeURIComponent(escape(atob(header))));
+	    claim = JSON.parse(decodeURIComponent(escape(atob(claim))));
+	  }
+
+	  return {
+	    header: header,
+	    claim: claim,
+	    signature: signature
+	  };
+	}
 
 /***/ },
 /* 6 */

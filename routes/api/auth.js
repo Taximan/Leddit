@@ -12,7 +12,8 @@ module.exports = function(User, secret) {
       .then((model) => { 
         
         var claim = {
-          userId: model.serialize().id
+          userId: model.serialize().id,
+          username: model.serialize().name
         };
 
         this.body = { token: jwt.sign(claim, secret) };

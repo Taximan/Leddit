@@ -5,7 +5,7 @@
 */
 import angular from 'angular';
 import ngRoute from 'angular-route';
-import { debounce } from './utils';
+import { debounce, decodeToken } from './utils';
 
 /*
 | import styles here
@@ -76,13 +76,15 @@ app.factory('Login', function ($window, $http) {
   
   return {
     isLoggedIn: !!window.localStorage.token,
+    username: 'TODO_THIS_USERNAME_YOOO',
     
     attempt(credentials) {
       return $http.post(endPoint, credentials)
         .then(resp => {
-          var token = resp.token;
+          var token = resp.data.token;
           $window.localStorage.token = token;
           this.isLoggedIn = true;
+          
           return Promise.resolve(true);
         });  
     },
@@ -187,7 +189,7 @@ app.controller('AlltimeController', function($scope) {
   $scope.msg = 'from the alltime controller!';
 });
 
-app.controller('LoginController', function($scope, $http, Login) {
+app.controller('LoginController', function($scope, $http, Login, $location) {
   $scope.errmsg = '';
    
   $scope.credentials = {
@@ -199,6 +201,7 @@ app.controller('LoginController', function($scope, $http, Login) {
     Login.attempt($scope.credentials)
       .then(isLoggedIn => {
         $scope.errmsg = '';
+        $location.path('/');
       })
       .catch(err => {
         
