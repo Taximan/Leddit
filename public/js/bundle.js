@@ -127,16 +127,18 @@
 	  var endPoint = 'api/auth';
 
 	  return {
-	    isLoggedIn: !!window.localStorage.token,
-	    username: 'TODO_THIS_USERNAME_YOOO',
+	    isLoggedIn: !!$window.localStorage.token,
+	    username: (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
 
 	    attempt: function attempt(credentials) {
 	      var _this = this;
 
 	      return $http.post(endPoint, credentials).then(function (resp) {
 	        var token = resp.data.token;
+
 	        $window.localStorage.token = token;
 	        _this.isLoggedIn = true;
+	        _this.username = credentials.username;
 
 	        return Promise.resolve(true);
 	      });
