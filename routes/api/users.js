@@ -5,7 +5,16 @@ var resource = require('../../middleware/resource');
 module.exports = function(User) {
   
     router.get('/users', resource.fetchAll(User, []));
-    router.get('/users/:id', resource.fetchOne(User, ['submissions']))
+    
+    router.get('/users/:username', function* () {
+      yield User.forge({name: this.params.username})
+        .fetch({ require: true, withRelated: ['submissions'] })
+        .then(data => this.body = data.toJSON())
+        .catch(err => {
+          this.status = 404;
+          this.body = { message: 'not found' };  
+        });
+    });
     
     router.post('/users', function* () {
       var request = yield parse(this);
