@@ -152,41 +152,41 @@ nav[role="navigation"] ul.nav-left .highlight {
   padding: 13px;
   font-family: 'Roboto';
   background: rgba(233, 233, 233, 0.6);;
-}form.form-auth {
+}form.leddit-form {
   
 }
 
-form.form-auth .input-group {
+form.leddit-form .input-group {
   width: 100%;
   margin: 1.2em 0;
 }
 
-form.form-auth .input-group label {
+form.leddit-form .input-group label {
   display: block;
   margin: 3px 0;
 }
 
-form.form-auth .input-group input {
+form.leddit-form .input-group input, form.leddit-form .input-group textarea {
   display: block;
   width: 100%;
   padding: 7px 3px;
-  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
 
-  form.form-auth .input-group input {
-    font-size: 21px;
+  form.leddit-form .input-group input, form.leddit-form .input-group textarea {
+    font-size: 23px;
   }
 }
 
 @media screen and (max-width: 420px) {
 
-  form.form-auth .input-group input {
+  form.leddit-form .input-group input, form.leddit-form .input-group textarea {
     font-size: 17px;
   }
 }
-form.form-auth button[type="submit"] {
+form.leddit-form button[type="submit"] {
   background: rgba(0, 150, 136, 0.7);;
   outline: none;
   border: none;
@@ -202,32 +202,32 @@ form.form-auth button[type="submit"] {
 }
 @media screen and (min-width: 1280px) {
 
-  form.form-auth button[type="submit"] {
+  form.leddit-form button[type="submit"] {
     font-size: 23px;
   }
 }
 @media screen and (max-width: 420px) {
 
-  form.form-auth button[type="submit"] {
+  form.leddit-form button[type="submit"] {
     font-size: 17px;
   }
 }
 
-html body form.form-auth button[type="submit"]:active {
+html body form.leddit-form button[type="submit"]:active {
   background-color: rgba(255, 255, 255, .86) !important;
   color: #009688 !important;
   box-shadow: 0 0 0 5px #009688;
 }
 
-form.form-auth .input-group input.ng-valid {
+form.leddit-form .input-group input.ng-valid {
   border: 3px solid #009688;
 }
 
-form.form-auth .input-group input.ng-invalid {
+form.leddit-form .input-group input.ng-invalid {
   border: 3px solid #FF5722;
 }
 
-form.form-auth .input-group input.ng-pristine {
+form.leddit-form .input-group input.ng-pristine {
   border: 1px solid rgb(218, 218, 218) !important;
 }
 
@@ -240,7 +240,7 @@ form.form-auth .input-group input.ng-pristine {
   margin-top: 5px;
 }
 
-form.form-auth button[type="submit"].active {
+form.leddit-form button[type="submit"].active {
   background-color: rgba(0, 150, 136, 1);
   pointer-events: all !important;
 }

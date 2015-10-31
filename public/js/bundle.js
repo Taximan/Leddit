@@ -76,7 +76,7 @@
 
 	__webpack_require__(14);
 
-	__webpack_require__(16);
+	__webpack_require__(18);
 
 	var app = _angular2['default'].module('Leddit', [_angularRoute2['default']]);
 
@@ -301,7 +301,11 @@
 	  };
 	});
 
-	app.controller('NewSubmissionController', function ($scope) {});
+	app.controller('NewSubmissionController', function ($scope) {
+	  $scope.submit = function () {
+	    return alert('not implemented');
+	  };
+	});
 
 /***/ },
 /* 1 */
@@ -30305,7 +30309,9 @@
 
 /***/ },
 /* 15 */,
-/* 16 */
+/* 16 */,
+/* 17 */,
+/* 18 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

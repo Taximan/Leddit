@@ -15,7 +15,7 @@ import './styling/global.css';
 import './styling/nav.css';
 import './styling/container.css';
 import './styling/submissions.css';
-import './styling/form-auth.css';
+import './styling/form.css';
 
 const app = angular.module('Leddit', [ngRoute]);
 
@@ -254,5 +254,5 @@ app.controller('RegisterController', function($scope, User, $http, $window, Logi
 });
 
 app.controller('NewSubmissionController', function($scope) {
- 
+  $scope.submit = () => alert('not implemented');
 });
