@@ -112,6 +112,16 @@
 	  }).when('/add', {
 	    templateUrl: '/templates/new.html',
 	    controller: 'NewSubmissionController'
+	  }).when('/submission/:id', {
+	    templateUrl: '/templates/submission.html',
+	    resolve: {
+	      submission: function submission($route, Submissions) {
+	        return Submissions.getById($route.current.params.id).then(function (resp) {
+	          return resp.data;
+	        });
+	      }
+	    },
+	    controller: 'SubmissionDetailViewController'
 	  }).otherwise({
 	    templateUrl: '/templates/404.html'
 	  });
@@ -215,6 +225,15 @@
 	    });
 	  };
 
+	  model.getById = function (id) {
+	    return $http.get(endpoint + '/' + id);
+	  };
+
+	  /* props must contain: title, description, link_to properties */
+	  model.create = function (props) {
+	    return $http.post(endpoint, props);
+	  };
+
 	  return model;
 	});
 
@@ -301,10 +320,29 @@
 	  };
 	});
 
-	app.controller('NewSubmissionController', function ($scope) {
-	  $scope.submit = function () {
-	    return alert('not implemented');
+	app.controller('NewSubmissionController', function ($scope, Submissions) {
+
+	  $scope.newSubmission = {
+	    title: '',
+	    description: '',
+	    link_to: ''
 	  };
+
+	  // if something goes wrong in the server side eg db write error
+	  $scope.backEndMsg = '';
+
+	  $scope.submit = function () {
+	    Submissions.create($scope.newSubmission).then(function (resp) {
+	      console.log(resp);
+	    })['catch'](function (e) {
+	      console.log(e);
+	    });
+	  };
+	});
+
+	app.controller('SubmissionDetailViewController', function (submission, $scope) {
+	  $scope.submission = submission;
+	  console.log(submission);
 	});
 
 /***/ },

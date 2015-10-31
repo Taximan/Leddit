@@ -5,21 +5,37 @@
   
   <h3 class="form-title">Share your stuff with the community!</h3>
   
+  
+  <div class="form-errors">
+    <div ng-show="(addForm.desc.$error.minlength || addForm.desc.$error.required) && !addForm.desc.$pristine">your description is too damn short, don't be shy!</div>
+    <div ng-show="addForm.link.$error.pattern">your link is invalid, make sure your url looks like http://google.pl google.eu/bang etc.</div>
+    <div ng-show="addForm.title.$error.required && !addForm.title.$pristine">we need a title!</div>
+    <div ng-show="backEndMsg">{{backEndMsg}}</div>
+  </div>
+  
   <div class="input-group">
     <label for="">submission title</label>
-    <input type="text">
+    <input type="text" required name="title" ng-model="newSubmission.title">
   </div>
   
   <div class="input-group">
     <label for="">description</label>
-    <textarea name="" id="" cols="30" rows="5"></textarea>
+    <textarea name="desc"
+      cols="30"
+      rows="5"
+      required data-ng-minlength="12"
+      ng-model="newSubmission.description"></textarea>
   </div>
   
   <div class="input-group">
     <label for="">link</label>
-    <input type="text">
+    <input type="text" required name="link" ng-model="newSubmission.link_to" ng-pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/">
   </div>
   
-  <button type="submit">add</button>
+  
+  
+  <button type="submit"
+    ng-class="{active: addForm.$valid}"
+    ng-disabled="addForm.$invalid">add</button>
   
 </form>

@@ -60,6 +60,16 @@ app.config(function($routeProvider, $httpProvider) {
       templateUrl: '/templates/new.html',
       controller: 'NewSubmissionController'
     })
+    .when('/submission/:id', {
+      templateUrl: '/templates/submission.html',
+      resolve: {
+        submission: function($route, Submissions) {
+          return Submissions.getById($route.current.params.id)
+            .then(resp => resp.data);
+        }
+      },
+      controller: 'SubmissionDetailViewController'
+    })
     .otherwise({ 
       templateUrl: '/templates/404.html'
     })
@@ -163,6 +173,15 @@ app.factory('Submissions', function($http, $location) {
     });
   };
   
+  model.getById = (id) => {
+    return $http.get(`${endpoint}/${id}`)
+  };
+  
+  /* props must contain: title, description, link_to properties */
+  model.create = (props) => {
+    return $http.post(endpoint, props);
+  }
+  
   return model;
 });
 
@@ -253,6 +272,30 @@ app.controller('RegisterController', function($scope, User, $http, $window, Logi
  
 });
 
-app.controller('NewSubmissionController', function($scope) {
-  $scope.submit = () => alert('not implemented');
+app.controller('NewSubmissionController', function($scope, Submissions) {
+  
+  $scope.newSubmission = {
+    title: '',
+    description: '',
+    link_to: ''
+  };
+  
+  // if something goes wrong in the server side eg db write error
+  $scope.backEndMsg = ''; 
+  
+  $scope.submit = () => {
+    Submissions.create($scope.newSubmission)
+      .then(resp => {
+        console.log(resp);
+      })
+      .catch(e => {
+        console.log(e);    
+      })
+  };
+  
+});
+
+app.controller('SubmissionDetailViewController', function (submission, $scope) {
+  $scope.submission = submission;
+  console.log(submission);
 });

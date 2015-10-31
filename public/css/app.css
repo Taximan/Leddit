@@ -170,13 +170,13 @@ form.leddit-form .input-group input, form.leddit-form .input-group textarea {
   display: block;
   width: 100%;
   padding: 7px 3px;
-  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
 
   form.leddit-form .input-group input, form.leddit-form .input-group textarea {
-    font-size: 23px;
+    font-size: 21px;
   }
 }
 
@@ -219,15 +219,15 @@ html body form.leddit-form button[type="submit"]:active {
   box-shadow: 0 0 0 5px #009688;
 }
 
-form.leddit-form .input-group input.ng-valid {
+form.leddit-form .input-group input.ng-valid, form.leddit-form .input-group textarea.ng-valid {
   border: 3px solid #009688;
 }
 
-form.leddit-form .input-group input.ng-invalid {
+form.leddit-form .input-group input.ng-invalid, form.leddit-form .input-group textarea.ng-invalid {
   border: 3px solid #FF5722;
 }
 
-form.leddit-form .input-group input.ng-pristine {
+form.leddit-form .input-group input.ng-pristine, form.leddit-form .input-group textarea.ng-pristine {
   border: 1px solid rgb(218, 218, 218) !important;
 }
 
