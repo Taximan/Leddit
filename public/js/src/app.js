@@ -55,7 +55,14 @@ app.config(function($routeProvider, $httpProvider) {
     .when('/alltime', {
       templateUrl: '/templates/submissions.html',
       controller: 'AlltimeController'
-    });
+    })
+    .when('/add', {
+      templateUrl: '/templates/new.html',
+      controller: 'NewSubmissionController'
+    })
+    .otherwise({ 
+      templateUrl: '/templates/404.html'
+    })
     
 });
 
@@ -243,5 +250,9 @@ app.controller('RegisterController', function($scope, User, $http, $window, Logi
         console.log(e);
       });
   }
+ 
+});
+
+app.controller('NewSubmissionController', function($scope) {
  
 });
