@@ -27,6 +27,7 @@ module.exports = function(Submission, Comment) {
       yield new Submission(newSumission)
         .save()
         .then(() => {
+          this.status = 201; // created
           this.body = {
             message: 'saved'
           };
