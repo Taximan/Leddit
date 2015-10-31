@@ -341,7 +341,7 @@
 	});
 
 	app.controller('SubmissionDetailViewController', function (submission, $scope) {
-	  $scope.submission = submission;
+	  $scope.sub = submission;
 	  console.log(submission);
 	});
 
