@@ -78,6 +78,8 @@
 
 	__webpack_require__(16);
 
+	__webpack_require__(18);
+
 	var app = _angular2['default'].module('Leddit', [_angularRoute2['default']]);
 
 	app.config(function ($routeProvider, $httpProvider) {
@@ -30362,6 +30364,13 @@
 /***/ },
 /* 15 */,
 /* 16 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 17 */,
+/* 18 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

@@ -1,3 +1,79 @@
 .submission-detail-view {
   
 }
+
+.submission-detail-view h1.title  {
+  padding: 0;
+  margin: 0;
+}
+
+.submission-detail-view .title a {
+  color: #009688;
+  text-decoration: none;
+}
+
+.submission-detail-view .subtitle {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: .9em;
+}
+
+.submission-detail-view .subtitle a {
+  color: inherit;
+}
+
+.submission-detail-view .description {
+  margin: 12px 0;
+}
+
+
+.submission-detail-view .sub-stats a { 
+  font-size: 0.7em;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 13px;
+  font-family: 'Roboto';
+  background: rgba(233, 233, 233, 0.6);
+}
+
+.submission-detail-view .sub-add-comment-form {
+  
+}
+
+.submission-detail-view .sub-add-comment-form textarea {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  font-size: responsive 16px 23px;
+}
+
+.submission-detail-view .sub-add-comment-form button[type="submit"] {
+  background: rgba(0, 150, 136, 0.7);;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .86);
+  width: 100%;
+  font-size: responsive 16px 23px;
+  display: block;
+  margin: .5em auto;
+  padding: .3em 0px;
+  pointer-events: none;
+}
+
+html body .submission-detail-view .sub-add-comment-form button[type="submit"]:active {
+  background-color: rgba(255, 255, 255, .86) !important;
+  color: #009688 !important;
+  box-shadow: 0 0 0 5px #009688;
+}
+
+html body .submission-detail-view .sub-add-comment-form button[type="submit"].active {
+  background-color: rgba(0, 150, 136, 1);
+  pointer-events: all !important;
+}
+
+html body .submission-detail-view .sub-add-comment-form .comments {
+  list-style: none;
+}

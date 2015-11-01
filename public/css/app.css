@@ -151,8 +151,10 @@ nav[role="navigation"] ul.nav-left .highlight {
   display: inline-block;
   padding: 13px;
   font-family: 'Roboto';
-  background: rgba(233, 233, 233, 0.6);;
-}form.leddit-form {
+  background: rgba(233, 233, 233, 0.6);
+}
+
+form.leddit-form {
   
 }
 
@@ -243,4 +245,110 @@ form.leddit-form .input-group input.ng-pristine, form.leddit-form .input-group t
 form.leddit-form button[type="submit"].active {
   background-color: rgba(0, 150, 136, 1);
   pointer-events: all !important;
+}.submission-detail-view {
+  
+}
+
+.submission-detail-view h1.title  {
+  padding: 0;
+  margin: 0;
+}
+
+.submission-detail-view .title a {
+  color: #009688;
+  text-decoration: none;
+}
+
+.submission-detail-view .subtitle {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.7);
+  font-size: .9em;
+}
+
+.submission-detail-view .subtitle a {
+  color: inherit;
+}
+
+.submission-detail-view .description {
+  margin: 12px 0;
+}
+
+
+.submission-detail-view .sub-stats a { 
+  font-size: 0.7em;
+  color: black;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  padding: 13px;
+  font-family: 'Roboto';
+  background: rgba(233, 233, 233, 0.6);
+}
+
+.submission-detail-view .sub-add-comment-form {
+  
+}
+
+.submission-detail-view .sub-add-comment-form textarea {
+  display: block;
+  width: 100%;
+  margin: 7px 0;
+  font-size: calc(16px + 7 * ( (100vw - 420px) / 860));
+}
+
+@media screen and (min-width: 1280px) {
+
+  .submission-detail-view .sub-add-comment-form textarea {
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  .submission-detail-view .sub-add-comment-form textarea {
+    font-size: 16px;
+  }
+}
+
+.submission-detail-view .sub-add-comment-form button[type="submit"] {
+  background: rgba(0, 150, 136, 0.7);;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, .86);
+  width: 100%;
+  font-size: calc(16px + 7 * ( (100vw - 420px) / 860));
+  display: block;
+  margin: .5em auto;
+  padding: .3em 0px;
+  pointer-events: none;
+}
+
+@media screen and (min-width: 1280px) {
+
+  .submission-detail-view .sub-add-comment-form button[type="submit"] {
+    font-size: 23px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  .submission-detail-view .sub-add-comment-form button[type="submit"] {
+    font-size: 16px;
+  }
+}
+
+html body .submission-detail-view .sub-add-comment-form button[type="submit"]:active {
+  background-color: rgba(255, 255, 255, .86) !important;
+  color: #009688 !important;
+  box-shadow: 0 0 0 5px #009688;
+}
+
+html body .submission-detail-view .sub-add-comment-form button[type="submit"].active {
+  background-color: rgba(0, 150, 136, 1);
+  pointer-events: all !important;
+}
+
+html body .submission-detail-view .sub-add-comment-form .comments {
+  list-style: none;
 }

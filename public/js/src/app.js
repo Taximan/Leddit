@@ -16,6 +16,7 @@ import './styling/nav.css';
 import './styling/container.css';
 import './styling/submissions.css';
 import './styling/form.css';
+import './styling/submission-detail.css';
 
 const app = angular.module('Leddit', [ngRoute]);
 
