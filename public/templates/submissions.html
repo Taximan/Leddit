@@ -1,10 +1,10 @@
 <ul class="submissions">
   <li ng-repeat="sub in submissions">
     <h3 class="title">
-      <a href="#">{{sub.title}}</a>
+      <a ng-href="{{sub.link_to | httpify}}">{{sub.title}}</a>
     </h3>
     <div class="subtitle">by <a href="#">{{sub.user.name}}</a> 3 hours ago, source <a href="#">google.pl</a></div>
     <div class="description">{{sub.description}}</div>
-    <div className="submission-footer"><a href="#">{{sub.comments.length}} comments</a> <a href="">share</a></div>
+    <div className="submission-footer"><a href="#/submission/{{sub.id}}">{{sub.comments.length}} comments</a> <a href="">share</a></div>
   </li>
 </ul>

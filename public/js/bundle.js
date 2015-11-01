@@ -76,7 +76,7 @@
 
 	__webpack_require__(14);
 
-	__webpack_require__(18);
+	__webpack_require__(16);
 
 	var app = _angular2['default'].module('Leddit', [_angularRoute2['default']]);
 
@@ -164,6 +164,20 @@
 	      delete $window.localStorage.token;
 	    }
 
+	  };
+	});
+
+	app.filter('httpify', function () {
+	  return function (link) {
+	    var result;
+	    var http = 'http://';
+	    var https = 'https://';
+
+	    if (link.startsWith(http) || link.startsWith(https)) {
+	      return link; // do nothing
+	    }
+
+	    return http + link;
 	  };
 	});
 
@@ -30347,9 +30361,7 @@
 
 /***/ },
 /* 15 */,
-/* 16 */,
-/* 17 */,
-/* 18 */
+/* 16 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
