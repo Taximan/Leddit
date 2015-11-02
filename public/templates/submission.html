@@ -17,14 +17,22 @@
     <a href="#">share</a>
   </div>
   
-  <form class="sub-add-comment-form">
-      <textarea name="" id="" cols="30" rows="10" ></textarea>
+  <form class="sub-add-comment-form" data-ng-submit="postNewComment()">
+      <textarea name="" id="" cols="30" rows="10" ng-model="newcomment"></textarea>
       <button type="submit" class="active">Send</button>
   </form>
   
   <ul class="comments">
+    <li data-ng-hide="sub.comments.length">
+      No comments yet, you go first!
+    </li>
     <li ng-repeat="comment in sub.comments">
-      {{ comment.body }}
+      <div class="comment-header">
+        <a class="username" href="#TODO">{{comment.user.name}}</a>
+        <span class="timeago">5 minutes ago</span>
+        wrote
+      </div>
+      <div class="comment-body">{{comment.body}}</div>
     </li>
   </ul>
   

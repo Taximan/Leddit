@@ -202,6 +202,28 @@ app.factory('Submissions', function($http, $location) {
 });
 
 
+app.factory('Comment', function($http) {
+  var model = {};
+  
+  var endpoint = (subId) => `/api/submissions/${subId}/comments`;
+  
+  model.getOne = (subId, comId) => {
+    return $http.get(`${endpoint(subId)}/${comId}`)
+      .then(res => res.data);
+  };
+  
+  model.create = (props) => {
+    return $http.post(endpoint(props.subId), props)
+      .then(res => {
+        var comId = res.data.id;
+        return model.getOne(props.subId, comId);
+      });
+  }
+  
+  return model;
+});
+
+
 app.factory('User', function($http) {
   var model = {};
   var endPoint = '/api/users';
@@ -311,7 +333,20 @@ app.controller('NewSubmissionController', function($scope, Submissions) {
   
 });
 
-app.controller('SubmissionDetailViewController', function (submission, $scope) {
+app.controller('SubmissionDetailViewController', function (submission, $scope, Comment) {
   $scope.sub = submission;
-  console.log(submission);
+  
+  $scope.newcomment = '';
+  
+  $scope.postNewComment = () => {
+    
+    Comment.create({
+      body: $scope.newcomment,
+      subId: submission.id
+    }).then(newComment => {
+      $scope.sub.comments.push(newComment);
+      $scope.newcomment = '';
+    });
+  };
+  
 });

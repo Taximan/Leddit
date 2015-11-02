@@ -349,6 +349,39 @@ html body .submission-detail-view .sub-add-comment-form button[type="submit"].ac
   pointer-events: all !important;
 }
 
-html body .submission-detail-view .sub-add-comment-form .comments {
+html body .submission-detail-view  ul.comments {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+html body .submission-detail-view  ul.comments li:nth-child(1) {
+  margin-top: 28px;
+}
+
+html body .submission-detail-view  ul.comments li {
+  margin: 9px 0;
+  padding: 0;
+}
+
+
+
+html body .submission-detail-view  ul.comments li .comment-header {
+  color: rgba(0, 0, 0, 0.65);
+  font-size: .85em; 
+}
+
+html body .submission-detail-view  ul.comments li .comment-header .username {
+  color: rgba(0, 0, 0, 0.72);
+}
+
+html body .submission-detail-view  ul.comments li .comment-header .timeago {
+  font-style: italic;
+}
+
+html body .submission-detail-view  ul.comments li .comment-body {
+  word-wrap: break-word;
+}
+
+
+/*# sourceMappingURL=app.css.map*/
