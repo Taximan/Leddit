@@ -24,6 +24,7 @@ module.exports = function (Comment) {
       yield new Comment(newComment)
         .save()
         .then(() => {
+          this.status = 201;
           this.body = { message: 'saved' };
         })
         .catch(e => {
