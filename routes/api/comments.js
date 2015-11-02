@@ -48,7 +48,7 @@ module.exports = function (Comment) {
         submission_id: this.params.subId,
         id: this.params.comId
       })
-      .fetch()
+      .fetch({ withRelated: ['user'] })
       .then(data => this.body = data.toJSON())
       .catch(e => this.body = e);
   });
