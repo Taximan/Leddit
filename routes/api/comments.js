@@ -23,9 +23,10 @@ module.exports = function (Comment) {
 
       yield new Comment(newComment)
         .save()
-        .then(() => {
+        .then((saved) => {
+          var savedId = saved.attributes.id;
           this.status = 201;
-          this.body = { message: 'saved' };
+          this.body = { message: 'saved', id: savedId };
         })
         .catch(e => {
           console.log('[ERROR] failed to write to DB', e);
