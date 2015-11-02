@@ -40,6 +40,18 @@ module.exports = function (Comment) {
     }
 
   });
+  
+  
+  router.get('/:comId', function* () {
+    yield Comment
+      .forge({
+        submission_id: this.params.subId,
+        id: this.params.comId
+      })
+      .fetch()
+      .then(data => this.body = data.toJSON())
+      .catch(e => this.body = e);
+  });
 
     
 
