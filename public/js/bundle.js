@@ -57,58 +57,58 @@
 
 	var _angular2 = _interopRequireDefault(_angular);
 
-	var _moment = __webpack_require__(38);
+	var _moment = __webpack_require__(3);
 
 	var _moment2 = _interopRequireDefault(_moment);
 
-	var _angularRoute = __webpack_require__(3);
+	var _angularRoute = __webpack_require__(91);
 
 	var _angularRoute2 = _interopRequireDefault(_angularRoute);
 
-	var _angularMoment = __webpack_require__(37);
+	var _angularMoment = __webpack_require__(93);
 
 	var _angularMoment2 = _interopRequireDefault(_angularMoment);
 
-	var _utils = __webpack_require__(5);
+	var _utils = __webpack_require__(94);
 
 	/*
 	| import styles here
 	| this gets extracted to app.css latter.
 	*/
 
-	__webpack_require__(6);
+	__webpack_require__(95);
 
-	__webpack_require__(10);
+	__webpack_require__(99);
 
-	__webpack_require__(12);
+	__webpack_require__(101);
 
-	__webpack_require__(14);
+	__webpack_require__(103);
 
-	__webpack_require__(16);
+	__webpack_require__(105);
 
-	__webpack_require__(18);
+	__webpack_require__(107);
 
 	/*
 	| Factories
 	*/
 
-	var _factoriesAuthInterceptor = __webpack_require__(20);
+	var _factoriesAuthInterceptor = __webpack_require__(109);
 
 	var _factoriesAuthInterceptor2 = _interopRequireDefault(_factoriesAuthInterceptor);
 
-	var _factoriesLogin = __webpack_require__(21);
+	var _factoriesLogin = __webpack_require__(110);
 
 	var _factoriesLogin2 = _interopRequireDefault(_factoriesLogin);
 
-	var _factoriesSubmission = __webpack_require__(25);
+	var _factoriesSubmission = __webpack_require__(111);
 
 	var _factoriesSubmission2 = _interopRequireDefault(_factoriesSubmission);
 
-	var _factoriesComment = __webpack_require__(26);
+	var _factoriesComment = __webpack_require__(112);
 
 	var _factoriesComment2 = _interopRequireDefault(_factoriesComment);
 
-	var _factoriesUser = __webpack_require__(27);
+	var _factoriesUser = __webpack_require__(113);
 
 	var _factoriesUser2 = _interopRequireDefault(_factoriesUser);
 
@@ -116,19 +116,23 @@
 	| Filters
 	*/
 
-	var _filtersHttpify = __webpack_require__(22);
+	var _filtersHttpify = __webpack_require__(114);
 
 	var _filtersHttpify2 = _interopRequireDefault(_filtersHttpify);
+
+	var _filtersHostify = __webpack_require__(126);
+
+	var _filtersHostify2 = _interopRequireDefault(_filtersHostify);
 
 	/*
 	| Directives
 	*/
 
-	var _directivesIsUnique = __webpack_require__(23);
+	var _directivesIsUnique = __webpack_require__(115);
 
 	var _directivesIsUnique2 = _interopRequireDefault(_directivesIsUnique);
 
-	var _directivesPwMatch = __webpack_require__(24);
+	var _directivesPwMatch = __webpack_require__(116);
 
 	var _directivesPwMatch2 = _interopRequireDefault(_directivesPwMatch);
 
@@ -136,39 +140,39 @@
 	| Controllers
 	*/
 
-	var _controllersNavigation = __webpack_require__(28);
+	var _controllersNavigation = __webpack_require__(117);
 
 	var _controllersNavigation2 = _interopRequireDefault(_controllersNavigation);
 
-	var _controllersAlltime = __webpack_require__(29);
+	var _controllersAlltime = __webpack_require__(118);
 
 	var _controllersAlltime2 = _interopRequireDefault(_controllersAlltime);
 
-	var _controllersHot = __webpack_require__(30);
+	var _controllersHot = __webpack_require__(119);
 
 	var _controllersHot2 = _interopRequireDefault(_controllersHot);
 
-	var _controllersLatest = __webpack_require__(31);
+	var _controllersLatest = __webpack_require__(120);
 
 	var _controllersLatest2 = _interopRequireDefault(_controllersLatest);
 
-	var _controllersLogin = __webpack_require__(32);
+	var _controllersLogin = __webpack_require__(121);
 
 	var _controllersLogin2 = _interopRequireDefault(_controllersLogin);
 
-	var _controllersLogout = __webpack_require__(33);
+	var _controllersLogout = __webpack_require__(122);
 
 	var _controllersLogout2 = _interopRequireDefault(_controllersLogout);
 
-	var _controllersNewSubmission = __webpack_require__(34);
+	var _controllersNewSubmission = __webpack_require__(123);
 
 	var _controllersNewSubmission2 = _interopRequireDefault(_controllersNewSubmission);
 
-	var _controllersRegister = __webpack_require__(35);
+	var _controllersRegister = __webpack_require__(124);
 
 	var _controllersRegister2 = _interopRequireDefault(_controllersRegister);
 
-	var _controllersSubmissionDetail = __webpack_require__(36);
+	var _controllersSubmissionDetail = __webpack_require__(125);
 
 	var _controllersSubmissionDetail2 = _interopRequireDefault(_controllersSubmissionDetail);
 
@@ -229,6 +233,8 @@
 	(0, _factoriesSubmission2['default'])(app);
 	(0, _factoriesComment2['default'])(app);
 	(0, _factoriesUser2['default'])(app);
+
+	(0, _filtersHostify2['default'])(app);
 	(0, _filtersHttpify2['default'])(app);
 
 	(0, _directivesIsUnique2['default'])(app);
@@ -29165,2248 +29171,6 @@
 /* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(4);
-	module.exports = 'ngRoute';
-
-
-/***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	/**
-	 * @license AngularJS v1.4.7
-	 * (c) 2010-2015 Google, Inc. http://angularjs.org
-	 * License: MIT
-	 */
-	(function(window, angular, undefined) {'use strict';
-
-	/**
-	 * @ngdoc module
-	 * @name ngRoute
-	 * @description
-	 *
-	 * # ngRoute
-	 *
-	 * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
-	 *
-	 * ## Example
-	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
-	 *
-	 *
-	 * <div doc-module-components="ngRoute"></div>
-	 */
-	 /* global -ngRouteModule */
-	var ngRouteModule = angular.module('ngRoute', ['ng']).
-	                        provider('$route', $RouteProvider),
-	    $routeMinErr = angular.$$minErr('ngRoute');
-
-	/**
-	 * @ngdoc provider
-	 * @name $routeProvider
-	 *
-	 * @description
-	 *
-	 * Used for configuring routes.
-	 *
-	 * ## Example
-	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
-	 *
-	 * ## Dependencies
-	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
-	 */
-	function $RouteProvider() {
-	  function inherit(parent, extra) {
-	    return angular.extend(Object.create(parent), extra);
-	  }
-
-	  var routes = {};
-
-	  /**
-	   * @ngdoc method
-	   * @name $routeProvider#when
-	   *
-	   * @param {string} path Route path (matched against `$location.path`). If `$location.path`
-	   *    contains redundant trailing slash or is missing one, the route will still match and the
-	   *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
-	   *    route definition.
-	   *
-	   *    * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
-	   *        to the next slash are matched and stored in `$routeParams` under the given `name`
-	   *        when the route matches.
-	   *    * `path` can contain named groups starting with a colon and ending with a star:
-	   *        e.g.`:name*`. All characters are eagerly stored in `$routeParams` under the given `name`
-	   *        when the route matches.
-	   *    * `path` can contain optional named groups with a question mark: e.g.`:name?`.
-	   *
-	   *    For example, routes like `/color/:color/largecode/:largecode*\/edit` will match
-	   *    `/color/brown/largecode/code/with/slashes/edit` and extract:
-	   *
-	   *    * `color: brown`
-	   *    * `largecode: code/with/slashes`.
-	   *
-	   *
-	   * @param {Object} route Mapping information to be assigned to `$route.current` on route
-	   *    match.
-	   *
-	   *    Object properties:
-	   *
-	   *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
-	   *      newly created scope or the name of a {@link angular.Module#controller registered
-	   *      controller} if passed as a string.
-	   *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
-	   *      If present, the controller will be published to scope under the `controllerAs` name.
-	   *    - `template` – `{string=|function()=}` – html template as a string or a function that
-	   *      returns an html template as a string which should be used by {@link
-	   *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude} directives.
-	   *      This property takes precedence over `templateUrl`.
-	   *
-	   *      If `template` is a function, it will be called with the following parameters:
-	   *
-	   *      - `{Array.<Object>}` - route parameters extracted from the current
-	   *        `$location.path()` by applying the current route
-	   *
-	   *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
-	   *      template that should be used by {@link ngRoute.directive:ngView ngView}.
-	   *
-	   *      If `templateUrl` is a function, it will be called with the following parameters:
-	   *
-	   *      - `{Array.<Object>}` - route parameters extracted from the current
-	   *        `$location.path()` by applying the current route
-	   *
-	   *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
-	   *      be injected into the controller. If any of these dependencies are promises, the router
-	   *      will wait for them all to be resolved or one to be rejected before the controller is
-	   *      instantiated.
-	   *      If all the promises are resolved successfully, the values of the resolved promises are
-	   *      injected and {@link ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is
-	   *      fired. If any of the promises are rejected the
-	   *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map object
-	   *      is:
-	   *
-	   *      - `key` – `{string}`: a name of a dependency to be injected into the controller.
-	   *      - `factory` - `{string|function}`: If `string` then it is an alias for a service.
-	   *        Otherwise if function, then it is {@link auto.$injector#invoke injected}
-	   *        and the return value is treated as the dependency. If the result is a promise, it is
-	   *        resolved before its value is injected into the controller. Be aware that
-	   *        `ngRoute.$routeParams` will still refer to the previous route within these resolve
-	   *        functions.  Use `$route.current.params` to access the new route parameters, instead.
-	   *
-	   *    - `redirectTo` – {(string|function())=} – value to update
-	   *      {@link ng.$location $location} path with and trigger route redirection.
-	   *
-	   *      If `redirectTo` is a function, it will be called with the following parameters:
-	   *
-	   *      - `{Object.<string>}` - route parameters extracted from the current
-	   *        `$location.path()` by applying the current route templateUrl.
-	   *      - `{string}` - current `$location.path()`
-	   *      - `{Object}` - current `$location.search()`
-	   *
-	   *      The custom `redirectTo` function is expected to return a string which will be used
-	   *      to update `$location.path()` and `$location.search()`.
-	   *
-	   *    - `[reloadOnSearch=true]` - {boolean=} - reload route when only `$location.search()`
-	   *      or `$location.hash()` changes.
-	   *
-	   *      If the option is set to `false` and url in the browser changes, then
-	   *      `$routeUpdate` event is broadcasted on the root scope.
-	   *
-	   *    - `[caseInsensitiveMatch=false]` - {boolean=} - match routes without being case sensitive
-	   *
-	   *      If the option is set to `true`, then the particular route can be matched without being
-	   *      case sensitive
-	   *
-	   * @returns {Object} self
-	   *
-	   * @description
-	   * Adds a new route definition to the `$route` service.
-	   */
-	  this.when = function(path, route) {
-	    //copy original route object to preserve params inherited from proto chain
-	    var routeCopy = angular.copy(route);
-	    if (angular.isUndefined(routeCopy.reloadOnSearch)) {
-	      routeCopy.reloadOnSearch = true;
-	    }
-	    if (angular.isUndefined(routeCopy.caseInsensitiveMatch)) {
-	      routeCopy.caseInsensitiveMatch = this.caseInsensitiveMatch;
-	    }
-	    routes[path] = angular.extend(
-	      routeCopy,
-	      path && pathRegExp(path, routeCopy)
-	    );
-
-	    // create redirection for trailing slashes
-	    if (path) {
-	      var redirectPath = (path[path.length - 1] == '/')
-	            ? path.substr(0, path.length - 1)
-	            : path + '/';
-
-	      routes[redirectPath] = angular.extend(
-	        {redirectTo: path},
-	        pathRegExp(redirectPath, routeCopy)
-	      );
-	    }
-
-	    return this;
-	  };
-
-	  /**
-	   * @ngdoc property
-	   * @name $routeProvider#caseInsensitiveMatch
-	   * @description
-	   *
-	   * A boolean property indicating if routes defined
-	   * using this provider should be matched using a case insensitive
-	   * algorithm. Defaults to `false`.
-	   */
-	  this.caseInsensitiveMatch = false;
-
-	   /**
-	    * @param path {string} path
-	    * @param opts {Object} options
-	    * @return {?Object}
-	    *
-	    * @description
-	    * Normalizes the given path, returning a regular expression
-	    * and the original path.
-	    *
-	    * Inspired by pathRexp in visionmedia/express/lib/utils.js.
-	    */
-	  function pathRegExp(path, opts) {
-	    var insensitive = opts.caseInsensitiveMatch,
-	        ret = {
-	          originalPath: path,
-	          regexp: path
-	        },
-	        keys = ret.keys = [];
-
-	    path = path
-	      .replace(/([().])/g, '\\$1')
-	      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
-	        var optional = option === '?' ? option : null;
-	        var star = option === '*' ? option : null;
-	        keys.push({ name: key, optional: !!optional });
-	        slash = slash || '';
-	        return ''
-	          + (optional ? '' : slash)
-	          + '(?:'
-	          + (optional ? slash : '')
-	          + (star && '(.+?)' || '([^/]+)')
-	          + (optional || '')
-	          + ')'
-	          + (optional || '');
-	      })
-	      .replace(/([\/$\*])/g, '\\$1');
-
-	    ret.regexp = new RegExp('^' + path + '$', insensitive ? 'i' : '');
-	    return ret;
-	  }
-
-	  /**
-	   * @ngdoc method
-	   * @name $routeProvider#otherwise
-	   *
-	   * @description
-	   * Sets route definition that will be used on route change when no other route definition
-	   * is matched.
-	   *
-	   * @param {Object|string} params Mapping information to be assigned to `$route.current`.
-	   * If called with a string, the value maps to `redirectTo`.
-	   * @returns {Object} self
-	   */
-	  this.otherwise = function(params) {
-	    if (typeof params === 'string') {
-	      params = {redirectTo: params};
-	    }
-	    this.when(null, params);
-	    return this;
-	  };
-
-
-	  this.$get = ['$rootScope',
-	               '$location',
-	               '$routeParams',
-	               '$q',
-	               '$injector',
-	               '$templateRequest',
-	               '$sce',
-	      function($rootScope, $location, $routeParams, $q, $injector, $templateRequest, $sce) {
-
-	    /**
-	     * @ngdoc service
-	     * @name $route
-	     * @requires $location
-	     * @requires $routeParams
-	     *
-	     * @property {Object} current Reference to the current route definition.
-	     * The route definition contains:
-	     *
-	     *   - `controller`: The controller constructor as define in route definition.
-	     *   - `locals`: A map of locals which is used by {@link ng.$controller $controller} service for
-	     *     controller instantiation. The `locals` contain
-	     *     the resolved values of the `resolve` map. Additionally the `locals` also contain:
-	     *
-	     *     - `$scope` - The current route scope.
-	     *     - `$template` - The current route template HTML.
-	     *
-	     * @property {Object} routes Object with all route configuration Objects as its properties.
-	     *
-	     * @description
-	     * `$route` is used for deep-linking URLs to controllers and views (HTML partials).
-	     * It watches `$location.url()` and tries to map the path to an existing route definition.
-	     *
-	     * Requires the {@link ngRoute `ngRoute`} module to be installed.
-	     *
-	     * You can define routes through {@link ngRoute.$routeProvider $routeProvider}'s API.
-	     *
-	     * The `$route` service is typically used in conjunction with the
-	     * {@link ngRoute.directive:ngView `ngView`} directive and the
-	     * {@link ngRoute.$routeParams `$routeParams`} service.
-	     *
-	     * @example
-	     * This example shows how changing the URL hash causes the `$route` to match a route against the
-	     * URL, and the `ngView` pulls in the partial.
-	     *
-	     * <example name="$route-service" module="ngRouteExample"
-	     *          deps="angular-route.js" fixBase="true">
-	     *   <file name="index.html">
-	     *     <div ng-controller="MainController">
-	     *       Choose:
-	     *       <a href="Book/Moby">Moby</a> |
-	     *       <a href="Book/Moby/ch/1">Moby: Ch1</a> |
-	     *       <a href="Book/Gatsby">Gatsby</a> |
-	     *       <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
-	     *       <a href="Book/Scarlet">Scarlet Letter</a><br/>
-	     *
-	     *       <div ng-view></div>
-	     *
-	     *       <hr />
-	     *
-	     *       <pre>$location.path() = {{$location.path()}}</pre>
-	     *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
-	     *       <pre>$route.current.params = {{$route.current.params}}</pre>
-	     *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
-	     *       <pre>$routeParams = {{$routeParams}}</pre>
-	     *     </div>
-	     *   </file>
-	     *
-	     *   <file name="book.html">
-	     *     controller: {{name}}<br />
-	     *     Book Id: {{params.bookId}}<br />
-	     *   </file>
-	     *
-	     *   <file name="chapter.html">
-	     *     controller: {{name}}<br />
-	     *     Book Id: {{params.bookId}}<br />
-	     *     Chapter Id: {{params.chapterId}}
-	     *   </file>
-	     *
-	     *   <file name="script.js">
-	     *     angular.module('ngRouteExample', ['ngRoute'])
-	     *
-	     *      .controller('MainController', function($scope, $route, $routeParams, $location) {
-	     *          $scope.$route = $route;
-	     *          $scope.$location = $location;
-	     *          $scope.$routeParams = $routeParams;
-	     *      })
-	     *
-	     *      .controller('BookController', function($scope, $routeParams) {
-	     *          $scope.name = "BookController";
-	     *          $scope.params = $routeParams;
-	     *      })
-	     *
-	     *      .controller('ChapterController', function($scope, $routeParams) {
-	     *          $scope.name = "ChapterController";
-	     *          $scope.params = $routeParams;
-	     *      })
-	     *
-	     *     .config(function($routeProvider, $locationProvider) {
-	     *       $routeProvider
-	     *        .when('/Book/:bookId', {
-	     *         templateUrl: 'book.html',
-	     *         controller: 'BookController',
-	     *         resolve: {
-	     *           // I will cause a 1 second delay
-	     *           delay: function($q, $timeout) {
-	     *             var delay = $q.defer();
-	     *             $timeout(delay.resolve, 1000);
-	     *             return delay.promise;
-	     *           }
-	     *         }
-	     *       })
-	     *       .when('/Book/:bookId/ch/:chapterId', {
-	     *         templateUrl: 'chapter.html',
-	     *         controller: 'ChapterController'
-	     *       });
-	     *
-	     *       // configure html5 to get links working on jsfiddle
-	     *       $locationProvider.html5Mode(true);
-	     *     });
-	     *
-	     *   </file>
-	     *
-	     *   <file name="protractor.js" type="protractor">
-	     *     it('should load and compile correct template', function() {
-	     *       element(by.linkText('Moby: Ch1')).click();
-	     *       var content = element(by.css('[ng-view]')).getText();
-	     *       expect(content).toMatch(/controller\: ChapterController/);
-	     *       expect(content).toMatch(/Book Id\: Moby/);
-	     *       expect(content).toMatch(/Chapter Id\: 1/);
-	     *
-	     *       element(by.partialLinkText('Scarlet')).click();
-	     *
-	     *       content = element(by.css('[ng-view]')).getText();
-	     *       expect(content).toMatch(/controller\: BookController/);
-	     *       expect(content).toMatch(/Book Id\: Scarlet/);
-	     *     });
-	     *   </file>
-	     * </example>
-	     */
-
-	    /**
-	     * @ngdoc event
-	     * @name $route#$routeChangeStart
-	     * @eventType broadcast on root scope
-	     * @description
-	     * Broadcasted before a route change. At this  point the route services starts
-	     * resolving all of the dependencies needed for the route change to occur.
-	     * Typically this involves fetching the view template as well as any dependencies
-	     * defined in `resolve` route property. Once  all of the dependencies are resolved
-	     * `$routeChangeSuccess` is fired.
-	     *
-	     * The route change (and the `$location` change that triggered it) can be prevented
-	     * by calling `preventDefault` method of the event. See {@link ng.$rootScope.Scope#$on}
-	     * for more details about event object.
-	     *
-	     * @param {Object} angularEvent Synthetic event object.
-	     * @param {Route} next Future route information.
-	     * @param {Route} current Current route information.
-	     */
-
-	    /**
-	     * @ngdoc event
-	     * @name $route#$routeChangeSuccess
-	     * @eventType broadcast on root scope
-	     * @description
-	     * Broadcasted after a route change has happened successfully.
-	     * The `resolve` dependencies are now available in the `current.locals` property.
-	     *
-	     * {@link ngRoute.directive:ngView ngView} listens for the directive
-	     * to instantiate the controller and render the view.
-	     *
-	     * @param {Object} angularEvent Synthetic event object.
-	     * @param {Route} current Current route information.
-	     * @param {Route|Undefined} previous Previous route information, or undefined if current is
-	     * first route entered.
-	     */
-
-	    /**
-	     * @ngdoc event
-	     * @name $route#$routeChangeError
-	     * @eventType broadcast on root scope
-	     * @description
-	     * Broadcasted if any of the resolve promises are rejected.
-	     *
-	     * @param {Object} angularEvent Synthetic event object
-	     * @param {Route} current Current route information.
-	     * @param {Route} previous Previous route information.
-	     * @param {Route} rejection Rejection of the promise. Usually the error of the failed promise.
-	     */
-
-	    /**
-	     * @ngdoc event
-	     * @name $route#$routeUpdate
-	     * @eventType broadcast on root scope
-	     * @description
-	     * The `reloadOnSearch` property has been set to false, and we are reusing the same
-	     * instance of the Controller.
-	     *
-	     * @param {Object} angularEvent Synthetic event object
-	     * @param {Route} current Current/previous route information.
-	     */
-
-	    var forceReload = false,
-	        preparedRoute,
-	        preparedRouteIsUpdateOnly,
-	        $route = {
-	          routes: routes,
-
-	          /**
-	           * @ngdoc method
-	           * @name $route#reload
-	           *
-	           * @description
-	           * Causes `$route` service to reload the current route even if
-	           * {@link ng.$location $location} hasn't changed.
-	           *
-	           * As a result of that, {@link ngRoute.directive:ngView ngView}
-	           * creates new scope and reinstantiates the controller.
-	           */
-	          reload: function() {
-	            forceReload = true;
-	            $rootScope.$evalAsync(function() {
-	              // Don't support cancellation of a reload for now...
-	              prepareRoute();
-	              commitRoute();
-	            });
-	          },
-
-	          /**
-	           * @ngdoc method
-	           * @name $route#updateParams
-	           *
-	           * @description
-	           * Causes `$route` service to update the current URL, replacing
-	           * current route parameters with those specified in `newParams`.
-	           * Provided property names that match the route's path segment
-	           * definitions will be interpolated into the location's path, while
-	           * remaining properties will be treated as query params.
-	           *
-	           * @param {!Object<string, string>} newParams mapping of URL parameter names to values
-	           */
-	          updateParams: function(newParams) {
-	            if (this.current && this.current.$$route) {
-	              newParams = angular.extend({}, this.current.params, newParams);
-	              $location.path(interpolate(this.current.$$route.originalPath, newParams));
-	              // interpolate modifies newParams, only query params are left
-	              $location.search(newParams);
-	            } else {
-	              throw $routeMinErr('norout', 'Tried updating route when with no current route');
-	            }
-	          }
-	        };
-
-	    $rootScope.$on('$locationChangeStart', prepareRoute);
-	    $rootScope.$on('$locationChangeSuccess', commitRoute);
-
-	    return $route;
-
-	    /////////////////////////////////////////////////////
-
-	    /**
-	     * @param on {string} current url
-	     * @param route {Object} route regexp to match the url against
-	     * @return {?Object}
-	     *
-	     * @description
-	     * Check if the route matches the current url.
-	     *
-	     * Inspired by match in
-	     * visionmedia/express/lib/router/router.js.
-	     */
-	    function switchRouteMatcher(on, route) {
-	      var keys = route.keys,
-	          params = {};
-
-	      if (!route.regexp) return null;
-
-	      var m = route.regexp.exec(on);
-	      if (!m) return null;
-
-	      for (var i = 1, len = m.length; i < len; ++i) {
-	        var key = keys[i - 1];
-
-	        var val = m[i];
-
-	        if (key && val) {
-	          params[key.name] = val;
-	        }
-	      }
-	      return params;
-	    }
-
-	    function prepareRoute($locationEvent) {
-	      var lastRoute = $route.current;
-
-	      preparedRoute = parseRoute();
-	      preparedRouteIsUpdateOnly = preparedRoute && lastRoute && preparedRoute.$$route === lastRoute.$$route
-	          && angular.equals(preparedRoute.pathParams, lastRoute.pathParams)
-	          && !preparedRoute.reloadOnSearch && !forceReload;
-
-	      if (!preparedRouteIsUpdateOnly && (lastRoute || preparedRoute)) {
-	        if ($rootScope.$broadcast('$routeChangeStart', preparedRoute, lastRoute).defaultPrevented) {
-	          if ($locationEvent) {
-	            $locationEvent.preventDefault();
-	          }
-	        }
-	      }
-	    }
-
-	    function commitRoute() {
-	      var lastRoute = $route.current;
-	      var nextRoute = preparedRoute;
-
-	      if (preparedRouteIsUpdateOnly) {
-	        lastRoute.params = nextRoute.params;
-	        angular.copy(lastRoute.params, $routeParams);
-	        $rootScope.$broadcast('$routeUpdate', lastRoute);
-	      } else if (nextRoute || lastRoute) {
-	        forceReload = false;
-	        $route.current = nextRoute;
-	        if (nextRoute) {
-	          if (nextRoute.redirectTo) {
-	            if (angular.isString(nextRoute.redirectTo)) {
-	              $location.path(interpolate(nextRoute.redirectTo, nextRoute.params)).search(nextRoute.params)
-	                       .replace();
-	            } else {
-	              $location.url(nextRoute.redirectTo(nextRoute.pathParams, $location.path(), $location.search()))
-	                       .replace();
-	            }
-	          }
-	        }
-
-	        $q.when(nextRoute).
-	          then(function() {
-	            if (nextRoute) {
-	              var locals = angular.extend({}, nextRoute.resolve),
-	                  template, templateUrl;
-
-	              angular.forEach(locals, function(value, key) {
-	                locals[key] = angular.isString(value) ?
-	                    $injector.get(value) : $injector.invoke(value, null, null, key);
-	              });
-
-	              if (angular.isDefined(template = nextRoute.template)) {
-	                if (angular.isFunction(template)) {
-	                  template = template(nextRoute.params);
-	                }
-	              } else if (angular.isDefined(templateUrl = nextRoute.templateUrl)) {
-	                if (angular.isFunction(templateUrl)) {
-	                  templateUrl = templateUrl(nextRoute.params);
-	                }
-	                if (angular.isDefined(templateUrl)) {
-	                  nextRoute.loadedTemplateUrl = $sce.valueOf(templateUrl);
-	                  template = $templateRequest(templateUrl);
-	                }
-	              }
-	              if (angular.isDefined(template)) {
-	                locals['$template'] = template;
-	              }
-	              return $q.all(locals);
-	            }
-	          }).
-	          then(function(locals) {
-	            // after route change
-	            if (nextRoute == $route.current) {
-	              if (nextRoute) {
-	                nextRoute.locals = locals;
-	                angular.copy(nextRoute.params, $routeParams);
-	              }
-	              $rootScope.$broadcast('$routeChangeSuccess', nextRoute, lastRoute);
-	            }
-	          }, function(error) {
-	            if (nextRoute == $route.current) {
-	              $rootScope.$broadcast('$routeChangeError', nextRoute, lastRoute, error);
-	            }
-	          });
-	      }
-	    }
-
-
-	    /**
-	     * @returns {Object} the current active route, by matching it against the URL
-	     */
-	    function parseRoute() {
-	      // Match a route
-	      var params, match;
-	      angular.forEach(routes, function(route, path) {
-	        if (!match && (params = switchRouteMatcher($location.path(), route))) {
-	          match = inherit(route, {
-	            params: angular.extend({}, $location.search(), params),
-	            pathParams: params});
-	          match.$$route = route;
-	        }
-	      });
-	      // No route matched; fallback to "otherwise" route
-	      return match || routes[null] && inherit(routes[null], {params: {}, pathParams:{}});
-	    }
-
-	    /**
-	     * @returns {string} interpolation of the redirect path with the parameters
-	     */
-	    function interpolate(string, params) {
-	      var result = [];
-	      angular.forEach((string || '').split(':'), function(segment, i) {
-	        if (i === 0) {
-	          result.push(segment);
-	        } else {
-	          var segmentMatch = segment.match(/(\w+)(?:[?*])?(.*)/);
-	          var key = segmentMatch[1];
-	          result.push(params[key]);
-	          result.push(segmentMatch[2] || '');
-	          delete params[key];
-	        }
-	      });
-	      return result.join('');
-	    }
-	  }];
-	}
-
-	ngRouteModule.provider('$routeParams', $RouteParamsProvider);
-
-
-	/**
-	 * @ngdoc service
-	 * @name $routeParams
-	 * @requires $route
-	 *
-	 * @description
-	 * The `$routeParams` service allows you to retrieve the current set of route parameters.
-	 *
-	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
-	 *
-	 * The route parameters are a combination of {@link ng.$location `$location`}'s
-	 * {@link ng.$location#search `search()`} and {@link ng.$location#path `path()`}.
-	 * The `path` parameters are extracted when the {@link ngRoute.$route `$route`} path is matched.
-	 *
-	 * In case of parameter name collision, `path` params take precedence over `search` params.
-	 *
-	 * The service guarantees that the identity of the `$routeParams` object will remain unchanged
-	 * (but its properties will likely change) even when a route change occurs.
-	 *
-	 * Note that the `$routeParams` are only updated *after* a route change completes successfully.
-	 * This means that you cannot rely on `$routeParams` being correct in route resolve functions.
-	 * Instead you can use `$route.current.params` to access the new route's parameters.
-	 *
-	 * @example
-	 * ```js
-	 *  // Given:
-	 *  // URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
-	 *  // Route: /Chapter/:chapterId/Section/:sectionId
-	 *  //
-	 *  // Then
-	 *  $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
-	 * ```
-	 */
-	function $RouteParamsProvider() {
-	  this.$get = function() { return {}; };
-	}
-
-	ngRouteModule.directive('ngView', ngViewFactory);
-	ngRouteModule.directive('ngView', ngViewFillContentFactory);
-
-
-	/**
-	 * @ngdoc directive
-	 * @name ngView
-	 * @restrict ECA
-	 *
-	 * @description
-	 * # Overview
-	 * `ngView` is a directive that complements the {@link ngRoute.$route $route} service by
-	 * including the rendered template of the current route into the main layout (`index.html`) file.
-	 * Every time the current route changes, the included view changes with it according to the
-	 * configuration of the `$route` service.
-	 *
-	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
-	 *
-	 * @animations
-	 * enter - animation is used to bring new content into the browser.
-	 * leave - animation is used to animate existing content away.
-	 *
-	 * The enter and leave animation occur concurrently.
-	 *
-	 * @scope
-	 * @priority 400
-	 * @param {string=} onload Expression to evaluate whenever the view updates.
-	 *
-	 * @param {string=} autoscroll Whether `ngView` should call {@link ng.$anchorScroll
-	 *                  $anchorScroll} to scroll the viewport after the view is updated.
-	 *
-	 *                  - If the attribute is not set, disable scrolling.
-	 *                  - If the attribute is set without value, enable scrolling.
-	 *                  - Otherwise enable scrolling only if the `autoscroll` attribute value evaluated
-	 *                    as an expression yields a truthy value.
-	 * @example
-	    <example name="ngView-directive" module="ngViewExample"
-	             deps="angular-route.js;angular-animate.js"
-	             animations="true" fixBase="true">
-	      <file name="index.html">
-	        <div ng-controller="MainCtrl as main">
-	          Choose:
-	          <a href="Book/Moby">Moby</a> |
-	          <a href="Book/Moby/ch/1">Moby: Ch1</a> |
-	          <a href="Book/Gatsby">Gatsby</a> |
-	          <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
-	          <a href="Book/Scarlet">Scarlet Letter</a><br/>
-
-	          <div class="view-animate-container">
-	            <div ng-view class="view-animate"></div>
-	          </div>
-	          <hr />
-
-	          <pre>$location.path() = {{main.$location.path()}}</pre>
-	          <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
-	          <pre>$route.current.params = {{main.$route.current.params}}</pre>
-	          <pre>$routeParams = {{main.$routeParams}}</pre>
-	        </div>
-	      </file>
-
-	      <file name="book.html">
-	        <div>
-	          controller: {{book.name}}<br />
-	          Book Id: {{book.params.bookId}}<br />
-	        </div>
-	      </file>
-
-	      <file name="chapter.html">
-	        <div>
-	          controller: {{chapter.name}}<br />
-	          Book Id: {{chapter.params.bookId}}<br />
-	          Chapter Id: {{chapter.params.chapterId}}
-	        </div>
-	      </file>
-
-	      <file name="animations.css">
-	        .view-animate-container {
-	          position:relative;
-	          height:100px!important;
-	          background:white;
-	          border:1px solid black;
-	          height:40px;
-	          overflow:hidden;
-	        }
-
-	        .view-animate {
-	          padding:10px;
-	        }
-
-	        .view-animate.ng-enter, .view-animate.ng-leave {
-	          transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
-
-	          display:block;
-	          width:100%;
-	          border-left:1px solid black;
-
-	          position:absolute;
-	          top:0;
-	          left:0;
-	          right:0;
-	          bottom:0;
-	          padding:10px;
-	        }
-
-	        .view-animate.ng-enter {
-	          left:100%;
-	        }
-	        .view-animate.ng-enter.ng-enter-active {
-	          left:0;
-	        }
-	        .view-animate.ng-leave.ng-leave-active {
-	          left:-100%;
-	        }
-	      </file>
-
-	      <file name="script.js">
-	        angular.module('ngViewExample', ['ngRoute', 'ngAnimate'])
-	          .config(['$routeProvider', '$locationProvider',
-	            function($routeProvider, $locationProvider) {
-	              $routeProvider
-	                .when('/Book/:bookId', {
-	                  templateUrl: 'book.html',
-	                  controller: 'BookCtrl',
-	                  controllerAs: 'book'
-	                })
-	                .when('/Book/:bookId/ch/:chapterId', {
-	                  templateUrl: 'chapter.html',
-	                  controller: 'ChapterCtrl',
-	                  controllerAs: 'chapter'
-	                });
-
-	              $locationProvider.html5Mode(true);
-	          }])
-	          .controller('MainCtrl', ['$route', '$routeParams', '$location',
-	            function($route, $routeParams, $location) {
-	              this.$route = $route;
-	              this.$location = $location;
-	              this.$routeParams = $routeParams;
-	          }])
-	          .controller('BookCtrl', ['$routeParams', function($routeParams) {
-	            this.name = "BookCtrl";
-	            this.params = $routeParams;
-	          }])
-	          .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
-	            this.name = "ChapterCtrl";
-	            this.params = $routeParams;
-	          }]);
-
-	      </file>
-
-	      <file name="protractor.js" type="protractor">
-	        it('should load and compile correct template', function() {
-	          element(by.linkText('Moby: Ch1')).click();
-	          var content = element(by.css('[ng-view]')).getText();
-	          expect(content).toMatch(/controller\: ChapterCtrl/);
-	          expect(content).toMatch(/Book Id\: Moby/);
-	          expect(content).toMatch(/Chapter Id\: 1/);
-
-	          element(by.partialLinkText('Scarlet')).click();
-
-	          content = element(by.css('[ng-view]')).getText();
-	          expect(content).toMatch(/controller\: BookCtrl/);
-	          expect(content).toMatch(/Book Id\: Scarlet/);
-	        });
-	      </file>
-	    </example>
-	 */
-
-
-	/**
-	 * @ngdoc event
-	 * @name ngView#$viewContentLoaded
-	 * @eventType emit on the current ngView scope
-	 * @description
-	 * Emitted every time the ngView content is reloaded.
-	 */
-	ngViewFactory.$inject = ['$route', '$anchorScroll', '$animate'];
-	function ngViewFactory($route, $anchorScroll, $animate) {
-	  return {
-	    restrict: 'ECA',
-	    terminal: true,
-	    priority: 400,
-	    transclude: 'element',
-	    link: function(scope, $element, attr, ctrl, $transclude) {
-	        var currentScope,
-	            currentElement,
-	            previousLeaveAnimation,
-	            autoScrollExp = attr.autoscroll,
-	            onloadExp = attr.onload || '';
-
-	        scope.$on('$routeChangeSuccess', update);
-	        update();
-
-	        function cleanupLastView() {
-	          if (previousLeaveAnimation) {
-	            $animate.cancel(previousLeaveAnimation);
-	            previousLeaveAnimation = null;
-	          }
-
-	          if (currentScope) {
-	            currentScope.$destroy();
-	            currentScope = null;
-	          }
-	          if (currentElement) {
-	            previousLeaveAnimation = $animate.leave(currentElement);
-	            previousLeaveAnimation.then(function() {
-	              previousLeaveAnimation = null;
-	            });
-	            currentElement = null;
-	          }
-	        }
-
-	        function update() {
-	          var locals = $route.current && $route.current.locals,
-	              template = locals && locals.$template;
-
-	          if (angular.isDefined(template)) {
-	            var newScope = scope.$new();
-	            var current = $route.current;
-
-	            // Note: This will also link all children of ng-view that were contained in the original
-	            // html. If that content contains controllers, ... they could pollute/change the scope.
-	            // However, using ng-view on an element with additional content does not make sense...
-	            // Note: We can't remove them in the cloneAttchFn of $transclude as that
-	            // function is called before linking the content, which would apply child
-	            // directives to non existing elements.
-	            var clone = $transclude(newScope, function(clone) {
-	              $animate.enter(clone, null, currentElement || $element).then(function onNgViewEnter() {
-	                if (angular.isDefined(autoScrollExp)
-	                  && (!autoScrollExp || scope.$eval(autoScrollExp))) {
-	                  $anchorScroll();
-	                }
-	              });
-	              cleanupLastView();
-	            });
-
-	            currentElement = clone;
-	            currentScope = current.scope = newScope;
-	            currentScope.$emit('$viewContentLoaded');
-	            currentScope.$eval(onloadExp);
-	          } else {
-	            cleanupLastView();
-	          }
-	        }
-	    }
-	  };
-	}
-
-	// This directive is called during the $transclude call of the first `ngView` directive.
-	// It will replace and compile the content of the element with the loaded template.
-	// We need this directive so that the element content is already filled when
-	// the link function of another directive on the same element as ngView
-	// is called.
-	ngViewFillContentFactory.$inject = ['$compile', '$controller', '$route'];
-	function ngViewFillContentFactory($compile, $controller, $route) {
-	  return {
-	    restrict: 'ECA',
-	    priority: -400,
-	    link: function(scope, $element) {
-	      var current = $route.current,
-	          locals = current.locals;
-
-	      $element.html(locals.$template);
-
-	      var link = $compile($element.contents());
-
-	      if (current.controller) {
-	        locals.$scope = scope;
-	        var controller = $controller(current.controller, locals);
-	        if (current.controllerAs) {
-	          scope[current.controllerAs] = controller;
-	        }
-	        $element.data('$ngControllerController', controller);
-	        $element.children().data('$ngControllerController', controller);
-	      }
-
-	      link(scope);
-	    }
-	  };
-	}
-
-
-	})(window, window.angular);
-
-
-/***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-	exports.debounce = debounce;
-	exports.decodeToken = decodeToken;
-
-	function debounce(func, wait, immediate) {
-	  var timeout;
-	  return function () {
-	    var context = this,
-	        args = arguments;
-	    var later = function later() {
-	      timeout = null;
-	      if (!immediate) func.apply(context, args);
-	    };
-	    var callNow = immediate && !timeout;
-	    clearTimeout(timeout);
-	    timeout = setTimeout(later, wait);
-	    if (callNow) func.apply(context, args);
-	  };
-	}
-
-	;
-
-	function decodeToken(token) {
-	  var parts, header, claim, signature;
-	  token = token || '';
-	  parts = token.split('.');
-	  if (parts.length === 3) {
-	    header = parts[0];
-	    claim = parts[1];
-	    signature = parts[2];
-	    header = JSON.parse(decodeURIComponent(escape(atob(header))));
-	    claim = JSON.parse(decodeURIComponent(escape(atob(claim))));
-	  }
-
-	  return {
-	    header: header,
-	    claim: claim,
-	    signature: signature
-	  };
-	}
-
-/***/ },
-/* 6 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 11 */,
-/* 12 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 13 */,
-/* 14 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 15 */,
-/* 16 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 17 */,
-/* 18 */
-/***/ function(module, exports) {
-
-	// removed by extract-text-webpack-plugin
-
-/***/ },
-/* 19 */,
-/* 20 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.factory('authInterceptor', function ($window) {
-	    return {
-	      request: function request(config) {
-	        if ($window.localStorage.token) {
-	          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
-	        }
-	        return config;
-	      }
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 21 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _utils = __webpack_require__(5);
-
-	exports['default'] = function (app) {
-	  app.factory('Login', function ($window, $http) {
-	    var endPoint = 'api/auth';
-
-	    return {
-	      isLoggedIn: !!$window.localStorage.token,
-	      username: (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
-
-	      attempt: function attempt(credentials) {
-	        var _this = this;
-
-	        return $http.post(endPoint, credentials).then(function (resp) {
-	          var token = resp.data.token;
-
-	          $window.localStorage.token = token;
-	          _this.isLoggedIn = true;
-	          _this.username = credentials.username;
-
-	          return Promise.resolve(true);
-	        });
-	      },
-
-	      logout: function logout() {
-	        this.isLoggedIn = false;
-	        delete $window.localStorage.token;
-	      }
-
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 22 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.filter('httpify', function () {
-	    return function (link) {
-	      var result;
-	      var http = 'http://';
-	      var https = 'https://';
-
-	      if (link.startsWith(http) || link.startsWith(https)) {
-	        return link; // do nothing
-	      }
-
-	      return http + link;
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 23 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	var _utils = __webpack_require__(5);
-
-	exports['default'] = function (app) {
-	  app.directive('isUnique', function ($http) {
-	    return {
-	      require: 'ngModel',
-	      link: function link(scope, elem, attrs, ngModel) {
-	        var resource = attrs.isUnique;
-
-	        var evHandler = (0, _utils.debounce)(function (e) {
-	          scope.$apply(function () {
-	            var val = e.target.value;
-	            var target = resource.replace('???', val);
-	            if (val.length > 0) {
-	              $http.head(target).then(function (d) {
-	                return ngModel.$setValidity('ununique', false);
-	              })['catch'](function (e) {
-	                return ngModel.$setValidity('ununique', true);
-	              });
-	            } else {
-	              ngModel.$setValidity('ununique', false);
-	            }
-	          });
-	        }, 200);
-
-	        elem.on('keyup', evHandler);
-	      }
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 24 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.directive('pwMatch', function () {
-	    return {
-	      require: 'ngModel',
-	      scope: {
-	        otherInputValue: '=pwMatch'
-	      },
-	      link: function link(scope, elem, attrs, ngModel) {
-	        ngModel.$validators.pwMatch = function (modelValue) {
-	          return scope.otherInputValue.$modelValue === modelValue;
-	        };
-	        scope.$watch("otherInputValue", function () {
-	          ngModel.$validate();
-	        });
-	      }
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 25 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.factory('Submissions', function ($http, $location) {
-	    var model = {};
-
-	    var endpoint = '/api/submissions';
-
-	    model.getSubmissions = function () {
-	      return $http.get(endpoint).then(function (raw) {
-	        return raw.data;
-	      });
-	    };
-
-	    model.getById = function (id) {
-	      return $http.get(endpoint + '/' + id);
-	    };
-
-	    /* props must contain: title, description, link_to properties */
-	    model.create = function (props) {
-	      return $http.post(endpoint, props);
-	    };
-
-	    return model;
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 26 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.factory('Comment', function ($http) {
-	    var model = {};
-
-	    var endpoint = function endpoint(subId) {
-	      return '/api/submissions/' + subId + '/comments';
-	    };
-
-	    model.getOne = function (subId, comId) {
-	      return $http.get(endpoint(subId) + '/' + comId).then(function (res) {
-	        return res.data;
-	      });
-	    };
-
-	    model.create = function (props) {
-	      return $http.post(endpoint(props.subId), props).then(function (res) {
-	        var comId = res.data.id;
-	        return model.getOne(props.subId, comId);
-	      });
-	    };
-
-	    return model;
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 27 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.factory('User', function ($http) {
-	    var model = {};
-	    var endPoint = '/api/users';
-
-	    model.create = function (credentials) {
-	      return $http.post(endPoint, credentials);
-	    };
-
-	    return model;
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 28 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('NavigationController', function ($location, Login) {
-	    var vm = this;
-	    vm.isActive = function (route) {
-	      return $location.path() === route;
-	    };
-	    vm.Login = Login;
-	    return vm;
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 29 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('AlltimeController', function ($scope) {
-	    $scope.msg = 'from the alltime controller!';
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('HotController', function ($scope, submissions) {
-	    $scope.msg = 'from the hot controller';
-	    $scope.submissions = submissions;
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 31 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('LatestController', function ($scope) {
-	    $scope.msg = 'from the latest controller';
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 32 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('LoginController', function ($scope, $http, Login, $location) {
-	    $scope.errmsg = '';
-
-	    $scope.credentials = {
-	      username: '',
-	      password: ''
-	    };
-
-	    $scope.submit = function () {
-	      Login.attempt($scope.credentials).then(function (isLoggedIn) {
-	        $scope.errmsg = '';
-	        $location.path('/');
-	      })['catch'](function (err) {
-
-	        $scope.errmsg = err.data.message;
-	      });
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 33 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('LogoutController', function (Login, $timeout, $location) {
-	    $timeout(function () {
-	      Login.logout();
-	      $location.path('/');
-	    }, 500);
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 34 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('NewSubmissionController', function ($scope, Submissions, $location) {
-
-	    $scope.newSubmission = {
-	      title: '',
-	      description: '',
-	      link_to: ''
-	    };
-
-	    // if something goes wrong in the server side eg db write error
-	    $scope.backEndMsg = '';
-
-	    $scope.submit = function () {
-	      Submissions.create($scope.newSubmission).then(function (resp) {
-	        $location.path('/submission/' + resp.data.id);
-	      })['catch'](function (e) {
-	        console.log(e);
-	      });
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 35 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('RegisterController', function ($scope, User, $http, $window, Login, $location) {
-	    $scope.credentials = {
-	      username: '',
-	      email: '',
-	      password: '',
-	      passconf: ''
-	    };
-
-	    $scope.submit = function () {
-	      User.create($scope.credentials) // create user
-	      .then(function (r) {
-	        // login him in wih the registered credentials
-	        if (r.status === 201) {
-	          return Login.attempt($scope.credentials);
-	        }
-	      }).then(function () {
-	        $location.path('/');
-	      })['catch'](function (e) {
-	        alert('some wierd error occured, try again.');
-	        console.log(e);
-	      });
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 36 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('SubmissionDetailViewController', function (submission, $scope, Comment) {
-	    $scope.sub = submission;
-
-	    $scope.newcomment = '';
-
-	    $scope.postNewComment = function () {
-
-	      Comment.create({
-	        body: $scope.newcomment,
-	        subId: submission.id
-	      }).then(function (newComment) {
-	        $scope.sub.comments.push(newComment);
-	        $scope.newcomment = '';
-	      });
-	    };
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 37 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* angular-moment.js / v0.10.3 / (c) 2013, 2014, 2015 Uri Shaked / MIT Licence */
-
-	'format amd';
-	/* global define */
-
-	(function () {
-		'use strict';
-
-		function angularMoment(angular, moment) {
-
-			/**
-			 * @ngdoc overview
-			 * @name angularMoment
-			 *
-			 * @description
-			 * angularMoment module provides moment.js functionality for angular.js apps.
-			 */
-			return angular.module('angularMoment', [])
-
-			/**
-			 * @ngdoc object
-			 * @name angularMoment.config:angularMomentConfig
-			 *
-			 * @description
-			 * Common configuration of the angularMoment module
-			 */
-				.constant('angularMomentConfig', {
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.angularMomentConfig#preprocess
-					 * @propertyOf angularMoment.config:angularMomentConfig
-					 * @returns {string} The default preprocessor to apply
-					 *
-					 * @description
-					 * Defines a default preprocessor to apply (e.g. 'unix', 'etc', ...). The default value is null,
-					 * i.e. no preprocessor will be applied.
-					 */
-					preprocess: null, // e.g. 'unix', 'utc', ...
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.angularMomentConfig#timezone
-					 * @propertyOf angularMoment.config:angularMomentConfig
-					 * @returns {string} The default timezone
-					 *
-					 * @description
-					 * The default timezone (e.g. 'Europe/London'). Empty string by default (does not apply
-					 * any timezone shift).
-					 */
-					timezone: '',
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.angularMomentConfig#format
-					 * @propertyOf angularMoment.config:angularMomentConfig
-					 * @returns {string} The pre-conversion format of the date
-					 *
-					 * @description
-					 * Specify the format of the input date. Essentially it's a
-					 * default and saves you from specifying a format in every
-					 * element. Overridden by element attr. Null by default.
-					 */
-					format: null,
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.angularMomentConfig#statefulFilters
-					 * @propertyOf angularMoment.config:angularMomentConfig
-					 * @returns {boolean} Whether angular-moment filters should be stateless (or not)
-					 *
-					 * @description
-					 * Specifies whether the filters included with angular-moment are stateful.
-					 * Stateful filters will automatically re-evaluate whenever you change the timezone
-					 * or language settings, but may negatively impact performance. true by default.
-					 */
-					statefulFilters: true
-				})
-
-			/**
-			 * @ngdoc object
-			 * @name angularMoment.object:moment
-			 *
-			 * @description
-			 * moment global (as provided by the moment.js library)
-			 */
-				.constant('moment', moment)
-
-			/**
-			 * @ngdoc object
-			 * @name angularMoment.config:amTimeAgoConfig
-			 * @module angularMoment
-			 *
-			 * @description
-			 * configuration specific to the amTimeAgo directive
-			 */
-				.constant('amTimeAgoConfig', {
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.amTimeAgoConfig#withoutSuffix
-					 * @propertyOf angularMoment.config:amTimeAgoConfig
-					 * @returns {boolean} Whether to include a suffix in am-time-ago directive
-					 *
-					 * @description
-					 * Defaults to false.
-					 */
-					withoutSuffix: false,
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.amTimeAgoConfig#serverTime
-					 * @propertyOf angularMoment.config:amTimeAgoConfig
-					 * @returns {number} Server time in milliseconds since the epoch
-					 *
-					 * @description
-					 * If set, time ago will be calculated relative to the given value.
-					 * If null, local time will be used. Defaults to null.
-					 */
-					serverTime: null,
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.amTimeAgoConfig#titleFormat
-					 * @propertyOf angularMoment.config:amTimeAgoConfig
-					 * @returns {string} The format of the date to be displayed in the title of the element. If null,
-					 *        the directive set the title of the element.
-					 *
-					 * @description
-					 * The format of the date used for the title of the element. null by default.
-					 */
-					titleFormat: null,
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.amTimeAgoConfig#fullDateThreshold
-					 * @propertyOf angularMoment.config:amTimeAgoConfig
-					 * @returns {number} The minimum number of days for showing a full date instead of relative time
-					 *
-					 * @description
-					 * The threshold for displaying a full date. The default is null, which means the date will always
-					 * be relative, and full date will never be displayed.
-					 */
-					fullDateThreshold: null,
-
-					/**
-					 * @ngdoc property
-					 * @name angularMoment.config.amTimeAgoConfig#fullDateFormat
-					 * @propertyOf angularMoment.config:amTimeAgoConfig
-					 * @returns {string} The format to use when displaying a full date.
-					 *
-					 * @description
-					 * Specify the format of the date when displayed as full date. null by default.
-					 */
-					fullDateFormat: null
-				})
-
-			/**
-			 * @ngdoc directive
-			 * @name angularMoment.directive:amTimeAgo
-			 * @module angularMoment
-			 *
-			 * @restrict A
-			 */
-				.directive('amTimeAgo', ['$window', 'moment', 'amMoment', 'amTimeAgoConfig', 'angularMomentConfig', function ($window, moment, amMoment, amTimeAgoConfig, angularMomentConfig) {
-
-					return function (scope, element, attr) {
-						var activeTimeout = null;
-						var currentValue;
-						var currentFormat = angularMomentConfig.format;
-						var withoutSuffix = amTimeAgoConfig.withoutSuffix;
-						var titleFormat = amTimeAgoConfig.titleFormat;
-						var fullDateThreshold = amTimeAgoConfig.fullDateThreshold;
-						var fullDateFormat = amTimeAgoConfig.fullDateFormat;
-						var localDate = new Date().getTime();
-						var preprocess = angularMomentConfig.preprocess;
-						var modelName = attr.amTimeAgo;
-						var currentFrom;
-						var isTimeElement = ('TIME' === element[0].nodeName.toUpperCase());
-
-						function getNow() {
-							var now;
-							if (currentFrom) {
-								now = currentFrom;
-							} else if (amTimeAgoConfig.serverTime) {
-								var localNow = new Date().getTime();
-								var nowMillis = localNow - localDate + amTimeAgoConfig.serverTime;
-								now = moment(nowMillis);
-							}
-							else {
-								now = moment();
-							}
-							return now;
-						}
-
-						function cancelTimer() {
-							if (activeTimeout) {
-								$window.clearTimeout(activeTimeout);
-								activeTimeout = null;
-							}
-						}
-
-						function updateTime(momentInstance) {
-							var daysAgo = getNow().diff(momentInstance, 'day');
-							var showFullDate = fullDateThreshold && daysAgo >= fullDateThreshold;
-
-							if (showFullDate) {
-								element.text(momentInstance.format(fullDateFormat));
-							} else {
-								element.text(momentInstance.from(getNow(), withoutSuffix));
-							}
-
-							if (titleFormat && !element.attr('title')) {
-								element.attr('title', momentInstance.local().format(titleFormat));
-							}
-
-							if (!showFullDate) {
-								var howOld = Math.abs(getNow().diff(momentInstance, 'minute'));
-								var secondsUntilUpdate = 3600;
-								if (howOld < 1) {
-									secondsUntilUpdate = 1;
-								} else if (howOld < 60) {
-									secondsUntilUpdate = 30;
-								} else if (howOld < 180) {
-									secondsUntilUpdate = 300;
-								}
-
-								activeTimeout = $window.setTimeout(function () {
-									updateTime(momentInstance);
-								}, secondsUntilUpdate * 1000);
-							}
-						}
-
-						function updateDateTimeAttr(value) {
-							if (isTimeElement) {
-								element.attr('datetime', value);
-							}
-						}
-
-						function updateMoment() {
-							cancelTimer();
-							if (currentValue) {
-								var momentValue = amMoment.preprocessDate(currentValue, preprocess, currentFormat);
-								updateTime(momentValue);
-								updateDateTimeAttr(momentValue.toISOString());
-							}
-						}
-
-						scope.$watch(modelName, function (value) {
-							if ((typeof value === 'undefined') || (value === null) || (value === '')) {
-								cancelTimer();
-								if (currentValue) {
-									element.text('');
-									updateDateTimeAttr('');
-									currentValue = null;
-								}
-								return;
-							}
-
-							currentValue = value;
-							updateMoment();
-						});
-
-						if (angular.isDefined(attr.amFrom)) {
-							scope.$watch(attr.amFrom, function (value) {
-								if ((typeof value === 'undefined') || (value === null) || (value === '')) {
-									currentFrom = null;
-								} else {
-									currentFrom = moment(value);
-								}
-								updateMoment();
-							});
-						}
-
-						if (angular.isDefined(attr.amWithoutSuffix)) {
-							scope.$watch(attr.amWithoutSuffix, function (value) {
-								if (typeof value === 'boolean') {
-									withoutSuffix = value;
-									updateMoment();
-								} else {
-									withoutSuffix = amTimeAgoConfig.withoutSuffix;
-								}
-							});
-						}
-
-						attr.$observe('amFormat', function (format) {
-							if (typeof format !== 'undefined') {
-								currentFormat = format;
-								updateMoment();
-							}
-						});
-
-						attr.$observe('amPreprocess', function (newValue) {
-							preprocess = newValue;
-							updateMoment();
-						});
-
-						attr.$observe('amFullDateThreshold', function (newValue) {
-							fullDateThreshold = newValue;
-							updateMoment();
-						});
-
-						attr.$observe('amFullDateFormat', function (newValue) {
-							fullDateFormat = newValue;
-							updateMoment();
-						});
-
-						scope.$on('$destroy', function () {
-							cancelTimer();
-						});
-
-						scope.$on('amMoment:localeChanged', function () {
-							updateMoment();
-						});
-					};
-				}])
-
-			/**
-			 * @ngdoc service
-			 * @name angularMoment.service.amMoment
-			 * @module angularMoment
-			 */
-				.service('amMoment', ['moment', '$rootScope', '$log', 'angularMomentConfig', function (moment, $rootScope, $log, angularMomentConfig) {
-					/**
-					 * @ngdoc property
-					 * @name angularMoment:amMoment#preprocessors
-					 * @module angularMoment
-					 *
-					 * @description
-					 * Defines the preprocessors for the preprocessDate method. By default, the following preprocessors
-					 * are defined: utc, unix.
-					 */
-					this.preprocessors = {
-						utc: moment.utc,
-						unix: moment.unix
-					};
-
-					/**
-					 * @ngdoc function
-					 * @name angularMoment.service.amMoment#changeLocale
-					 * @methodOf angularMoment.service.amMoment
-					 *
-					 * @description
-					 * Changes the locale for moment.js and updates all the am-time-ago directive instances
-					 * with the new locale. Also broadcasts an `amMoment:localeChanged` event on $rootScope.
-					 *
-					 * @param {string} locale Locale code (e.g. en, es, ru, pt-br, etc.)
-					 * @param {object} customization object of locale strings to override
-					 */
-					this.changeLocale = function (locale, customization) {
-						var result = moment.locale(locale, customization);
-						if (angular.isDefined(locale)) {
-							$rootScope.$broadcast('amMoment:localeChanged');
-
-						}
-						return result;
-					};
-
-					/**
-					 * @ngdoc function
-					 * @name angularMoment.service.amMoment#changeTimezone
-					 * @methodOf angularMoment.service.amMoment
-					 *
-					 * @description
-					 * Changes the default timezone for amCalendar, amDateFormat and amTimeAgo. Also broadcasts an
-					 * `amMoment:timezoneChanged` event on $rootScope.
-					 *
-					 * @param {string} timezone Timezone name (e.g. UTC)
-					 */
-					this.changeTimezone = function (timezone) {
-						angularMomentConfig.timezone = timezone;
-						$rootScope.$broadcast('amMoment:timezoneChanged');
-					};
-
-					/**
-					 * @ngdoc function
-					 * @name angularMoment.service.amMoment#preprocessDate
-					 * @methodOf angularMoment.service.amMoment
-					 *
-					 * @description
-					 * Preprocess a given value and convert it into a Moment instance appropriate for use in the
-					 * am-time-ago directive and the filters.
-					 *
-					 * @param {*} value The value to be preprocessed
-					 * @param {string} preprocess The name of the preprocessor the apply (e.g. utc, unix)
-					 * @param {string=} format Specifies how to parse the value (see {@link http://momentjs.com/docs/#/parsing/string-format/})
-					 * @return {Moment} A value that can be parsed by the moment library
-					 */
-					this.preprocessDate = function (value, preprocess, format) {
-						if (angular.isUndefined(preprocess)) {
-							preprocess = angularMomentConfig.preprocess;
-						}
-						if (this.preprocessors[preprocess]) {
-							return this.preprocessors[preprocess](value, format);
-						}
-						if (preprocess) {
-							$log.warn('angular-moment: Ignoring unsupported value for preprocess: ' + preprocess);
-						}
-						if (!isNaN(parseFloat(value)) && isFinite(value)) {
-							// Milliseconds since the epoch
-							return moment(parseInt(value, 10));
-						}
-						// else just returns the value as-is.
-						return moment(value, format);
-					};
-
-					/**
-					 * @ngdoc function
-					 * @name angularMoment.service.amMoment#applyTimezone
-					 * @methodOf angularMoment.service.amMoment
-					 *
-					 * @description
-					 * Apply a timezone onto a given moment object. It can be a named timezone (e.g. 'America/Phoenix') or an offset from UTC (e.g. '+0300')
-					 * moment-timezone.js is needed when a named timezone is used, otherwise, it'll not apply any timezone shift.
-					 *
-					 * @param {Moment} aMoment a moment() instance to apply the timezone shift to
-					 * @param {string=} timezone The timezone to apply. If none given, will apply the timezone
-					 *        configured in angularMomentConfig.timezone. It can be a named timezone (e.g. 'America/Phoenix') or an offset from UTC (e.g. '+0300')
-					 *
-					 * @returns {Moment} The given moment with the timezone shift applied
-					 */
-					this.applyTimezone = function (aMoment, timezone) {
-						timezone = timezone || angularMomentConfig.timezone;
-						if (!timezone) {
-							return aMoment;
-						}
-
-						if (timezone.match(/^Z|[+-]\d\d:?\d\d$/i)) {
-							aMoment = aMoment.utcOffset(timezone);
-						} else if (aMoment.tz) {
-							aMoment = aMoment.tz(timezone);
-						} else {
-							$log.warn('angular-moment: named timezone specified but moment.tz() is undefined. Did you forget to include moment-timezone.js?');
-						}
-
-						return aMoment;
-					};
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amCalendar
-			 * @module angularMoment
-			 */
-				.filter('amCalendar', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
-					function amCalendarFilter(value, preprocess, timezone) {
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						value = amMoment.preprocessDate(value, preprocess);
-						var date = moment(value);
-						if (!date.isValid()) {
-							return '';
-						}
-
-						return amMoment.applyTimezone(date, timezone).calendar();
-					}
-
-					// Since AngularJS 1.3, filters have to explicitly define being stateful
-					// (this is no longer the default).
-					amCalendarFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amCalendarFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amDifference
-			 * @module angularMoment
-			 */
-				.filter('amDifference', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
-					function amDifferenceFilter(value, otherValue, unit, usePrecision, preprocessValue, preprocessOtherValue) {
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						value = amMoment.preprocessDate(value, preprocessValue);
-						var date = moment(value);
-						if (!date.isValid()) {
-							return '';
-						}
-
-						var date2;
-						if (typeof otherValue === 'undefined' || otherValue === null) {
-							date2 = moment();
-						} else {
-							otherValue = amMoment.preprocessDate(otherValue, preprocessOtherValue);
-							date2 = moment(otherValue);
-							if (!date2.isValid()) {
-								return '';
-							}
-						}
-
-						return amMoment.applyTimezone(date).diff(amMoment.applyTimezone(date2), unit, usePrecision);
-					}
-
-					amDifferenceFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amDifferenceFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amDateFormat
-			 * @module angularMoment
-			 * @function
-			 */
-				.filter('amDateFormat', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
-					function amDateFormatFilter(value, format, preprocess, timezone, inputFormat) {
-						var currentFormat = inputFormat || angularMomentConfig.format;
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						value = amMoment.preprocessDate(value, preprocess, currentFormat);
-						var date = moment(value);
-						if (!date.isValid()) {
-							return '';
-						}
-
-						return amMoment.applyTimezone(date, timezone).format(format);
-					}
-
-					amDateFormatFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amDateFormatFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amDurationFormat
-			 * @module angularMoment
-			 * @function
-			 */
-				.filter('amDurationFormat', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
-					function amDurationFormatFilter(value, format, suffix) {
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						return moment.duration(value, format).humanize(suffix);
-					}
-
-					amDurationFormatFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amDurationFormatFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amTimeAgo
-			 * @module angularMoment
-			 * @function
-			 */
-				.filter('amTimeAgo', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
-					function amTimeAgoFilter(value, preprocess, suffix, from) {
-						var date, dateFrom;
-
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						value = amMoment.preprocessDate(value, preprocess);
-						date = moment(value);
-						if (!date.isValid()) {
-							return '';
-						}
-
-						dateFrom = moment(from);
-						if (typeof from !== 'undefined' && dateFrom.isValid()) {
-							return amMoment.applyTimezone(date).from(dateFrom, suffix);
-						}
-
-						return amMoment.applyTimezone(date).fromNow(suffix);
-					}
-
-					amTimeAgoFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amTimeAgoFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amSubtract
-			 * @module angularMoment
-			 * @function
-			 */
-				.filter('amSubtract', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
-					function amSubtractFilter(value, amount, type) {
-
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						return moment(value).subtract(parseInt(amount, 10), type);
-					}
-
-					amSubtractFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amSubtractFilter;
-				}])
-
-			/**
-			 * @ngdoc filter
-			 * @name angularMoment.filter:amAdd
-			 * @module angularMoment
-			 * @function
-			 */
-				.filter('amAdd', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
-					function amAddFilter(value, amount, type) {
-
-						if (typeof value === 'undefined' || value === null) {
-							return '';
-						}
-
-						return moment(value).add(parseInt(amount, 10), type);
-					}
-
-					amAddFilter.$stateful = angularMomentConfig.statefulFilters;
-
-					return amAddFilter;
-				}]);
-		}
-
-		if (true) {
-			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(38)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-		} else if (typeof module !== 'undefined' && module && module.exports) {
-			angularMoment(angular, require('moment'));
-			module.exports = 'angularMoment';
-		} else {
-			angularMoment(angular, (typeof global !== 'undefined' ? global : window).moment);
-		}
-	})();
-
-
-/***/ },
-/* 38 */
-/***/ function(module, exports, __webpack_require__) {
-
 	/* WEBPACK VAR INJECTION */(function(module) {//! moment.js
 	//! version : 2.10.6
 	//! authors : Tim Wood, Iskren Chernev, Moment.js contributors
@@ -31675,7 +29439,7 @@
 	                module && module.exports) {
 	            try {
 	                oldLocale = globalLocale._abbr;
-	                __webpack_require__(40)("./" + name);
+	                __webpack_require__(5)("./" + name);
 	                // because defineLocale currently also sets the global locale, we
 	                // want to undo that for lazy loaded locales
 	                locale_locales__getSetGlobalLocale(oldLocale);
@@ -34602,10 +32366,10 @@
 	    return _moment;
 
 	}));
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(39)(module)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)(module)))
 
 /***/ },
-/* 39 */
+/* 4 */
 /***/ function(module, exports) {
 
 	module.exports = function(module) {
@@ -34621,180 +32385,180 @@
 
 
 /***/ },
-/* 40 */
+/* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var map = {
-		"./af": 41,
-		"./af.js": 41,
-		"./ar": 42,
-		"./ar-ma": 43,
-		"./ar-ma.js": 43,
-		"./ar-sa": 44,
-		"./ar-sa.js": 44,
-		"./ar-tn": 45,
-		"./ar-tn.js": 45,
-		"./ar.js": 42,
-		"./az": 46,
-		"./az.js": 46,
-		"./be": 47,
-		"./be.js": 47,
-		"./bg": 48,
-		"./bg.js": 48,
-		"./bn": 49,
-		"./bn.js": 49,
-		"./bo": 50,
-		"./bo.js": 50,
-		"./br": 51,
-		"./br.js": 51,
-		"./bs": 52,
-		"./bs.js": 52,
-		"./ca": 53,
-		"./ca.js": 53,
-		"./cs": 54,
-		"./cs.js": 54,
-		"./cv": 55,
-		"./cv.js": 55,
-		"./cy": 56,
-		"./cy.js": 56,
-		"./da": 57,
-		"./da.js": 57,
-		"./de": 58,
-		"./de-at": 59,
-		"./de-at.js": 59,
-		"./de.js": 58,
-		"./el": 60,
-		"./el.js": 60,
-		"./en-au": 61,
-		"./en-au.js": 61,
-		"./en-ca": 62,
-		"./en-ca.js": 62,
-		"./en-gb": 63,
-		"./en-gb.js": 63,
-		"./eo": 64,
-		"./eo.js": 64,
-		"./es": 65,
-		"./es.js": 65,
-		"./et": 66,
-		"./et.js": 66,
-		"./eu": 67,
-		"./eu.js": 67,
-		"./fa": 68,
-		"./fa.js": 68,
-		"./fi": 69,
-		"./fi.js": 69,
-		"./fo": 70,
-		"./fo.js": 70,
-		"./fr": 71,
-		"./fr-ca": 72,
-		"./fr-ca.js": 72,
-		"./fr.js": 71,
-		"./fy": 73,
-		"./fy.js": 73,
-		"./gl": 74,
-		"./gl.js": 74,
-		"./he": 75,
-		"./he.js": 75,
-		"./hi": 76,
-		"./hi.js": 76,
-		"./hr": 77,
-		"./hr.js": 77,
-		"./hu": 78,
-		"./hu.js": 78,
-		"./hy-am": 79,
-		"./hy-am.js": 79,
-		"./id": 80,
-		"./id.js": 80,
-		"./is": 81,
-		"./is.js": 81,
-		"./it": 82,
-		"./it.js": 82,
-		"./ja": 83,
-		"./ja.js": 83,
-		"./jv": 84,
-		"./jv.js": 84,
-		"./ka": 85,
-		"./ka.js": 85,
-		"./km": 86,
-		"./km.js": 86,
-		"./ko": 87,
-		"./ko.js": 87,
-		"./lb": 88,
-		"./lb.js": 88,
-		"./lt": 89,
-		"./lt.js": 89,
-		"./lv": 90,
-		"./lv.js": 90,
-		"./me": 91,
-		"./me.js": 91,
-		"./mk": 92,
-		"./mk.js": 92,
-		"./ml": 93,
-		"./ml.js": 93,
-		"./mr": 94,
-		"./mr.js": 94,
-		"./ms": 95,
-		"./ms-my": 96,
-		"./ms-my.js": 96,
-		"./ms.js": 95,
-		"./my": 97,
-		"./my.js": 97,
-		"./nb": 98,
-		"./nb.js": 98,
-		"./ne": 99,
-		"./ne.js": 99,
-		"./nl": 100,
-		"./nl.js": 100,
-		"./nn": 101,
-		"./nn.js": 101,
-		"./pl": 102,
-		"./pl.js": 102,
-		"./pt": 103,
-		"./pt-br": 104,
-		"./pt-br.js": 104,
-		"./pt.js": 103,
-		"./ro": 105,
-		"./ro.js": 105,
-		"./ru": 106,
-		"./ru.js": 106,
-		"./si": 107,
-		"./si.js": 107,
-		"./sk": 108,
-		"./sk.js": 108,
-		"./sl": 109,
-		"./sl.js": 109,
-		"./sq": 110,
-		"./sq.js": 110,
-		"./sr": 111,
-		"./sr-cyrl": 112,
-		"./sr-cyrl.js": 112,
-		"./sr.js": 111,
-		"./sv": 113,
-		"./sv.js": 113,
-		"./ta": 114,
-		"./ta.js": 114,
-		"./th": 115,
-		"./th.js": 115,
-		"./tl-ph": 116,
-		"./tl-ph.js": 116,
-		"./tr": 117,
-		"./tr.js": 117,
-		"./tzl": 118,
-		"./tzl.js": 118,
-		"./tzm": 119,
-		"./tzm-latn": 120,
-		"./tzm-latn.js": 120,
-		"./tzm.js": 119,
-		"./uk": 121,
-		"./uk.js": 121,
-		"./uz": 122,
-		"./uz.js": 122,
-		"./vi": 123,
-		"./vi.js": 123,
-		"./zh-cn": 124,
-		"./zh-cn.js": 124,
-		"./zh-tw": 125,
-		"./zh-tw.js": 125
+		"./af": 6,
+		"./af.js": 6,
+		"./ar": 7,
+		"./ar-ma": 8,
+		"./ar-ma.js": 8,
+		"./ar-sa": 9,
+		"./ar-sa.js": 9,
+		"./ar-tn": 10,
+		"./ar-tn.js": 10,
+		"./ar.js": 7,
+		"./az": 11,
+		"./az.js": 11,
+		"./be": 12,
+		"./be.js": 12,
+		"./bg": 13,
+		"./bg.js": 13,
+		"./bn": 14,
+		"./bn.js": 14,
+		"./bo": 15,
+		"./bo.js": 15,
+		"./br": 16,
+		"./br.js": 16,
+		"./bs": 17,
+		"./bs.js": 17,
+		"./ca": 18,
+		"./ca.js": 18,
+		"./cs": 19,
+		"./cs.js": 19,
+		"./cv": 20,
+		"./cv.js": 20,
+		"./cy": 21,
+		"./cy.js": 21,
+		"./da": 22,
+		"./da.js": 22,
+		"./de": 23,
+		"./de-at": 24,
+		"./de-at.js": 24,
+		"./de.js": 23,
+		"./el": 25,
+		"./el.js": 25,
+		"./en-au": 26,
+		"./en-au.js": 26,
+		"./en-ca": 27,
+		"./en-ca.js": 27,
+		"./en-gb": 28,
+		"./en-gb.js": 28,
+		"./eo": 29,
+		"./eo.js": 29,
+		"./es": 30,
+		"./es.js": 30,
+		"./et": 31,
+		"./et.js": 31,
+		"./eu": 32,
+		"./eu.js": 32,
+		"./fa": 33,
+		"./fa.js": 33,
+		"./fi": 34,
+		"./fi.js": 34,
+		"./fo": 35,
+		"./fo.js": 35,
+		"./fr": 36,
+		"./fr-ca": 37,
+		"./fr-ca.js": 37,
+		"./fr.js": 36,
+		"./fy": 38,
+		"./fy.js": 38,
+		"./gl": 39,
+		"./gl.js": 39,
+		"./he": 40,
+		"./he.js": 40,
+		"./hi": 41,
+		"./hi.js": 41,
+		"./hr": 42,
+		"./hr.js": 42,
+		"./hu": 43,
+		"./hu.js": 43,
+		"./hy-am": 44,
+		"./hy-am.js": 44,
+		"./id": 45,
+		"./id.js": 45,
+		"./is": 46,
+		"./is.js": 46,
+		"./it": 47,
+		"./it.js": 47,
+		"./ja": 48,
+		"./ja.js": 48,
+		"./jv": 49,
+		"./jv.js": 49,
+		"./ka": 50,
+		"./ka.js": 50,
+		"./km": 51,
+		"./km.js": 51,
+		"./ko": 52,
+		"./ko.js": 52,
+		"./lb": 53,
+		"./lb.js": 53,
+		"./lt": 54,
+		"./lt.js": 54,
+		"./lv": 55,
+		"./lv.js": 55,
+		"./me": 56,
+		"./me.js": 56,
+		"./mk": 57,
+		"./mk.js": 57,
+		"./ml": 58,
+		"./ml.js": 58,
+		"./mr": 59,
+		"./mr.js": 59,
+		"./ms": 60,
+		"./ms-my": 61,
+		"./ms-my.js": 61,
+		"./ms.js": 60,
+		"./my": 62,
+		"./my.js": 62,
+		"./nb": 63,
+		"./nb.js": 63,
+		"./ne": 64,
+		"./ne.js": 64,
+		"./nl": 65,
+		"./nl.js": 65,
+		"./nn": 66,
+		"./nn.js": 66,
+		"./pl": 67,
+		"./pl.js": 67,
+		"./pt": 68,
+		"./pt-br": 69,
+		"./pt-br.js": 69,
+		"./pt.js": 68,
+		"./ro": 70,
+		"./ro.js": 70,
+		"./ru": 71,
+		"./ru.js": 71,
+		"./si": 72,
+		"./si.js": 72,
+		"./sk": 73,
+		"./sk.js": 73,
+		"./sl": 74,
+		"./sl.js": 74,
+		"./sq": 75,
+		"./sq.js": 75,
+		"./sr": 76,
+		"./sr-cyrl": 77,
+		"./sr-cyrl.js": 77,
+		"./sr.js": 76,
+		"./sv": 78,
+		"./sv.js": 78,
+		"./ta": 79,
+		"./ta.js": 79,
+		"./th": 80,
+		"./th.js": 80,
+		"./tl-ph": 81,
+		"./tl-ph.js": 81,
+		"./tr": 82,
+		"./tr.js": 82,
+		"./tzl": 83,
+		"./tzl.js": 83,
+		"./tzm": 84,
+		"./tzm-latn": 85,
+		"./tzm-latn.js": 85,
+		"./tzm.js": 84,
+		"./uk": 86,
+		"./uk.js": 86,
+		"./uz": 87,
+		"./uz.js": 87,
+		"./vi": 88,
+		"./vi.js": 88,
+		"./zh-cn": 89,
+		"./zh-cn.js": 89,
+		"./zh-tw": 90,
+		"./zh-tw.js": 90
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -34807,11 +32571,11 @@
 	};
 	webpackContext.resolve = webpackContextResolve;
 	module.exports = webpackContext;
-	webpackContext.id = 40;
+	webpackContext.id = 5;
 
 
 /***/ },
-/* 41 */
+/* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34819,7 +32583,7 @@
 	//! author : Werner Mollentze : https://github.com/wernerm
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -34888,7 +32652,7 @@
 	}));
 
 /***/ },
-/* 42 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -34898,7 +32662,7 @@
 	//! Native plural forms: forabi https://github.com/forabi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35028,7 +32792,7 @@
 	}));
 
 /***/ },
-/* 43 */
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35037,7 +32801,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35091,7 +32855,7 @@
 	}));
 
 /***/ },
-/* 44 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35099,7 +32863,7 @@
 	//! author : Suhail Alkowaileet : https://github.com/xsoh
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35198,14 +32962,14 @@
 	}));
 
 /***/ },
-/* 45 */
+/* 10 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale  : Tunisian Arabic (ar-tn)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35259,7 +33023,7 @@
 	}));
 
 /***/ },
-/* 46 */
+/* 11 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35267,7 +33031,7 @@
 	//! author : topchiyev : https://github.com/topchiyev
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35367,7 +33131,7 @@
 	}));
 
 /***/ },
-/* 47 */
+/* 12 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35377,7 +33141,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35518,7 +33282,7 @@
 	}));
 
 /***/ },
-/* 48 */
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35526,7 +33290,7 @@
 	//! author : Krasen Borisov : https://github.com/kraz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35612,7 +33376,7 @@
 	}));
 
 /***/ },
-/* 49 */
+/* 14 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35620,7 +33384,7 @@
 	//! author : Kaushik Gandhi : https://github.com/kaushikgandhi
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35729,7 +33493,7 @@
 	}));
 
 /***/ },
-/* 50 */
+/* 15 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35737,7 +33501,7 @@
 	//! author : Thupten N. Chakrishar : https://github.com/vajradog
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35843,7 +33607,7 @@
 	}));
 
 /***/ },
-/* 51 */
+/* 16 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35851,7 +33615,7 @@
 	//! author : Jean-Baptiste Le Duigou : https://github.com/jbleduigou
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -35954,7 +33718,7 @@
 	}));
 
 /***/ },
-/* 52 */
+/* 17 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -35963,7 +33727,7 @@
 	//! based on (hr) translation by Bojan Marković
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36099,7 +33863,7 @@
 	}));
 
 /***/ },
-/* 53 */
+/* 18 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36107,7 +33871,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36182,7 +33946,7 @@
 	}));
 
 /***/ },
-/* 54 */
+/* 19 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36190,7 +33954,7 @@
 	//! author : petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36343,7 +34107,7 @@
 	}));
 
 /***/ },
-/* 55 */
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36351,7 +34115,7 @@
 	//! author : Anatoly Mironov : https://github.com/mirontoli
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36410,7 +34174,7 @@
 	}));
 
 /***/ },
-/* 56 */
+/* 21 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36418,7 +34182,7 @@
 	//! author : Robert Allen
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36493,7 +34257,7 @@
 	}));
 
 /***/ },
-/* 57 */
+/* 22 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36501,7 +34265,7 @@
 	//! author : Ulrik Nielsen : https://github.com/mrbase
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36557,7 +34321,7 @@
 	}));
 
 /***/ },
-/* 58 */
+/* 23 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36566,7 +34330,7 @@
 	//! author: Menelion Elensúle: https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36636,7 +34400,7 @@
 	}));
 
 /***/ },
-/* 59 */
+/* 24 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36646,7 +34410,7 @@
 	//! author : Martin Groller : https://github.com/MadMG
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36716,7 +34480,7 @@
 	}));
 
 /***/ },
-/* 60 */
+/* 25 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36724,7 +34488,7 @@
 	//! author : Aggelos Karalias : https://github.com/mehiel
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36814,14 +34578,14 @@
 	}));
 
 /***/ },
-/* 61 */
+/* 26 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
 	//! locale : australian english (en-au)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36884,7 +34648,7 @@
 	}));
 
 /***/ },
-/* 62 */
+/* 27 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36892,7 +34656,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -36951,7 +34715,7 @@
 	}));
 
 /***/ },
-/* 63 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -36959,7 +34723,7 @@
 	//! author : Chris Gedrim : https://github.com/chrisgedrim
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37022,7 +34786,7 @@
 	}));
 
 /***/ },
-/* 64 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37032,7 +34796,7 @@
 	//!          Se ne, bonvolu korekti kaj avizi min por ke mi povas lerni!
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37099,7 +34863,7 @@
 	}));
 
 /***/ },
-/* 65 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37107,7 +34871,7 @@
 	//! author : Julio Napurí : https://github.com/julionc
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37182,7 +34946,7 @@
 	}));
 
 /***/ },
-/* 66 */
+/* 31 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37191,7 +34955,7 @@
 	//! improvements : Illimar Tambek : https://github.com/ragulka
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37266,7 +35030,7 @@
 	}));
 
 /***/ },
-/* 67 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37274,7 +35038,7 @@
 	//! author : Eneko Illarramendi : https://github.com/eillarra
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37334,7 +35098,7 @@
 	}));
 
 /***/ },
-/* 68 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37342,7 +35106,7 @@
 	//! author : Ebrahim Byagowi : https://github.com/ebraminio
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37443,7 +35207,7 @@
 	}));
 
 /***/ },
-/* 69 */
+/* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37451,7 +35215,7 @@
 	//! author : Tarmo Aidantausta : https://github.com/bleadof
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37554,7 +35318,7 @@
 	}));
 
 /***/ },
-/* 70 */
+/* 35 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37562,7 +35326,7 @@
 	//! author : Ragnar Johannesen : https://github.com/ragnar123
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37618,7 +35382,7 @@
 	}));
 
 /***/ },
-/* 71 */
+/* 36 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37626,7 +35390,7 @@
 	//! author : John Fischer : https://github.com/jfroffice
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37684,7 +35448,7 @@
 	}));
 
 /***/ },
-/* 72 */
+/* 37 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37692,7 +35456,7 @@
 	//! author : Jonathan Abourbih : https://github.com/jonbca
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37746,7 +35510,7 @@
 	}));
 
 /***/ },
-/* 73 */
+/* 38 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37754,7 +35518,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37821,7 +35585,7 @@
 	}));
 
 /***/ },
-/* 74 */
+/* 39 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37829,7 +35593,7 @@
 	//! author : Juan G. Hurtado : https://github.com/juanghurtado
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37900,7 +35664,7 @@
 	}));
 
 /***/ },
-/* 75 */
+/* 40 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37910,7 +35674,7 @@
 	//! author : Tal Ater : https://github.com/TalAter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -37986,7 +35750,7 @@
 	}));
 
 /***/ },
-/* 76 */
+/* 41 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -37994,7 +35758,7 @@
 	//! author : Mayank Singhal : https://github.com/mayanksinghal
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38113,7 +35877,7 @@
 	}));
 
 /***/ },
-/* 77 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38121,7 +35885,7 @@
 	//! author : Bojan Marković : https://github.com/bmarkovic
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38257,7 +36021,7 @@
 	}));
 
 /***/ },
-/* 78 */
+/* 43 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38265,7 +36029,7 @@
 	//! author : Adam Brunner : https://github.com/adambrunner
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38370,7 +36134,7 @@
 	}));
 
 /***/ },
-/* 79 */
+/* 44 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38378,7 +36142,7 @@
 	//! author : Armendarabyan : https://github.com/armendarabyan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38485,7 +36249,7 @@
 	}));
 
 /***/ },
-/* 80 */
+/* 45 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38494,7 +36258,7 @@
 	//! reference: http://id.wikisource.org/wiki/Pedoman_Umum_Ejaan_Bahasa_Indonesia_yang_Disempurnakan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38572,7 +36336,7 @@
 	}));
 
 /***/ },
-/* 81 */
+/* 46 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38580,7 +36344,7 @@
 	//! author : Hinrik Örn Sigurðsson : https://github.com/hinrik
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38703,7 +36467,7 @@
 	}));
 
 /***/ },
-/* 82 */
+/* 47 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38712,7 +36476,7 @@
 	//! author: Mattia Larentis: https://github.com/nostalgiaz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38777,7 +36541,7 @@
 	}));
 
 /***/ },
-/* 83 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38785,7 +36549,7 @@
 	//! author : LI Long : https://github.com/baryon
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38846,7 +36610,7 @@
 	}));
 
 /***/ },
-/* 84 */
+/* 49 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38855,7 +36619,7 @@
 	//! reference: http://jv.wikipedia.org/wiki/Basa_Jawa
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -38933,7 +36697,7 @@
 	}));
 
 /***/ },
-/* 85 */
+/* 50 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -38941,7 +36705,7 @@
 	//! author : Irakli Janiashvili : https://github.com/irakli-janiashvili
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39040,7 +36804,7 @@
 	}));
 
 /***/ },
-/* 86 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39048,7 +36812,7 @@
 	//! author : Kruy Vanna : https://github.com/kruyvanna
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39102,7 +36866,7 @@
 	}));
 
 /***/ },
-/* 87 */
+/* 52 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39114,7 +36878,7 @@
 	//! - Jeeeyul Lee <jeeeyul@gmail.com>
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39174,7 +36938,7 @@
 	}));
 
 /***/ },
-/* 88 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39182,7 +36946,7 @@
 	//! author : mweimerskirch : https://github.com/mweimerskirch, David Raison : https://github.com/kwisatz
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39312,7 +37076,7 @@
 	}));
 
 /***/ },
-/* 89 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39320,7 +37084,7 @@
 	//! author : Mindaugas Mozūras : https://github.com/mmozuras
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39441,7 +37205,7 @@
 	}));
 
 /***/ },
-/* 90 */
+/* 55 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39450,7 +37214,7 @@
 	//! author : Jānis Elmeris : https://github.com/JanisE
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39541,7 +37305,7 @@
 	}));
 
 /***/ },
-/* 91 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39549,7 +37313,7 @@
 	//! author : Miodrag Nikač <miodrag@restartit.me> : https://github.com/miodragnikac
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39654,7 +37418,7 @@
 	}));
 
 /***/ },
-/* 92 */
+/* 57 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39662,7 +37426,7 @@
 	//! author : Borislav Mickov : https://github.com/B0k0
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39748,7 +37512,7 @@
 	}));
 
 /***/ },
-/* 93 */
+/* 58 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39756,7 +37520,7 @@
 	//! author : Floyd Pink : https://github.com/floydpink
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39823,7 +37587,7 @@
 	}));
 
 /***/ },
-/* 94 */
+/* 59 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39831,7 +37595,7 @@
 	//! author : Harshad Kale : https://github.com/kalehv
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -39948,7 +37712,7 @@
 	}));
 
 /***/ },
-/* 95 */
+/* 60 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -39956,7 +37720,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40034,7 +37798,7 @@
 	}));
 
 /***/ },
-/* 96 */
+/* 61 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40042,7 +37806,7 @@
 	//! author : Weldan Jamili : https://github.com/weldan
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40120,7 +37884,7 @@
 	}));
 
 /***/ },
-/* 97 */
+/* 62 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40128,7 +37892,7 @@
 	//! author : Squar team, mysquar.com
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40217,7 +37981,7 @@
 	}));
 
 /***/ },
-/* 98 */
+/* 63 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40226,7 +37990,7 @@
 	//!           Sigurd Gartmann : https://github.com/sigurdga
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40282,7 +38046,7 @@
 	}));
 
 /***/ },
-/* 99 */
+/* 64 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40290,7 +38054,7 @@
 	//! author : suvash : https://github.com/suvash
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40409,7 +38173,7 @@
 	}));
 
 /***/ },
-/* 100 */
+/* 65 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40417,7 +38181,7 @@
 	//! author : Joris Röling : https://github.com/jjupiter
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40484,7 +38248,7 @@
 	}));
 
 /***/ },
-/* 101 */
+/* 66 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40492,7 +38256,7 @@
 	//! author : https://github.com/mechuwind
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40548,7 +38312,7 @@
 	}));
 
 /***/ },
-/* 102 */
+/* 67 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40556,7 +38320,7 @@
 	//! author : Rafal Hirsz : https://github.com/evoL
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40657,7 +38421,7 @@
 	}));
 
 /***/ },
-/* 103 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40665,7 +38429,7 @@
 	//! author : Jefferson : https://github.com/jalex79
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40725,7 +38489,7 @@
 	}));
 
 /***/ },
-/* 104 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40733,7 +38497,7 @@
 	//! author : Caio Ribeiro Pereira : https://github.com/caio-ribeiro-pereira
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40789,7 +38553,7 @@
 	}));
 
 /***/ },
-/* 105 */
+/* 70 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40798,7 +38562,7 @@
 	//! author : Valentin Agachi : https://github.com/avaly
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -40867,7 +38631,7 @@
 	}));
 
 /***/ },
-/* 106 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -40876,7 +38640,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41035,7 +38799,7 @@
 	}));
 
 /***/ },
-/* 107 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41043,7 +38807,7 @@
 	//! author : Sampath Sitinamaluwa : https://github.com/sampathsris
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41104,7 +38868,7 @@
 	}));
 
 /***/ },
-/* 108 */
+/* 73 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41113,7 +38877,7 @@
 	//! based on work of petrbela : https://github.com/petrbela
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41266,7 +39030,7 @@
 	}));
 
 /***/ },
-/* 109 */
+/* 74 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41274,7 +39038,7 @@
 	//! author : Robert Sedovšek : https://github.com/sedovsek
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41430,7 +39194,7 @@
 	}));
 
 /***/ },
-/* 110 */
+/* 75 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41440,7 +39204,7 @@
 	//! author : Oerd Cukalla : https://github.com/oerd (fixes)
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41503,7 +39267,7 @@
 	}));
 
 /***/ },
-/* 111 */
+/* 76 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41511,7 +39275,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41615,7 +39379,7 @@
 	}));
 
 /***/ },
-/* 112 */
+/* 77 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41623,7 +39387,7 @@
 	//! author : Milan Janačković<milanjanackovic@gmail.com> : https://github.com/milan-j
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41727,7 +39491,7 @@
 	}));
 
 /***/ },
-/* 113 */
+/* 78 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41735,7 +39499,7 @@
 	//! author : Jens Alm : https://github.com/ulmus
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41798,7 +39562,7 @@
 	}));
 
 /***/ },
-/* 114 */
+/* 79 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41806,7 +39570,7 @@
 	//! author : Arjunkumar Krishnamoorthy : https://github.com/tk120404
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41897,7 +39661,7 @@
 	}));
 
 /***/ },
-/* 115 */
+/* 80 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41905,7 +39669,7 @@
 	//! author : Kridsada Thanabulpong : https://github.com/sirn
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -41966,7 +39730,7 @@
 	}));
 
 /***/ },
-/* 116 */
+/* 81 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -41974,7 +39738,7 @@
 	//! author : Dan Hagman
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42032,7 +39796,7 @@
 	}));
 
 /***/ },
-/* 117 */
+/* 82 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42041,7 +39805,7 @@
 	//!           Burak Yiğit Kaya: https://github.com/BYK
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42126,7 +39890,7 @@
 	}));
 
 /***/ },
-/* 118 */
+/* 83 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42134,7 +39898,7 @@
 	//! author : Robin van der Vliet : https://github.com/robin0van0der0v with the help of Iustì Canun
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42215,7 +39979,7 @@
 	}));
 
 /***/ },
-/* 119 */
+/* 84 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42223,7 +39987,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42277,7 +40041,7 @@
 	}));
 
 /***/ },
-/* 120 */
+/* 85 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42285,7 +40049,7 @@
 	//! author : Abdel Said : https://github.com/abdelsaid
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42339,7 +40103,7 @@
 	}));
 
 /***/ },
-/* 121 */
+/* 86 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42348,7 +40112,7 @@
 	//! Author : Menelion Elensúle : https://github.com/Oire
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42496,7 +40260,7 @@
 	}));
 
 /***/ },
-/* 122 */
+/* 87 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42504,7 +40268,7 @@
 	//! author : Sardor Muminov : https://github.com/muminoff
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42558,7 +40322,7 @@
 	}));
 
 /***/ },
-/* 123 */
+/* 88 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42566,7 +40330,7 @@
 	//! author : Bang Nguyen : https://github.com/bangnk
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42628,7 +40392,7 @@
 	}));
 
 /***/ },
-/* 124 */
+/* 89 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42637,7 +40401,7 @@
 	//! author : Zeno Zeng : https://github.com/zenozeng
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42759,7 +40523,7 @@
 	}));
 
 /***/ },
-/* 125 */
+/* 90 */
 /***/ function(module, exports, __webpack_require__) {
 
 	//! moment.js locale configuration
@@ -42767,7 +40531,7 @@
 	//! author : Ben : https://github.com/ben-lin
 
 	(function (global, factory) {
-	    true ? factory(__webpack_require__(38)) :
+	    true ? factory(__webpack_require__(3)) :
 	   typeof define === 'function' && define.amd ? define(['moment'], factory) :
 	   factory(global.moment)
 	}(this, function (moment) { 'use strict';
@@ -42862,6 +40626,2277 @@
 	    return zh_tw;
 
 	}));
+
+/***/ },
+/* 91 */
+/***/ function(module, exports, __webpack_require__) {
+
+	__webpack_require__(92);
+	module.exports = 'ngRoute';
+
+
+/***/ },
+/* 92 */
+/***/ function(module, exports) {
+
+	/**
+	 * @license AngularJS v1.4.7
+	 * (c) 2010-2015 Google, Inc. http://angularjs.org
+	 * License: MIT
+	 */
+	(function(window, angular, undefined) {'use strict';
+
+	/**
+	 * @ngdoc module
+	 * @name ngRoute
+	 * @description
+	 *
+	 * # ngRoute
+	 *
+	 * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
+	 *
+	 * ## Example
+	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+	 *
+	 *
+	 * <div doc-module-components="ngRoute"></div>
+	 */
+	 /* global -ngRouteModule */
+	var ngRouteModule = angular.module('ngRoute', ['ng']).
+	                        provider('$route', $RouteProvider),
+	    $routeMinErr = angular.$$minErr('ngRoute');
+
+	/**
+	 * @ngdoc provider
+	 * @name $routeProvider
+	 *
+	 * @description
+	 *
+	 * Used for configuring routes.
+	 *
+	 * ## Example
+	 * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
+	 *
+	 * ## Dependencies
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 */
+	function $RouteProvider() {
+	  function inherit(parent, extra) {
+	    return angular.extend(Object.create(parent), extra);
+	  }
+
+	  var routes = {};
+
+	  /**
+	   * @ngdoc method
+	   * @name $routeProvider#when
+	   *
+	   * @param {string} path Route path (matched against `$location.path`). If `$location.path`
+	   *    contains redundant trailing slash or is missing one, the route will still match and the
+	   *    `$location.path` will be updated to add or drop the trailing slash to exactly match the
+	   *    route definition.
+	   *
+	   *    * `path` can contain named groups starting with a colon: e.g. `:name`. All characters up
+	   *        to the next slash are matched and stored in `$routeParams` under the given `name`
+	   *        when the route matches.
+	   *    * `path` can contain named groups starting with a colon and ending with a star:
+	   *        e.g.`:name*`. All characters are eagerly stored in `$routeParams` under the given `name`
+	   *        when the route matches.
+	   *    * `path` can contain optional named groups with a question mark: e.g.`:name?`.
+	   *
+	   *    For example, routes like `/color/:color/largecode/:largecode*\/edit` will match
+	   *    `/color/brown/largecode/code/with/slashes/edit` and extract:
+	   *
+	   *    * `color: brown`
+	   *    * `largecode: code/with/slashes`.
+	   *
+	   *
+	   * @param {Object} route Mapping information to be assigned to `$route.current` on route
+	   *    match.
+	   *
+	   *    Object properties:
+	   *
+	   *    - `controller` – `{(string|function()=}` – Controller fn that should be associated with
+	   *      newly created scope or the name of a {@link angular.Module#controller registered
+	   *      controller} if passed as a string.
+	   *    - `controllerAs` – `{string=}` – An identifier name for a reference to the controller.
+	   *      If present, the controller will be published to scope under the `controllerAs` name.
+	   *    - `template` – `{string=|function()=}` – html template as a string or a function that
+	   *      returns an html template as a string which should be used by {@link
+	   *      ngRoute.directive:ngView ngView} or {@link ng.directive:ngInclude ngInclude} directives.
+	   *      This property takes precedence over `templateUrl`.
+	   *
+	   *      If `template` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Array.<Object>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route
+	   *
+	   *    - `templateUrl` – `{string=|function()=}` – path or function that returns a path to an html
+	   *      template that should be used by {@link ngRoute.directive:ngView ngView}.
+	   *
+	   *      If `templateUrl` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Array.<Object>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route
+	   *
+	   *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
+	   *      be injected into the controller. If any of these dependencies are promises, the router
+	   *      will wait for them all to be resolved or one to be rejected before the controller is
+	   *      instantiated.
+	   *      If all the promises are resolved successfully, the values of the resolved promises are
+	   *      injected and {@link ngRoute.$route#$routeChangeSuccess $routeChangeSuccess} event is
+	   *      fired. If any of the promises are rejected the
+	   *      {@link ngRoute.$route#$routeChangeError $routeChangeError} event is fired. The map object
+	   *      is:
+	   *
+	   *      - `key` – `{string}`: a name of a dependency to be injected into the controller.
+	   *      - `factory` - `{string|function}`: If `string` then it is an alias for a service.
+	   *        Otherwise if function, then it is {@link auto.$injector#invoke injected}
+	   *        and the return value is treated as the dependency. If the result is a promise, it is
+	   *        resolved before its value is injected into the controller. Be aware that
+	   *        `ngRoute.$routeParams` will still refer to the previous route within these resolve
+	   *        functions.  Use `$route.current.params` to access the new route parameters, instead.
+	   *
+	   *    - `redirectTo` – {(string|function())=} – value to update
+	   *      {@link ng.$location $location} path with and trigger route redirection.
+	   *
+	   *      If `redirectTo` is a function, it will be called with the following parameters:
+	   *
+	   *      - `{Object.<string>}` - route parameters extracted from the current
+	   *        `$location.path()` by applying the current route templateUrl.
+	   *      - `{string}` - current `$location.path()`
+	   *      - `{Object}` - current `$location.search()`
+	   *
+	   *      The custom `redirectTo` function is expected to return a string which will be used
+	   *      to update `$location.path()` and `$location.search()`.
+	   *
+	   *    - `[reloadOnSearch=true]` - {boolean=} - reload route when only `$location.search()`
+	   *      or `$location.hash()` changes.
+	   *
+	   *      If the option is set to `false` and url in the browser changes, then
+	   *      `$routeUpdate` event is broadcasted on the root scope.
+	   *
+	   *    - `[caseInsensitiveMatch=false]` - {boolean=} - match routes without being case sensitive
+	   *
+	   *      If the option is set to `true`, then the particular route can be matched without being
+	   *      case sensitive
+	   *
+	   * @returns {Object} self
+	   *
+	   * @description
+	   * Adds a new route definition to the `$route` service.
+	   */
+	  this.when = function(path, route) {
+	    //copy original route object to preserve params inherited from proto chain
+	    var routeCopy = angular.copy(route);
+	    if (angular.isUndefined(routeCopy.reloadOnSearch)) {
+	      routeCopy.reloadOnSearch = true;
+	    }
+	    if (angular.isUndefined(routeCopy.caseInsensitiveMatch)) {
+	      routeCopy.caseInsensitiveMatch = this.caseInsensitiveMatch;
+	    }
+	    routes[path] = angular.extend(
+	      routeCopy,
+	      path && pathRegExp(path, routeCopy)
+	    );
+
+	    // create redirection for trailing slashes
+	    if (path) {
+	      var redirectPath = (path[path.length - 1] == '/')
+	            ? path.substr(0, path.length - 1)
+	            : path + '/';
+
+	      routes[redirectPath] = angular.extend(
+	        {redirectTo: path},
+	        pathRegExp(redirectPath, routeCopy)
+	      );
+	    }
+
+	    return this;
+	  };
+
+	  /**
+	   * @ngdoc property
+	   * @name $routeProvider#caseInsensitiveMatch
+	   * @description
+	   *
+	   * A boolean property indicating if routes defined
+	   * using this provider should be matched using a case insensitive
+	   * algorithm. Defaults to `false`.
+	   */
+	  this.caseInsensitiveMatch = false;
+
+	   /**
+	    * @param path {string} path
+	    * @param opts {Object} options
+	    * @return {?Object}
+	    *
+	    * @description
+	    * Normalizes the given path, returning a regular expression
+	    * and the original path.
+	    *
+	    * Inspired by pathRexp in visionmedia/express/lib/utils.js.
+	    */
+	  function pathRegExp(path, opts) {
+	    var insensitive = opts.caseInsensitiveMatch,
+	        ret = {
+	          originalPath: path,
+	          regexp: path
+	        },
+	        keys = ret.keys = [];
+
+	    path = path
+	      .replace(/([().])/g, '\\$1')
+	      .replace(/(\/)?:(\w+)([\?\*])?/g, function(_, slash, key, option) {
+	        var optional = option === '?' ? option : null;
+	        var star = option === '*' ? option : null;
+	        keys.push({ name: key, optional: !!optional });
+	        slash = slash || '';
+	        return ''
+	          + (optional ? '' : slash)
+	          + '(?:'
+	          + (optional ? slash : '')
+	          + (star && '(.+?)' || '([^/]+)')
+	          + (optional || '')
+	          + ')'
+	          + (optional || '');
+	      })
+	      .replace(/([\/$\*])/g, '\\$1');
+
+	    ret.regexp = new RegExp('^' + path + '$', insensitive ? 'i' : '');
+	    return ret;
+	  }
+
+	  /**
+	   * @ngdoc method
+	   * @name $routeProvider#otherwise
+	   *
+	   * @description
+	   * Sets route definition that will be used on route change when no other route definition
+	   * is matched.
+	   *
+	   * @param {Object|string} params Mapping information to be assigned to `$route.current`.
+	   * If called with a string, the value maps to `redirectTo`.
+	   * @returns {Object} self
+	   */
+	  this.otherwise = function(params) {
+	    if (typeof params === 'string') {
+	      params = {redirectTo: params};
+	    }
+	    this.when(null, params);
+	    return this;
+	  };
+
+
+	  this.$get = ['$rootScope',
+	               '$location',
+	               '$routeParams',
+	               '$q',
+	               '$injector',
+	               '$templateRequest',
+	               '$sce',
+	      function($rootScope, $location, $routeParams, $q, $injector, $templateRequest, $sce) {
+
+	    /**
+	     * @ngdoc service
+	     * @name $route
+	     * @requires $location
+	     * @requires $routeParams
+	     *
+	     * @property {Object} current Reference to the current route definition.
+	     * The route definition contains:
+	     *
+	     *   - `controller`: The controller constructor as define in route definition.
+	     *   - `locals`: A map of locals which is used by {@link ng.$controller $controller} service for
+	     *     controller instantiation. The `locals` contain
+	     *     the resolved values of the `resolve` map. Additionally the `locals` also contain:
+	     *
+	     *     - `$scope` - The current route scope.
+	     *     - `$template` - The current route template HTML.
+	     *
+	     * @property {Object} routes Object with all route configuration Objects as its properties.
+	     *
+	     * @description
+	     * `$route` is used for deep-linking URLs to controllers and views (HTML partials).
+	     * It watches `$location.url()` and tries to map the path to an existing route definition.
+	     *
+	     * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	     *
+	     * You can define routes through {@link ngRoute.$routeProvider $routeProvider}'s API.
+	     *
+	     * The `$route` service is typically used in conjunction with the
+	     * {@link ngRoute.directive:ngView `ngView`} directive and the
+	     * {@link ngRoute.$routeParams `$routeParams`} service.
+	     *
+	     * @example
+	     * This example shows how changing the URL hash causes the `$route` to match a route against the
+	     * URL, and the `ngView` pulls in the partial.
+	     *
+	     * <example name="$route-service" module="ngRouteExample"
+	     *          deps="angular-route.js" fixBase="true">
+	     *   <file name="index.html">
+	     *     <div ng-controller="MainController">
+	     *       Choose:
+	     *       <a href="Book/Moby">Moby</a> |
+	     *       <a href="Book/Moby/ch/1">Moby: Ch1</a> |
+	     *       <a href="Book/Gatsby">Gatsby</a> |
+	     *       <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
+	     *       <a href="Book/Scarlet">Scarlet Letter</a><br/>
+	     *
+	     *       <div ng-view></div>
+	     *
+	     *       <hr />
+	     *
+	     *       <pre>$location.path() = {{$location.path()}}</pre>
+	     *       <pre>$route.current.templateUrl = {{$route.current.templateUrl}}</pre>
+	     *       <pre>$route.current.params = {{$route.current.params}}</pre>
+	     *       <pre>$route.current.scope.name = {{$route.current.scope.name}}</pre>
+	     *       <pre>$routeParams = {{$routeParams}}</pre>
+	     *     </div>
+	     *   </file>
+	     *
+	     *   <file name="book.html">
+	     *     controller: {{name}}<br />
+	     *     Book Id: {{params.bookId}}<br />
+	     *   </file>
+	     *
+	     *   <file name="chapter.html">
+	     *     controller: {{name}}<br />
+	     *     Book Id: {{params.bookId}}<br />
+	     *     Chapter Id: {{params.chapterId}}
+	     *   </file>
+	     *
+	     *   <file name="script.js">
+	     *     angular.module('ngRouteExample', ['ngRoute'])
+	     *
+	     *      .controller('MainController', function($scope, $route, $routeParams, $location) {
+	     *          $scope.$route = $route;
+	     *          $scope.$location = $location;
+	     *          $scope.$routeParams = $routeParams;
+	     *      })
+	     *
+	     *      .controller('BookController', function($scope, $routeParams) {
+	     *          $scope.name = "BookController";
+	     *          $scope.params = $routeParams;
+	     *      })
+	     *
+	     *      .controller('ChapterController', function($scope, $routeParams) {
+	     *          $scope.name = "ChapterController";
+	     *          $scope.params = $routeParams;
+	     *      })
+	     *
+	     *     .config(function($routeProvider, $locationProvider) {
+	     *       $routeProvider
+	     *        .when('/Book/:bookId', {
+	     *         templateUrl: 'book.html',
+	     *         controller: 'BookController',
+	     *         resolve: {
+	     *           // I will cause a 1 second delay
+	     *           delay: function($q, $timeout) {
+	     *             var delay = $q.defer();
+	     *             $timeout(delay.resolve, 1000);
+	     *             return delay.promise;
+	     *           }
+	     *         }
+	     *       })
+	     *       .when('/Book/:bookId/ch/:chapterId', {
+	     *         templateUrl: 'chapter.html',
+	     *         controller: 'ChapterController'
+	     *       });
+	     *
+	     *       // configure html5 to get links working on jsfiddle
+	     *       $locationProvider.html5Mode(true);
+	     *     });
+	     *
+	     *   </file>
+	     *
+	     *   <file name="protractor.js" type="protractor">
+	     *     it('should load and compile correct template', function() {
+	     *       element(by.linkText('Moby: Ch1')).click();
+	     *       var content = element(by.css('[ng-view]')).getText();
+	     *       expect(content).toMatch(/controller\: ChapterController/);
+	     *       expect(content).toMatch(/Book Id\: Moby/);
+	     *       expect(content).toMatch(/Chapter Id\: 1/);
+	     *
+	     *       element(by.partialLinkText('Scarlet')).click();
+	     *
+	     *       content = element(by.css('[ng-view]')).getText();
+	     *       expect(content).toMatch(/controller\: BookController/);
+	     *       expect(content).toMatch(/Book Id\: Scarlet/);
+	     *     });
+	     *   </file>
+	     * </example>
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeStart
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted before a route change. At this  point the route services starts
+	     * resolving all of the dependencies needed for the route change to occur.
+	     * Typically this involves fetching the view template as well as any dependencies
+	     * defined in `resolve` route property. Once  all of the dependencies are resolved
+	     * `$routeChangeSuccess` is fired.
+	     *
+	     * The route change (and the `$location` change that triggered it) can be prevented
+	     * by calling `preventDefault` method of the event. See {@link ng.$rootScope.Scope#$on}
+	     * for more details about event object.
+	     *
+	     * @param {Object} angularEvent Synthetic event object.
+	     * @param {Route} next Future route information.
+	     * @param {Route} current Current route information.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeSuccess
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted after a route change has happened successfully.
+	     * The `resolve` dependencies are now available in the `current.locals` property.
+	     *
+	     * {@link ngRoute.directive:ngView ngView} listens for the directive
+	     * to instantiate the controller and render the view.
+	     *
+	     * @param {Object} angularEvent Synthetic event object.
+	     * @param {Route} current Current route information.
+	     * @param {Route|Undefined} previous Previous route information, or undefined if current is
+	     * first route entered.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeChangeError
+	     * @eventType broadcast on root scope
+	     * @description
+	     * Broadcasted if any of the resolve promises are rejected.
+	     *
+	     * @param {Object} angularEvent Synthetic event object
+	     * @param {Route} current Current route information.
+	     * @param {Route} previous Previous route information.
+	     * @param {Route} rejection Rejection of the promise. Usually the error of the failed promise.
+	     */
+
+	    /**
+	     * @ngdoc event
+	     * @name $route#$routeUpdate
+	     * @eventType broadcast on root scope
+	     * @description
+	     * The `reloadOnSearch` property has been set to false, and we are reusing the same
+	     * instance of the Controller.
+	     *
+	     * @param {Object} angularEvent Synthetic event object
+	     * @param {Route} current Current/previous route information.
+	     */
+
+	    var forceReload = false,
+	        preparedRoute,
+	        preparedRouteIsUpdateOnly,
+	        $route = {
+	          routes: routes,
+
+	          /**
+	           * @ngdoc method
+	           * @name $route#reload
+	           *
+	           * @description
+	           * Causes `$route` service to reload the current route even if
+	           * {@link ng.$location $location} hasn't changed.
+	           *
+	           * As a result of that, {@link ngRoute.directive:ngView ngView}
+	           * creates new scope and reinstantiates the controller.
+	           */
+	          reload: function() {
+	            forceReload = true;
+	            $rootScope.$evalAsync(function() {
+	              // Don't support cancellation of a reload for now...
+	              prepareRoute();
+	              commitRoute();
+	            });
+	          },
+
+	          /**
+	           * @ngdoc method
+	           * @name $route#updateParams
+	           *
+	           * @description
+	           * Causes `$route` service to update the current URL, replacing
+	           * current route parameters with those specified in `newParams`.
+	           * Provided property names that match the route's path segment
+	           * definitions will be interpolated into the location's path, while
+	           * remaining properties will be treated as query params.
+	           *
+	           * @param {!Object<string, string>} newParams mapping of URL parameter names to values
+	           */
+	          updateParams: function(newParams) {
+	            if (this.current && this.current.$$route) {
+	              newParams = angular.extend({}, this.current.params, newParams);
+	              $location.path(interpolate(this.current.$$route.originalPath, newParams));
+	              // interpolate modifies newParams, only query params are left
+	              $location.search(newParams);
+	            } else {
+	              throw $routeMinErr('norout', 'Tried updating route when with no current route');
+	            }
+	          }
+	        };
+
+	    $rootScope.$on('$locationChangeStart', prepareRoute);
+	    $rootScope.$on('$locationChangeSuccess', commitRoute);
+
+	    return $route;
+
+	    /////////////////////////////////////////////////////
+
+	    /**
+	     * @param on {string} current url
+	     * @param route {Object} route regexp to match the url against
+	     * @return {?Object}
+	     *
+	     * @description
+	     * Check if the route matches the current url.
+	     *
+	     * Inspired by match in
+	     * visionmedia/express/lib/router/router.js.
+	     */
+	    function switchRouteMatcher(on, route) {
+	      var keys = route.keys,
+	          params = {};
+
+	      if (!route.regexp) return null;
+
+	      var m = route.regexp.exec(on);
+	      if (!m) return null;
+
+	      for (var i = 1, len = m.length; i < len; ++i) {
+	        var key = keys[i - 1];
+
+	        var val = m[i];
+
+	        if (key && val) {
+	          params[key.name] = val;
+	        }
+	      }
+	      return params;
+	    }
+
+	    function prepareRoute($locationEvent) {
+	      var lastRoute = $route.current;
+
+	      preparedRoute = parseRoute();
+	      preparedRouteIsUpdateOnly = preparedRoute && lastRoute && preparedRoute.$$route === lastRoute.$$route
+	          && angular.equals(preparedRoute.pathParams, lastRoute.pathParams)
+	          && !preparedRoute.reloadOnSearch && !forceReload;
+
+	      if (!preparedRouteIsUpdateOnly && (lastRoute || preparedRoute)) {
+	        if ($rootScope.$broadcast('$routeChangeStart', preparedRoute, lastRoute).defaultPrevented) {
+	          if ($locationEvent) {
+	            $locationEvent.preventDefault();
+	          }
+	        }
+	      }
+	    }
+
+	    function commitRoute() {
+	      var lastRoute = $route.current;
+	      var nextRoute = preparedRoute;
+
+	      if (preparedRouteIsUpdateOnly) {
+	        lastRoute.params = nextRoute.params;
+	        angular.copy(lastRoute.params, $routeParams);
+	        $rootScope.$broadcast('$routeUpdate', lastRoute);
+	      } else if (nextRoute || lastRoute) {
+	        forceReload = false;
+	        $route.current = nextRoute;
+	        if (nextRoute) {
+	          if (nextRoute.redirectTo) {
+	            if (angular.isString(nextRoute.redirectTo)) {
+	              $location.path(interpolate(nextRoute.redirectTo, nextRoute.params)).search(nextRoute.params)
+	                       .replace();
+	            } else {
+	              $location.url(nextRoute.redirectTo(nextRoute.pathParams, $location.path(), $location.search()))
+	                       .replace();
+	            }
+	          }
+	        }
+
+	        $q.when(nextRoute).
+	          then(function() {
+	            if (nextRoute) {
+	              var locals = angular.extend({}, nextRoute.resolve),
+	                  template, templateUrl;
+
+	              angular.forEach(locals, function(value, key) {
+	                locals[key] = angular.isString(value) ?
+	                    $injector.get(value) : $injector.invoke(value, null, null, key);
+	              });
+
+	              if (angular.isDefined(template = nextRoute.template)) {
+	                if (angular.isFunction(template)) {
+	                  template = template(nextRoute.params);
+	                }
+	              } else if (angular.isDefined(templateUrl = nextRoute.templateUrl)) {
+	                if (angular.isFunction(templateUrl)) {
+	                  templateUrl = templateUrl(nextRoute.params);
+	                }
+	                if (angular.isDefined(templateUrl)) {
+	                  nextRoute.loadedTemplateUrl = $sce.valueOf(templateUrl);
+	                  template = $templateRequest(templateUrl);
+	                }
+	              }
+	              if (angular.isDefined(template)) {
+	                locals['$template'] = template;
+	              }
+	              return $q.all(locals);
+	            }
+	          }).
+	          then(function(locals) {
+	            // after route change
+	            if (nextRoute == $route.current) {
+	              if (nextRoute) {
+	                nextRoute.locals = locals;
+	                angular.copy(nextRoute.params, $routeParams);
+	              }
+	              $rootScope.$broadcast('$routeChangeSuccess', nextRoute, lastRoute);
+	            }
+	          }, function(error) {
+	            if (nextRoute == $route.current) {
+	              $rootScope.$broadcast('$routeChangeError', nextRoute, lastRoute, error);
+	            }
+	          });
+	      }
+	    }
+
+
+	    /**
+	     * @returns {Object} the current active route, by matching it against the URL
+	     */
+	    function parseRoute() {
+	      // Match a route
+	      var params, match;
+	      angular.forEach(routes, function(route, path) {
+	        if (!match && (params = switchRouteMatcher($location.path(), route))) {
+	          match = inherit(route, {
+	            params: angular.extend({}, $location.search(), params),
+	            pathParams: params});
+	          match.$$route = route;
+	        }
+	      });
+	      // No route matched; fallback to "otherwise" route
+	      return match || routes[null] && inherit(routes[null], {params: {}, pathParams:{}});
+	    }
+
+	    /**
+	     * @returns {string} interpolation of the redirect path with the parameters
+	     */
+	    function interpolate(string, params) {
+	      var result = [];
+	      angular.forEach((string || '').split(':'), function(segment, i) {
+	        if (i === 0) {
+	          result.push(segment);
+	        } else {
+	          var segmentMatch = segment.match(/(\w+)(?:[?*])?(.*)/);
+	          var key = segmentMatch[1];
+	          result.push(params[key]);
+	          result.push(segmentMatch[2] || '');
+	          delete params[key];
+	        }
+	      });
+	      return result.join('');
+	    }
+	  }];
+	}
+
+	ngRouteModule.provider('$routeParams', $RouteParamsProvider);
+
+
+	/**
+	 * @ngdoc service
+	 * @name $routeParams
+	 * @requires $route
+	 *
+	 * @description
+	 * The `$routeParams` service allows you to retrieve the current set of route parameters.
+	 *
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 *
+	 * The route parameters are a combination of {@link ng.$location `$location`}'s
+	 * {@link ng.$location#search `search()`} and {@link ng.$location#path `path()`}.
+	 * The `path` parameters are extracted when the {@link ngRoute.$route `$route`} path is matched.
+	 *
+	 * In case of parameter name collision, `path` params take precedence over `search` params.
+	 *
+	 * The service guarantees that the identity of the `$routeParams` object will remain unchanged
+	 * (but its properties will likely change) even when a route change occurs.
+	 *
+	 * Note that the `$routeParams` are only updated *after* a route change completes successfully.
+	 * This means that you cannot rely on `$routeParams` being correct in route resolve functions.
+	 * Instead you can use `$route.current.params` to access the new route's parameters.
+	 *
+	 * @example
+	 * ```js
+	 *  // Given:
+	 *  // URL: http://server.com/index.html#/Chapter/1/Section/2?search=moby
+	 *  // Route: /Chapter/:chapterId/Section/:sectionId
+	 *  //
+	 *  // Then
+	 *  $routeParams ==> {chapterId:'1', sectionId:'2', search:'moby'}
+	 * ```
+	 */
+	function $RouteParamsProvider() {
+	  this.$get = function() { return {}; };
+	}
+
+	ngRouteModule.directive('ngView', ngViewFactory);
+	ngRouteModule.directive('ngView', ngViewFillContentFactory);
+
+
+	/**
+	 * @ngdoc directive
+	 * @name ngView
+	 * @restrict ECA
+	 *
+	 * @description
+	 * # Overview
+	 * `ngView` is a directive that complements the {@link ngRoute.$route $route} service by
+	 * including the rendered template of the current route into the main layout (`index.html`) file.
+	 * Every time the current route changes, the included view changes with it according to the
+	 * configuration of the `$route` service.
+	 *
+	 * Requires the {@link ngRoute `ngRoute`} module to be installed.
+	 *
+	 * @animations
+	 * enter - animation is used to bring new content into the browser.
+	 * leave - animation is used to animate existing content away.
+	 *
+	 * The enter and leave animation occur concurrently.
+	 *
+	 * @scope
+	 * @priority 400
+	 * @param {string=} onload Expression to evaluate whenever the view updates.
+	 *
+	 * @param {string=} autoscroll Whether `ngView` should call {@link ng.$anchorScroll
+	 *                  $anchorScroll} to scroll the viewport after the view is updated.
+	 *
+	 *                  - If the attribute is not set, disable scrolling.
+	 *                  - If the attribute is set without value, enable scrolling.
+	 *                  - Otherwise enable scrolling only if the `autoscroll` attribute value evaluated
+	 *                    as an expression yields a truthy value.
+	 * @example
+	    <example name="ngView-directive" module="ngViewExample"
+	             deps="angular-route.js;angular-animate.js"
+	             animations="true" fixBase="true">
+	      <file name="index.html">
+	        <div ng-controller="MainCtrl as main">
+	          Choose:
+	          <a href="Book/Moby">Moby</a> |
+	          <a href="Book/Moby/ch/1">Moby: Ch1</a> |
+	          <a href="Book/Gatsby">Gatsby</a> |
+	          <a href="Book/Gatsby/ch/4?key=value">Gatsby: Ch4</a> |
+	          <a href="Book/Scarlet">Scarlet Letter</a><br/>
+
+	          <div class="view-animate-container">
+	            <div ng-view class="view-animate"></div>
+	          </div>
+	          <hr />
+
+	          <pre>$location.path() = {{main.$location.path()}}</pre>
+	          <pre>$route.current.templateUrl = {{main.$route.current.templateUrl}}</pre>
+	          <pre>$route.current.params = {{main.$route.current.params}}</pre>
+	          <pre>$routeParams = {{main.$routeParams}}</pre>
+	        </div>
+	      </file>
+
+	      <file name="book.html">
+	        <div>
+	          controller: {{book.name}}<br />
+	          Book Id: {{book.params.bookId}}<br />
+	        </div>
+	      </file>
+
+	      <file name="chapter.html">
+	        <div>
+	          controller: {{chapter.name}}<br />
+	          Book Id: {{chapter.params.bookId}}<br />
+	          Chapter Id: {{chapter.params.chapterId}}
+	        </div>
+	      </file>
+
+	      <file name="animations.css">
+	        .view-animate-container {
+	          position:relative;
+	          height:100px!important;
+	          background:white;
+	          border:1px solid black;
+	          height:40px;
+	          overflow:hidden;
+	        }
+
+	        .view-animate {
+	          padding:10px;
+	        }
+
+	        .view-animate.ng-enter, .view-animate.ng-leave {
+	          transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 1.5s;
+
+	          display:block;
+	          width:100%;
+	          border-left:1px solid black;
+
+	          position:absolute;
+	          top:0;
+	          left:0;
+	          right:0;
+	          bottom:0;
+	          padding:10px;
+	        }
+
+	        .view-animate.ng-enter {
+	          left:100%;
+	        }
+	        .view-animate.ng-enter.ng-enter-active {
+	          left:0;
+	        }
+	        .view-animate.ng-leave.ng-leave-active {
+	          left:-100%;
+	        }
+	      </file>
+
+	      <file name="script.js">
+	        angular.module('ngViewExample', ['ngRoute', 'ngAnimate'])
+	          .config(['$routeProvider', '$locationProvider',
+	            function($routeProvider, $locationProvider) {
+	              $routeProvider
+	                .when('/Book/:bookId', {
+	                  templateUrl: 'book.html',
+	                  controller: 'BookCtrl',
+	                  controllerAs: 'book'
+	                })
+	                .when('/Book/:bookId/ch/:chapterId', {
+	                  templateUrl: 'chapter.html',
+	                  controller: 'ChapterCtrl',
+	                  controllerAs: 'chapter'
+	                });
+
+	              $locationProvider.html5Mode(true);
+	          }])
+	          .controller('MainCtrl', ['$route', '$routeParams', '$location',
+	            function($route, $routeParams, $location) {
+	              this.$route = $route;
+	              this.$location = $location;
+	              this.$routeParams = $routeParams;
+	          }])
+	          .controller('BookCtrl', ['$routeParams', function($routeParams) {
+	            this.name = "BookCtrl";
+	            this.params = $routeParams;
+	          }])
+	          .controller('ChapterCtrl', ['$routeParams', function($routeParams) {
+	            this.name = "ChapterCtrl";
+	            this.params = $routeParams;
+	          }]);
+
+	      </file>
+
+	      <file name="protractor.js" type="protractor">
+	        it('should load and compile correct template', function() {
+	          element(by.linkText('Moby: Ch1')).click();
+	          var content = element(by.css('[ng-view]')).getText();
+	          expect(content).toMatch(/controller\: ChapterCtrl/);
+	          expect(content).toMatch(/Book Id\: Moby/);
+	          expect(content).toMatch(/Chapter Id\: 1/);
+
+	          element(by.partialLinkText('Scarlet')).click();
+
+	          content = element(by.css('[ng-view]')).getText();
+	          expect(content).toMatch(/controller\: BookCtrl/);
+	          expect(content).toMatch(/Book Id\: Scarlet/);
+	        });
+	      </file>
+	    </example>
+	 */
+
+
+	/**
+	 * @ngdoc event
+	 * @name ngView#$viewContentLoaded
+	 * @eventType emit on the current ngView scope
+	 * @description
+	 * Emitted every time the ngView content is reloaded.
+	 */
+	ngViewFactory.$inject = ['$route', '$anchorScroll', '$animate'];
+	function ngViewFactory($route, $anchorScroll, $animate) {
+	  return {
+	    restrict: 'ECA',
+	    terminal: true,
+	    priority: 400,
+	    transclude: 'element',
+	    link: function(scope, $element, attr, ctrl, $transclude) {
+	        var currentScope,
+	            currentElement,
+	            previousLeaveAnimation,
+	            autoScrollExp = attr.autoscroll,
+	            onloadExp = attr.onload || '';
+
+	        scope.$on('$routeChangeSuccess', update);
+	        update();
+
+	        function cleanupLastView() {
+	          if (previousLeaveAnimation) {
+	            $animate.cancel(previousLeaveAnimation);
+	            previousLeaveAnimation = null;
+	          }
+
+	          if (currentScope) {
+	            currentScope.$destroy();
+	            currentScope = null;
+	          }
+	          if (currentElement) {
+	            previousLeaveAnimation = $animate.leave(currentElement);
+	            previousLeaveAnimation.then(function() {
+	              previousLeaveAnimation = null;
+	            });
+	            currentElement = null;
+	          }
+	        }
+
+	        function update() {
+	          var locals = $route.current && $route.current.locals,
+	              template = locals && locals.$template;
+
+	          if (angular.isDefined(template)) {
+	            var newScope = scope.$new();
+	            var current = $route.current;
+
+	            // Note: This will also link all children of ng-view that were contained in the original
+	            // html. If that content contains controllers, ... they could pollute/change the scope.
+	            // However, using ng-view on an element with additional content does not make sense...
+	            // Note: We can't remove them in the cloneAttchFn of $transclude as that
+	            // function is called before linking the content, which would apply child
+	            // directives to non existing elements.
+	            var clone = $transclude(newScope, function(clone) {
+	              $animate.enter(clone, null, currentElement || $element).then(function onNgViewEnter() {
+	                if (angular.isDefined(autoScrollExp)
+	                  && (!autoScrollExp || scope.$eval(autoScrollExp))) {
+	                  $anchorScroll();
+	                }
+	              });
+	              cleanupLastView();
+	            });
+
+	            currentElement = clone;
+	            currentScope = current.scope = newScope;
+	            currentScope.$emit('$viewContentLoaded');
+	            currentScope.$eval(onloadExp);
+	          } else {
+	            cleanupLastView();
+	          }
+	        }
+	    }
+	  };
+	}
+
+	// This directive is called during the $transclude call of the first `ngView` directive.
+	// It will replace and compile the content of the element with the loaded template.
+	// We need this directive so that the element content is already filled when
+	// the link function of another directive on the same element as ngView
+	// is called.
+	ngViewFillContentFactory.$inject = ['$compile', '$controller', '$route'];
+	function ngViewFillContentFactory($compile, $controller, $route) {
+	  return {
+	    restrict: 'ECA',
+	    priority: -400,
+	    link: function(scope, $element) {
+	      var current = $route.current,
+	          locals = current.locals;
+
+	      $element.html(locals.$template);
+
+	      var link = $compile($element.contents());
+
+	      if (current.controller) {
+	        locals.$scope = scope;
+	        var controller = $controller(current.controller, locals);
+	        if (current.controllerAs) {
+	          scope[current.controllerAs] = controller;
+	        }
+	        $element.data('$ngControllerController', controller);
+	        $element.children().data('$ngControllerController', controller);
+	      }
+
+	      link(scope);
+	    }
+	  };
+	}
+
+
+	})(window, window.angular);
+
+
+/***/ },
+/* 93 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* angular-moment.js / v0.10.3 / (c) 2013, 2014, 2015 Uri Shaked / MIT Licence */
+
+	'format amd';
+	/* global define */
+
+	(function () {
+		'use strict';
+
+		function angularMoment(angular, moment) {
+
+			/**
+			 * @ngdoc overview
+			 * @name angularMoment
+			 *
+			 * @description
+			 * angularMoment module provides moment.js functionality for angular.js apps.
+			 */
+			return angular.module('angularMoment', [])
+
+			/**
+			 * @ngdoc object
+			 * @name angularMoment.config:angularMomentConfig
+			 *
+			 * @description
+			 * Common configuration of the angularMoment module
+			 */
+				.constant('angularMomentConfig', {
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.angularMomentConfig#preprocess
+					 * @propertyOf angularMoment.config:angularMomentConfig
+					 * @returns {string} The default preprocessor to apply
+					 *
+					 * @description
+					 * Defines a default preprocessor to apply (e.g. 'unix', 'etc', ...). The default value is null,
+					 * i.e. no preprocessor will be applied.
+					 */
+					preprocess: null, // e.g. 'unix', 'utc', ...
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.angularMomentConfig#timezone
+					 * @propertyOf angularMoment.config:angularMomentConfig
+					 * @returns {string} The default timezone
+					 *
+					 * @description
+					 * The default timezone (e.g. 'Europe/London'). Empty string by default (does not apply
+					 * any timezone shift).
+					 */
+					timezone: '',
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.angularMomentConfig#format
+					 * @propertyOf angularMoment.config:angularMomentConfig
+					 * @returns {string} The pre-conversion format of the date
+					 *
+					 * @description
+					 * Specify the format of the input date. Essentially it's a
+					 * default and saves you from specifying a format in every
+					 * element. Overridden by element attr. Null by default.
+					 */
+					format: null,
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.angularMomentConfig#statefulFilters
+					 * @propertyOf angularMoment.config:angularMomentConfig
+					 * @returns {boolean} Whether angular-moment filters should be stateless (or not)
+					 *
+					 * @description
+					 * Specifies whether the filters included with angular-moment are stateful.
+					 * Stateful filters will automatically re-evaluate whenever you change the timezone
+					 * or language settings, but may negatively impact performance. true by default.
+					 */
+					statefulFilters: true
+				})
+
+			/**
+			 * @ngdoc object
+			 * @name angularMoment.object:moment
+			 *
+			 * @description
+			 * moment global (as provided by the moment.js library)
+			 */
+				.constant('moment', moment)
+
+			/**
+			 * @ngdoc object
+			 * @name angularMoment.config:amTimeAgoConfig
+			 * @module angularMoment
+			 *
+			 * @description
+			 * configuration specific to the amTimeAgo directive
+			 */
+				.constant('amTimeAgoConfig', {
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.amTimeAgoConfig#withoutSuffix
+					 * @propertyOf angularMoment.config:amTimeAgoConfig
+					 * @returns {boolean} Whether to include a suffix in am-time-ago directive
+					 *
+					 * @description
+					 * Defaults to false.
+					 */
+					withoutSuffix: false,
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.amTimeAgoConfig#serverTime
+					 * @propertyOf angularMoment.config:amTimeAgoConfig
+					 * @returns {number} Server time in milliseconds since the epoch
+					 *
+					 * @description
+					 * If set, time ago will be calculated relative to the given value.
+					 * If null, local time will be used. Defaults to null.
+					 */
+					serverTime: null,
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.amTimeAgoConfig#titleFormat
+					 * @propertyOf angularMoment.config:amTimeAgoConfig
+					 * @returns {string} The format of the date to be displayed in the title of the element. If null,
+					 *        the directive set the title of the element.
+					 *
+					 * @description
+					 * The format of the date used for the title of the element. null by default.
+					 */
+					titleFormat: null,
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.amTimeAgoConfig#fullDateThreshold
+					 * @propertyOf angularMoment.config:amTimeAgoConfig
+					 * @returns {number} The minimum number of days for showing a full date instead of relative time
+					 *
+					 * @description
+					 * The threshold for displaying a full date. The default is null, which means the date will always
+					 * be relative, and full date will never be displayed.
+					 */
+					fullDateThreshold: null,
+
+					/**
+					 * @ngdoc property
+					 * @name angularMoment.config.amTimeAgoConfig#fullDateFormat
+					 * @propertyOf angularMoment.config:amTimeAgoConfig
+					 * @returns {string} The format to use when displaying a full date.
+					 *
+					 * @description
+					 * Specify the format of the date when displayed as full date. null by default.
+					 */
+					fullDateFormat: null
+				})
+
+			/**
+			 * @ngdoc directive
+			 * @name angularMoment.directive:amTimeAgo
+			 * @module angularMoment
+			 *
+			 * @restrict A
+			 */
+				.directive('amTimeAgo', ['$window', 'moment', 'amMoment', 'amTimeAgoConfig', 'angularMomentConfig', function ($window, moment, amMoment, amTimeAgoConfig, angularMomentConfig) {
+
+					return function (scope, element, attr) {
+						var activeTimeout = null;
+						var currentValue;
+						var currentFormat = angularMomentConfig.format;
+						var withoutSuffix = amTimeAgoConfig.withoutSuffix;
+						var titleFormat = amTimeAgoConfig.titleFormat;
+						var fullDateThreshold = amTimeAgoConfig.fullDateThreshold;
+						var fullDateFormat = amTimeAgoConfig.fullDateFormat;
+						var localDate = new Date().getTime();
+						var preprocess = angularMomentConfig.preprocess;
+						var modelName = attr.amTimeAgo;
+						var currentFrom;
+						var isTimeElement = ('TIME' === element[0].nodeName.toUpperCase());
+
+						function getNow() {
+							var now;
+							if (currentFrom) {
+								now = currentFrom;
+							} else if (amTimeAgoConfig.serverTime) {
+								var localNow = new Date().getTime();
+								var nowMillis = localNow - localDate + amTimeAgoConfig.serverTime;
+								now = moment(nowMillis);
+							}
+							else {
+								now = moment();
+							}
+							return now;
+						}
+
+						function cancelTimer() {
+							if (activeTimeout) {
+								$window.clearTimeout(activeTimeout);
+								activeTimeout = null;
+							}
+						}
+
+						function updateTime(momentInstance) {
+							var daysAgo = getNow().diff(momentInstance, 'day');
+							var showFullDate = fullDateThreshold && daysAgo >= fullDateThreshold;
+
+							if (showFullDate) {
+								element.text(momentInstance.format(fullDateFormat));
+							} else {
+								element.text(momentInstance.from(getNow(), withoutSuffix));
+							}
+
+							if (titleFormat && !element.attr('title')) {
+								element.attr('title', momentInstance.local().format(titleFormat));
+							}
+
+							if (!showFullDate) {
+								var howOld = Math.abs(getNow().diff(momentInstance, 'minute'));
+								var secondsUntilUpdate = 3600;
+								if (howOld < 1) {
+									secondsUntilUpdate = 1;
+								} else if (howOld < 60) {
+									secondsUntilUpdate = 30;
+								} else if (howOld < 180) {
+									secondsUntilUpdate = 300;
+								}
+
+								activeTimeout = $window.setTimeout(function () {
+									updateTime(momentInstance);
+								}, secondsUntilUpdate * 1000);
+							}
+						}
+
+						function updateDateTimeAttr(value) {
+							if (isTimeElement) {
+								element.attr('datetime', value);
+							}
+						}
+
+						function updateMoment() {
+							cancelTimer();
+							if (currentValue) {
+								var momentValue = amMoment.preprocessDate(currentValue, preprocess, currentFormat);
+								updateTime(momentValue);
+								updateDateTimeAttr(momentValue.toISOString());
+							}
+						}
+
+						scope.$watch(modelName, function (value) {
+							if ((typeof value === 'undefined') || (value === null) || (value === '')) {
+								cancelTimer();
+								if (currentValue) {
+									element.text('');
+									updateDateTimeAttr('');
+									currentValue = null;
+								}
+								return;
+							}
+
+							currentValue = value;
+							updateMoment();
+						});
+
+						if (angular.isDefined(attr.amFrom)) {
+							scope.$watch(attr.amFrom, function (value) {
+								if ((typeof value === 'undefined') || (value === null) || (value === '')) {
+									currentFrom = null;
+								} else {
+									currentFrom = moment(value);
+								}
+								updateMoment();
+							});
+						}
+
+						if (angular.isDefined(attr.amWithoutSuffix)) {
+							scope.$watch(attr.amWithoutSuffix, function (value) {
+								if (typeof value === 'boolean') {
+									withoutSuffix = value;
+									updateMoment();
+								} else {
+									withoutSuffix = amTimeAgoConfig.withoutSuffix;
+								}
+							});
+						}
+
+						attr.$observe('amFormat', function (format) {
+							if (typeof format !== 'undefined') {
+								currentFormat = format;
+								updateMoment();
+							}
+						});
+
+						attr.$observe('amPreprocess', function (newValue) {
+							preprocess = newValue;
+							updateMoment();
+						});
+
+						attr.$observe('amFullDateThreshold', function (newValue) {
+							fullDateThreshold = newValue;
+							updateMoment();
+						});
+
+						attr.$observe('amFullDateFormat', function (newValue) {
+							fullDateFormat = newValue;
+							updateMoment();
+						});
+
+						scope.$on('$destroy', function () {
+							cancelTimer();
+						});
+
+						scope.$on('amMoment:localeChanged', function () {
+							updateMoment();
+						});
+					};
+				}])
+
+			/**
+			 * @ngdoc service
+			 * @name angularMoment.service.amMoment
+			 * @module angularMoment
+			 */
+				.service('amMoment', ['moment', '$rootScope', '$log', 'angularMomentConfig', function (moment, $rootScope, $log, angularMomentConfig) {
+					/**
+					 * @ngdoc property
+					 * @name angularMoment:amMoment#preprocessors
+					 * @module angularMoment
+					 *
+					 * @description
+					 * Defines the preprocessors for the preprocessDate method. By default, the following preprocessors
+					 * are defined: utc, unix.
+					 */
+					this.preprocessors = {
+						utc: moment.utc,
+						unix: moment.unix
+					};
+
+					/**
+					 * @ngdoc function
+					 * @name angularMoment.service.amMoment#changeLocale
+					 * @methodOf angularMoment.service.amMoment
+					 *
+					 * @description
+					 * Changes the locale for moment.js and updates all the am-time-ago directive instances
+					 * with the new locale. Also broadcasts an `amMoment:localeChanged` event on $rootScope.
+					 *
+					 * @param {string} locale Locale code (e.g. en, es, ru, pt-br, etc.)
+					 * @param {object} customization object of locale strings to override
+					 */
+					this.changeLocale = function (locale, customization) {
+						var result = moment.locale(locale, customization);
+						if (angular.isDefined(locale)) {
+							$rootScope.$broadcast('amMoment:localeChanged');
+
+						}
+						return result;
+					};
+
+					/**
+					 * @ngdoc function
+					 * @name angularMoment.service.amMoment#changeTimezone
+					 * @methodOf angularMoment.service.amMoment
+					 *
+					 * @description
+					 * Changes the default timezone for amCalendar, amDateFormat and amTimeAgo. Also broadcasts an
+					 * `amMoment:timezoneChanged` event on $rootScope.
+					 *
+					 * @param {string} timezone Timezone name (e.g. UTC)
+					 */
+					this.changeTimezone = function (timezone) {
+						angularMomentConfig.timezone = timezone;
+						$rootScope.$broadcast('amMoment:timezoneChanged');
+					};
+
+					/**
+					 * @ngdoc function
+					 * @name angularMoment.service.amMoment#preprocessDate
+					 * @methodOf angularMoment.service.amMoment
+					 *
+					 * @description
+					 * Preprocess a given value and convert it into a Moment instance appropriate for use in the
+					 * am-time-ago directive and the filters.
+					 *
+					 * @param {*} value The value to be preprocessed
+					 * @param {string} preprocess The name of the preprocessor the apply (e.g. utc, unix)
+					 * @param {string=} format Specifies how to parse the value (see {@link http://momentjs.com/docs/#/parsing/string-format/})
+					 * @return {Moment} A value that can be parsed by the moment library
+					 */
+					this.preprocessDate = function (value, preprocess, format) {
+						if (angular.isUndefined(preprocess)) {
+							preprocess = angularMomentConfig.preprocess;
+						}
+						if (this.preprocessors[preprocess]) {
+							return this.preprocessors[preprocess](value, format);
+						}
+						if (preprocess) {
+							$log.warn('angular-moment: Ignoring unsupported value for preprocess: ' + preprocess);
+						}
+						if (!isNaN(parseFloat(value)) && isFinite(value)) {
+							// Milliseconds since the epoch
+							return moment(parseInt(value, 10));
+						}
+						// else just returns the value as-is.
+						return moment(value, format);
+					};
+
+					/**
+					 * @ngdoc function
+					 * @name angularMoment.service.amMoment#applyTimezone
+					 * @methodOf angularMoment.service.amMoment
+					 *
+					 * @description
+					 * Apply a timezone onto a given moment object. It can be a named timezone (e.g. 'America/Phoenix') or an offset from UTC (e.g. '+0300')
+					 * moment-timezone.js is needed when a named timezone is used, otherwise, it'll not apply any timezone shift.
+					 *
+					 * @param {Moment} aMoment a moment() instance to apply the timezone shift to
+					 * @param {string=} timezone The timezone to apply. If none given, will apply the timezone
+					 *        configured in angularMomentConfig.timezone. It can be a named timezone (e.g. 'America/Phoenix') or an offset from UTC (e.g. '+0300')
+					 *
+					 * @returns {Moment} The given moment with the timezone shift applied
+					 */
+					this.applyTimezone = function (aMoment, timezone) {
+						timezone = timezone || angularMomentConfig.timezone;
+						if (!timezone) {
+							return aMoment;
+						}
+
+						if (timezone.match(/^Z|[+-]\d\d:?\d\d$/i)) {
+							aMoment = aMoment.utcOffset(timezone);
+						} else if (aMoment.tz) {
+							aMoment = aMoment.tz(timezone);
+						} else {
+							$log.warn('angular-moment: named timezone specified but moment.tz() is undefined. Did you forget to include moment-timezone.js?');
+						}
+
+						return aMoment;
+					};
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amCalendar
+			 * @module angularMoment
+			 */
+				.filter('amCalendar', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
+					function amCalendarFilter(value, preprocess, timezone) {
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						value = amMoment.preprocessDate(value, preprocess);
+						var date = moment(value);
+						if (!date.isValid()) {
+							return '';
+						}
+
+						return amMoment.applyTimezone(date, timezone).calendar();
+					}
+
+					// Since AngularJS 1.3, filters have to explicitly define being stateful
+					// (this is no longer the default).
+					amCalendarFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amCalendarFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amDifference
+			 * @module angularMoment
+			 */
+				.filter('amDifference', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
+					function amDifferenceFilter(value, otherValue, unit, usePrecision, preprocessValue, preprocessOtherValue) {
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						value = amMoment.preprocessDate(value, preprocessValue);
+						var date = moment(value);
+						if (!date.isValid()) {
+							return '';
+						}
+
+						var date2;
+						if (typeof otherValue === 'undefined' || otherValue === null) {
+							date2 = moment();
+						} else {
+							otherValue = amMoment.preprocessDate(otherValue, preprocessOtherValue);
+							date2 = moment(otherValue);
+							if (!date2.isValid()) {
+								return '';
+							}
+						}
+
+						return amMoment.applyTimezone(date).diff(amMoment.applyTimezone(date2), unit, usePrecision);
+					}
+
+					amDifferenceFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amDifferenceFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amDateFormat
+			 * @module angularMoment
+			 * @function
+			 */
+				.filter('amDateFormat', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
+					function amDateFormatFilter(value, format, preprocess, timezone, inputFormat) {
+						var currentFormat = inputFormat || angularMomentConfig.format;
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						value = amMoment.preprocessDate(value, preprocess, currentFormat);
+						var date = moment(value);
+						if (!date.isValid()) {
+							return '';
+						}
+
+						return amMoment.applyTimezone(date, timezone).format(format);
+					}
+
+					amDateFormatFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amDateFormatFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amDurationFormat
+			 * @module angularMoment
+			 * @function
+			 */
+				.filter('amDurationFormat', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
+					function amDurationFormatFilter(value, format, suffix) {
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						return moment.duration(value, format).humanize(suffix);
+					}
+
+					amDurationFormatFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amDurationFormatFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amTimeAgo
+			 * @module angularMoment
+			 * @function
+			 */
+				.filter('amTimeAgo', ['moment', 'amMoment', 'angularMomentConfig', function (moment, amMoment, angularMomentConfig) {
+					function amTimeAgoFilter(value, preprocess, suffix, from) {
+						var date, dateFrom;
+
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						value = amMoment.preprocessDate(value, preprocess);
+						date = moment(value);
+						if (!date.isValid()) {
+							return '';
+						}
+
+						dateFrom = moment(from);
+						if (typeof from !== 'undefined' && dateFrom.isValid()) {
+							return amMoment.applyTimezone(date).from(dateFrom, suffix);
+						}
+
+						return amMoment.applyTimezone(date).fromNow(suffix);
+					}
+
+					amTimeAgoFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amTimeAgoFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amSubtract
+			 * @module angularMoment
+			 * @function
+			 */
+				.filter('amSubtract', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
+					function amSubtractFilter(value, amount, type) {
+
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						return moment(value).subtract(parseInt(amount, 10), type);
+					}
+
+					amSubtractFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amSubtractFilter;
+				}])
+
+			/**
+			 * @ngdoc filter
+			 * @name angularMoment.filter:amAdd
+			 * @module angularMoment
+			 * @function
+			 */
+				.filter('amAdd', ['moment', 'angularMomentConfig', function (moment, angularMomentConfig) {
+					function amAddFilter(value, amount, type) {
+
+						if (typeof value === 'undefined' || value === null) {
+							return '';
+						}
+
+						return moment(value).add(parseInt(amount, 10), type);
+					}
+
+					amAddFilter.$stateful = angularMomentConfig.statefulFilters;
+
+					return amAddFilter;
+				}]);
+		}
+
+		if (true) {
+			!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(1), __webpack_require__(3)], __WEBPACK_AMD_DEFINE_FACTORY__ = (angularMoment), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+		} else if (typeof module !== 'undefined' && module && module.exports) {
+			angularMoment(angular, require('moment'));
+			module.exports = 'angularMoment';
+		} else {
+			angularMoment(angular, (typeof global !== 'undefined' ? global : window).moment);
+		}
+	})();
+
+
+/***/ },
+/* 94 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	exports.debounce = debounce;
+	exports.decodeToken = decodeToken;
+	exports.getLocation = getLocation;
+
+	function debounce(func, wait, immediate) {
+	  var timeout;
+	  return function () {
+	    var context = this,
+	        args = arguments;
+	    var later = function later() {
+	      timeout = null;
+	      if (!immediate) func.apply(context, args);
+	    };
+	    var callNow = immediate && !timeout;
+	    clearTimeout(timeout);
+	    timeout = setTimeout(later, wait);
+	    if (callNow) func.apply(context, args);
+	  };
+	}
+
+	;
+
+	function decodeToken(token) {
+	  var parts, header, claim, signature;
+	  token = token || '';
+	  parts = token.split('.');
+	  if (parts.length === 3) {
+	    header = parts[0];
+	    claim = parts[1];
+	    signature = parts[2];
+	    header = JSON.parse(decodeURIComponent(escape(atob(header))));
+	    claim = JSON.parse(decodeURIComponent(escape(atob(claim))));
+	  }
+
+	  return {
+	    header: header,
+	    claim: claim,
+	    signature: signature
+	  };
+	}
+
+	function getLocation(href) {
+	  var l = document.createElement("a");
+	  l.href = href;
+	  return l;
+	}
+
+/***/ },
+/* 95 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 96 */,
+/* 97 */,
+/* 98 */,
+/* 99 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 100 */,
+/* 101 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 102 */,
+/* 103 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 104 */,
+/* 105 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 106 */,
+/* 107 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 108 */,
+/* 109 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.factory('authInterceptor', function ($window) {
+	    return {
+	      request: function request(config) {
+	        if ($window.localStorage.token) {
+	          config.headers.Authorization = 'Bearer ' + $window.localStorage.token;
+	        }
+	        return config;
+	      }
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 110 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _utils = __webpack_require__(94);
+
+	exports['default'] = function (app) {
+	  app.factory('Login', function ($window, $http) {
+	    var endPoint = 'api/auth';
+
+	    return {
+	      isLoggedIn: !!$window.localStorage.token,
+	      username: (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
+
+	      attempt: function attempt(credentials) {
+	        var _this = this;
+
+	        return $http.post(endPoint, credentials).then(function (resp) {
+	          var token = resp.data.token;
+
+	          $window.localStorage.token = token;
+	          _this.isLoggedIn = true;
+	          _this.username = credentials.username;
+
+	          return Promise.resolve(true);
+	        });
+	      },
+
+	      logout: function logout() {
+	        this.isLoggedIn = false;
+	        delete $window.localStorage.token;
+	      }
+
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.factory('Submissions', function ($http, $location) {
+	    var model = {};
+
+	    var endpoint = '/api/submissions';
+
+	    model.getSubmissions = function () {
+	      return $http.get(endpoint).then(function (raw) {
+	        return raw.data;
+	      });
+	    };
+
+	    model.getById = function (id) {
+	      return $http.get(endpoint + '/' + id);
+	    };
+
+	    /* props must contain: title, description, link_to properties */
+	    model.create = function (props) {
+	      return $http.post(endpoint, props);
+	    };
+
+	    return model;
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 112 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.factory('Comment', function ($http) {
+	    var model = {};
+
+	    var endpoint = function endpoint(subId) {
+	      return '/api/submissions/' + subId + '/comments';
+	    };
+
+	    model.getOne = function (subId, comId) {
+	      return $http.get(endpoint(subId) + '/' + comId).then(function (res) {
+	        return res.data;
+	      });
+	    };
+
+	    model.create = function (props) {
+	      return $http.post(endpoint(props.subId), props).then(function (res) {
+	        var comId = res.data.id;
+	        return model.getOne(props.subId, comId);
+	      });
+	    };
+
+	    return model;
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 113 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.factory('User', function ($http) {
+	    var model = {};
+	    var endPoint = '/api/users';
+
+	    model.create = function (credentials) {
+	      return $http.post(endPoint, credentials);
+	    };
+
+	    return model;
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 114 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.filter('httpify', function () {
+	    return function (link) {
+	      var result;
+	      var http = 'http://';
+	      var https = 'https://';
+
+	      if (link.startsWith(http) || link.startsWith(https)) {
+	        return link; // do nothing
+	      }
+
+	      return http + link;
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 115 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _utils = __webpack_require__(94);
+
+	exports['default'] = function (app) {
+	  app.directive('isUnique', function ($http) {
+	    return {
+	      require: 'ngModel',
+	      link: function link(scope, elem, attrs, ngModel) {
+	        var resource = attrs.isUnique;
+
+	        var evHandler = (0, _utils.debounce)(function (e) {
+	          scope.$apply(function () {
+	            var val = e.target.value;
+	            var target = resource.replace('???', val);
+	            if (val.length > 0) {
+	              $http.head(target).then(function (d) {
+	                return ngModel.$setValidity('ununique', false);
+	              })['catch'](function (e) {
+	                return ngModel.$setValidity('ununique', true);
+	              });
+	            } else {
+	              ngModel.$setValidity('ununique', false);
+	            }
+	          });
+	        }, 200);
+
+	        elem.on('keyup', evHandler);
+	      }
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 116 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.directive('pwMatch', function () {
+	    return {
+	      require: 'ngModel',
+	      scope: {
+	        otherInputValue: '=pwMatch'
+	      },
+	      link: function link(scope, elem, attrs, ngModel) {
+	        ngModel.$validators.pwMatch = function (modelValue) {
+	          return scope.otherInputValue.$modelValue === modelValue;
+	        };
+	        scope.$watch("otherInputValue", function () {
+	          ngModel.$validate();
+	        });
+	      }
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('NavigationController', function ($location, Login) {
+	    var vm = this;
+	    vm.isActive = function (route) {
+	      return $location.path() === route;
+	    };
+	    vm.Login = Login;
+	    return vm;
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 118 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('AlltimeController', function ($scope) {
+	    $scope.msg = 'from the alltime controller!';
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 119 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('HotController', function ($scope, submissions) {
+	    $scope.msg = 'from the hot controller';
+	    $scope.submissions = submissions;
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 120 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('LatestController', function ($scope) {
+	    $scope.msg = 'from the latest controller';
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 121 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('LoginController', function ($scope, $http, Login, $location) {
+	    $scope.errmsg = '';
+
+	    $scope.credentials = {
+	      username: '',
+	      password: ''
+	    };
+
+	    $scope.submit = function () {
+	      Login.attempt($scope.credentials).then(function (isLoggedIn) {
+	        $scope.errmsg = '';
+	        $location.path('/');
+	      })['catch'](function (err) {
+
+	        $scope.errmsg = err.data.message;
+	      });
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 122 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('LogoutController', function (Login, $timeout, $location) {
+	    $timeout(function () {
+	      Login.logout();
+	      $location.path('/');
+	    }, 500);
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 123 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('NewSubmissionController', function ($scope, Submissions, $location) {
+
+	    $scope.newSubmission = {
+	      title: '',
+	      description: '',
+	      link_to: ''
+	    };
+
+	    // if something goes wrong in the server side eg db write error
+	    $scope.backEndMsg = '';
+
+	    $scope.submit = function () {
+	      Submissions.create($scope.newSubmission).then(function (resp) {
+	        $location.path('/submission/' + resp.data.id);
+	      })['catch'](function (e) {
+	        console.log(e);
+	      });
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 124 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('RegisterController', function ($scope, User, $http, $window, Login, $location) {
+	    $scope.credentials = {
+	      username: '',
+	      email: '',
+	      password: '',
+	      passconf: ''
+	    };
+
+	    $scope.submit = function () {
+	      User.create($scope.credentials) // create user
+	      .then(function (r) {
+	        // login him in wih the registered credentials
+	        if (r.status === 201) {
+	          return Login.attempt($scope.credentials);
+	        }
+	      }).then(function () {
+	        $location.path('/');
+	      })['catch'](function (e) {
+	        alert('some wierd error occured, try again.');
+	        console.log(e);
+	      });
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 125 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
+	  app.controller('SubmissionDetailViewController', function (submission, $scope, Comment) {
+	    $scope.sub = submission;
+
+	    $scope.newcomment = '';
+
+	    $scope.postNewComment = function () {
+
+	      Comment.create({
+	        body: $scope.newcomment,
+	        subId: submission.id
+	      }).then(function (newComment) {
+	        $scope.sub.comments.push(newComment);
+	        $scope.newcomment = '';
+	      });
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 126 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	var _utils = __webpack_require__(94);
+
+	exports['default'] = function (app) {
+	  app.filter('hostify', function () {
+	    return function (url) {
+	      return (0, _utils.getLocation)(url).host;
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
 
 /***/ }
 /******/ ]);

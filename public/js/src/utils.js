@@ -32,3 +32,9 @@ export function decodeToken(token) {
     signature: signature
   }
 }
+
+export function getLocation(href) {
+  var l = document.createElement("a");
+  l.href = href;
+  return l;
+}

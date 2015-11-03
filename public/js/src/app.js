@@ -103,6 +103,9 @@ UserFactory(app);
 */
 
 import httpifyFilter from './filters/httpify';
+import hostify from './filters/hostify';
+
+hostify(app);
 httpifyFilter(app);
 
 
