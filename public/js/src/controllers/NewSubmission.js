@@ -1,5 +1,5 @@
 export default function (app) {
-  app.controller('NewSubmissionController', function($scope, Submissions) {
+  app.controller('NewSubmissionController', function($scope, Submissions, $location) {
     
     $scope.newSubmission = {
       title: '',
@@ -13,7 +13,7 @@ export default function (app) {
     $scope.submit = () => {
       Submissions.create($scope.newSubmission)
         .then(resp => {
-          console.log(resp);
+          $location.path(`/submission/${resp.data.id}`);
         })
         .catch(e => {
           console.log(e);    
