@@ -1,3 +1,7 @@
+/*
+| common error handlers here.
+*/
+
 var exports = {};
 
 exports.dbWriteError = function(ctx, e) {
