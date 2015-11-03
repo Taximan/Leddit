@@ -35,7 +35,7 @@ module.exports = function(Submission, Comment, Like) {
       });
   });
   
-  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
+  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user', 'likes.users']));
 
 
   router.post('/submissions', requireAuth(), function* () {
@@ -80,6 +80,15 @@ module.exports = function(Submission, Comment, Like) {
         }
       })
       .catch(e => dbWriteError(this, e));
+  });
+  
+  router.get('/submissions/:subId/likes', function* () {
+    
+    yield Like.where('submission_id', this.params.subId)
+      .fetchAll({withRelated: ['users']})
+      .then(likes => {
+        this.body = likes.toJSON();
+      });
   });
   
   router.use('/submissions/:subId/comments', comments.routes());
