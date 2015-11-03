@@ -105,10 +105,11 @@ UserFactory(app);
 
 import httpifyFilter from './filters/httpify';
 import hostify from './filters/hostify';
+import plurify from './filters/plurify';
 
 hostify(app);
 httpifyFilter(app);
-
+plurify(app);
 
 
 /*
