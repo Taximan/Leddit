@@ -8,7 +8,30 @@ module.exports = function(Submission, Comment) {
     
   comments = comments(Comment);  
     
-  router.get('/submissions', resource.fetchAll(Submission, ['user']));
+  router.get('/submissions', function* () {
+    yield Submission
+      .fetchAll({ require: true, withRelated: ['user', 'comments'] })
+      .then(data => {
+        
+        var submissions = data.serialize();
+        
+        var lengs = submissions.map(entry => {
+          return entry.comments.length;
+        });
+        
+        var slimedSubmissions = submissions.map((sub, i) => {
+          sub.comments = lengs[i];
+          return sub;
+        });
+        
+        this.body = slimedSubmissions;
+        
+      })
+      .catch(e => {
+        this.status = 500;
+        this.err = e;
+      });
+  });
   router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
 
 

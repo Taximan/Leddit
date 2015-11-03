@@ -43,9 +43,11 @@ module.exports = function(bookshelf) {
     user: function() {
       return this.belongsTo(exports.User);
     },
+    
     comments: function() {
       return this.hasMany(exports.Comment);
-    }
+    },
+    
   });
 
   /*
