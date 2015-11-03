@@ -30433,15 +30433,12 @@
 	exports['default'] = function (app) {
 	  app.factory('Submissions', function ($http, $location) {
 	    var model = {};
-	    var cache = {};
+
 	    var endpoint = '/api/submissions';
 
 	    model.getSubmissions = function () {
-	      if (cache['submissions']) return Promise.resolve(cache['submissions']);else return $http.get(endpoint).then(function (raw) {
+	      return $http.get(endpoint).then(function (raw) {
 	        return raw.data;
-	      }).then(function (data) {
-	        cache['submissions'] = data;
-	        return Promise.resolve(data);
 	      });
 	    };
 
