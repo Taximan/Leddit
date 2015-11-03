@@ -4,13 +4,15 @@ var requireAuth = require('../../middleware/requireAuth');
 var resource = require('../../middleware/resource');
 var comments = require('./comments');
 
-module.exports = function(Submission, Comment) {
+var dbWriteError = require('../errors').dbWriteError;
+
+module.exports = function(Submission, Comment, Like) {
     
   comments = comments(Comment);  
     
   router.get('/submissions', function* () {
     yield Submission
-      .fetchAll({ require: true, withRelated: ['user', 'comments'] })
+      .fetchAll({ require: true, withRelated: ['user', 'comments', 'likes.users'] })
       .then(data => {
         
         var submissions = data.serialize();
@@ -24,7 +26,7 @@ module.exports = function(Submission, Comment) {
           return sub;
         });
         
-        this.body = slimedSubmissions;
+        this.body = slimedSubmissions.reverse();
         
       })
       .catch(e => {
@@ -32,6 +34,7 @@ module.exports = function(Submission, Comment) {
         this.err = e;
       });
   });
+  
   router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
 
 
@@ -56,11 +59,7 @@ module.exports = function(Submission, Comment) {
             id: inserted.attributes.id
           };
         })
-        .catch(e => {
-          console.log('[ERROR] failed to write to DB', e);
-          this.status = 500;
-          this.body = { message: 'opps, looks like something went wrongm, try again latter.' };   
-        });
+        .catch(e => dbWriteError(this, e));
 
     } else {
       
@@ -69,6 +68,18 @@ module.exports = function(Submission, Comment) {
 
     }
 
+  });
+  
+  router.post('/submissions/:subId/like', requireAuth(), function* () {
+    yield new Like({ submission_id: this.params.subId, user_id: this.Auth.userId })
+      .save()
+      .then((inserted) => {
+        this.status = 201; 
+        this.body = {
+          message: 'saved', 
+        }
+      })
+      .catch(e => dbWriteError(this, e));
   });
   
   router.use('/submissions/:subId/comments', comments.routes());
