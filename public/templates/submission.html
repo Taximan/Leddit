@@ -5,7 +5,7 @@
   </h1>
   
   <div class="subtitle">
-    by <a href="#">{{sub.user.name}}</a> 3 hours ago, from <a href="#">google.pl</a>
+    by <a href="#">{{sub.user.name}}</a> <span am-time-ago="sub.created_at"></span>, from <a href="#">google.pl</a>
   </div>
   
   <div class="description">
@@ -29,7 +29,7 @@
     <li ng-repeat="comment in sub.comments">
       <div class="comment-header">
         <a class="username" href="#TODO">{{comment.user.name}}</a>
-        <span class="timeago">5 minutes ago</span>
+        <span class="timeago"><span am-time-ago="comment.created_at"></span></span>
         wrote
       </div>
       <div class="comment-body">{{comment.body}}</div>
