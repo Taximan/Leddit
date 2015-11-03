@@ -70,16 +70,31 @@ module.exports = function(Submission, Comment, Like) {
 
   });
   
-  router.post('/submissions/:subId/like', requireAuth(), function* () {
-    yield new Like({ submission_id: this.params.subId, user_id: this.Auth.userId })
-      .save()
-      .then((inserted) => {
-        this.status = 201; 
-        this.body = {
-          message: 'saved', 
-        }
-      })
-      .catch(e => dbWriteError(this, e));
+  router.post('/submissions/:subId/likes', requireAuth(), function* () {
+    var newLike = new Like({ submission_id: this.params.subId, user_id: this.Auth.userId });
+    var collection = yield newLike.fetch();
+    
+    if(!collection) {
+      
+      var saved = yield newLike.save();
+      
+      this.status = 201;
+      this.body = {
+        message: 'saved',
+        id: saved.attributes.id
+      };
+      
+    } else {
+      
+      var destroyed = yield newLike.destroy();
+      
+      this.body = {
+        messaged: 'destroyed',
+        id: destroyed.attributes.id
+      };
+      
+    }
+    
   });
   
   router.get('/submissions/:subId/likes', function* () {

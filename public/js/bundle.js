@@ -117,6 +117,10 @@
 	
 	var _factoriesUser2 = _interopRequireDefault(_factoriesUser);
 	
+	var _factoriesSubmissionLike = __webpack_require__(/*! ./factories/SubmissionLike */ 130);
+	
+	var _factoriesSubmissionLike2 = _interopRequireDefault(_factoriesSubmissionLike);
+	
 	/*
 	| Filters
 	*/
@@ -242,6 +246,7 @@
 	(0, _factoriesSubmission2['default'])(app);
 	(0, _factoriesComment2['default'])(app);
 	(0, _factoriesUser2['default'])(app);
+	(0, _factoriesSubmissionLike2['default'])(app);
 	
 	(0, _filtersHostify2['default'])(app);
 	(0, _filtersHttpify2['default'])(app);
@@ -43071,9 +43076,14 @@
 	});
 	
 	exports['default'] = function (app) {
-	  app.controller('HotController', function ($scope, submissions) {
+	  app.controller('HotController', function ($scope, submissions, SubmissionLike) {
 	    $scope.msg = 'from the hot controller';
 	    $scope.submissions = submissions;
+	    $scope.like = function (subId, index) {
+	      SubmissionLike.like(subId).then(function (newLikes) {
+	        $scope.submissions[index].likes = newLikes;
+	      });
+	    };
 	  });
 	};
 	
@@ -43301,6 +43311,40 @@
 	        return len + ' ' + word + 's';
 	      }
 	    };
+	  });
+	};
+	
+	module.exports = exports['default'];
+
+/***/ },
+/* 130 */
+/*!***************************************************!*\
+  !*** ./public/js/src/factories/SubmissionLike.js ***!
+  \***************************************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+	
+	exports['default'] = function (app) {
+	  app.factory('SubmissionLike', function ($http) {
+	    var model = {};
+	
+	    var endpoint = function endpoint(subId) {
+	      return '/api/submissions/' + subId + '/likes';
+	    };
+	
+	    /* like post and fetch refreshed likes */
+	    model.like = function (submissionId) {
+	      return $http.post(endpoint(submissionId)).then(function (resp) {
+	        return $http.get(endpoint(submissionId));
+	      });
+	    };
+	
+	    return model;
 	  });
 	};
 	

@@ -53,7 +53,6 @@ module.exports = function(bookshelf) {
       return this.hasMany(exports.Like);
     }
     
-    
   });
 
   /*
@@ -79,7 +78,9 @@ module.exports = function(bookshelf) {
     
     users: function() {
       return this.belongsTo(exports.User);
-    }
+    },
+    
+
  
   });
 
