@@ -26,10 +26,11 @@ module.exports = function(Submission, Comment) {
 
       yield new Submission(newSumission)
         .save()
-        .then(() => {
+        .then((inserted) => {
           this.status = 201; // created
           this.body = {
-            message: 'saved'
+            message: 'saved',
+            id: inserted.attributes.id
           };
         })
         .catch(e => {
