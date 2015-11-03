@@ -15,7 +15,8 @@ exports.fetchAll = function(Model, related) {
     yield Model
       .fetchAll({  require: true, withRelated: related })
       .then(data => {
-        this.body = data.serialize().reverse();
+        var reversed = data.serialize().reverse();
+        this.body =  reversed;
       })
       .catch(err => {
         this.status = 500;
