@@ -77,276 +77,74 @@ app.config(function($routeProvider, $httpProvider) {
     
 });
 
+/*
+| Factories
+*/
+import authInterceptor from './factories/authInterceptor';
+import LoginFactory from './factories/Login';
+import SubmissionFactory from './factories/Submission';
+import CommentFactory from './factories/Comment';
+import UserFactory from './factories/User';
 
-app.factory('authInterceptor', function ($window) {
-  return {
-    request(config) {
-      if($window.localStorage.token) {
-        config.headers.Authorization = `Bearer ${$window.localStorage.token}`;
-      }
-      return config;
-    }
-  };
-});
-
-app.factory('Login', function ($window, $http) {
-  const endPoint = 'api/auth';
-  
-  return {
-    isLoggedIn: !!$window.localStorage.token,
-    username: decodeToken($window.localStorage.token).claim.username || '',
-    
-    attempt(credentials) {
-      return $http.post(endPoint, credentials)
-        .then(resp => {
-          var token = resp.data.token;
-
-          $window.localStorage.token = token;
-          this.isLoggedIn = true;
-          this.username = credentials.username;
-          
-          return Promise.resolve(true);
-        });  
-    },
-    
-    logout() {
-      this.isLoggedIn = false;
-      delete $window.localStorage.token;
-    }
-    
-  };
-   
-});
-
-app.filter('httpify', function() {
-  return function (link) {
-    var result;
-    var http = 'http://';
-    var https = 'https://';
-    
-    if(link.startsWith(http) || link.startsWith(https)) {
-      return link; // do nothing
-    }
-    
-    return http + link;
-   
-  };
-});
-
-app.directive('isUnique', function($http) {
-  return {
-    require: 'ngModel',
-    link: function(scope, elem, attrs, ngModel) {
-      var resource = attrs.isUnique;
-          
-      const evHandler = debounce(e => {
-        scope.$apply(() => { 
-          var val = e.target.value;
-          var target = resource.replace('???', val);
-          if(val.length > 0) {
-              $http.head(target)
-                .then(d => ngModel.$setValidity('ununique', false))
-                .catch(e => ngModel.$setValidity('ununique', true));
-          } else {
-            ngModel.$setValidity('ununique', false)
-          }
-        });
-      }, 200);
-      
-      elem.on('keyup', evHandler);
-    }
-  };
-});
+authInterceptor(app);
+LoginFactory(app);
+SubmissionFactory(app);
+CommentFactory(app);
+UserFactory(app);
 
 
-app.directive('pwMatch', function() {
-  return {
-    require: 'ngModel',
-    scope: {
-      otherInputValue: '=pwMatch'
-    },
-    link: function(scope, elem, attrs, ngModel) {
-      ngModel.$validators.pwMatch = modelValue => {
-        return scope.otherInputValue.$modelValue === modelValue;
-      };
-      scope.$watch("otherInputValue", function() {
-        ngModel.$validate();
-      });  
-    } 
-  };
-});
+/*
+| Filters
+*/
 
-app.factory('Submissions', function($http, $location) {
-  var model = {};
-  var cache = {};
-  var endpoint = '/api/submissions';
-  
-  model.getSubmissions = () => {
-    if(cache['submissions']) return Promise.resolve(cache['submissions']);
-    else return $http.get(endpoint).then(raw => raw.data).then(data => {
-      cache['submissions'] = data;
-      return Promise.resolve(data);
-    });
-  };
-  
-  model.getById = (id) => {
-    return $http.get(`${endpoint}/${id}`)
-  };
-  
-  /* props must contain: title, description, link_to properties */
-  model.create = (props) => {
-    return $http.post(endpoint, props);
-  }
-  
-  return model;
-});
+import httpifyFilter from './filters/httpify';
+httpifyFilter(app);
 
 
-app.factory('Comment', function($http) {
-  var model = {};
-  
-  var endpoint = (subId) => `/api/submissions/${subId}/comments`;
-  
-  model.getOne = (subId, comId) => {
-    return $http.get(`${endpoint(subId)}/${comId}`)
-      .then(res => res.data);
-  };
-  
-  model.create = (props) => {
-    return $http.post(endpoint(props.subId), props)
-      .then(res => {
-        var comId = res.data.id;
-        return model.getOne(props.subId, comId);
-      });
-  }
-  
-  return model;
-});
+
+/*
+| Directives
+*/
+
+import isUniqueDirective from './directives/isUnique';
+import pwMatchDirective from './directives/pwMatch';
+
+isUniqueDirective(app);
+pwMatchDirective(app);
 
 
-app.factory('User', function($http) {
-  var model = {};
-  var endPoint = '/api/users';
-  
-  model.create = (credentials) => {
-    return $http.post(endPoint, credentials);
-  };
-   
-  return model;
-});
+/*
+| Controllers
+*/
 
-app.controller('NavigationController', function($location, Login) {
-  var vm = this;
-  vm.isActive = (route) => $location.path() === route;
-  vm.Login  = Login;
-  return vm;
-});
+import NavigationController from './controllers/Navigation';
+import AlltimeController from './controllers/Alltime';
+import HotController from './controllers/Hot';
+import LatestController from './controllers/Latest';
+import LoginController from './controllers/Login';
+import LogoutController from './controllers/Logout';
+import NewSubmissionController from './controllers/NewSubmission';
+import RegisterController from './controllers/Register';
+import SubmissionDetailController from './controllers/SubmissionDetail';
 
-app.controller('HotController', function($scope, submissions) {
-  $scope.msg = 'from the hot controller';
-  $scope.submissions = submissions;
-});
+NavigationController(app);
+AlltimeController(app);
+HotController(app);
+LatestController(app);
+LoginController(app);
+LogoutController(app);
+NewSubmissionController(app);
+RegisterController(app);
+SubmissionDetailController(app);
 
-app.controller('LatestController', function($scope) {
-  $scope.msg = 'from the latest controller';
-});
 
-app.controller('AlltimeController', function($scope) {
-  $scope.msg = 'from the alltime controller!';
-});
 
-app.controller('LoginController', function($scope, $http, Login, $location) {
-  $scope.errmsg = '';
-   
-  $scope.credentials = {
-    username: '',
-    password: ''
-  };
-  
-  $scope.submit = () => {
-    Login.attempt($scope.credentials)
-      .then(isLoggedIn => {
-        $scope.errmsg = '';
-        $location.path('/');
-      })
-      .catch(err => {
-        
-        $scope.errmsg = err.data.message
-        
-      });      
-  };
-});
 
-app.controller('LogoutController', function(Login, $timeout, $location) {
-  $timeout(() => {
-     Login.logout();
-     $location.path('/');
-  }, 500);
-});
 
-app.controller('RegisterController', function($scope, User, $http, $window, Login, $location) {
-  $scope.credentials = {
-    username: '',
-    email: '',
-    password: '',
-    passconf: ''
-  };
-  
-  $scope.submit = () => {
-    User.create($scope.credentials) // create user
-      .then(r => { // login him in wih the registered credentials
-        if(r.status === 201) {
-          return Login.attempt($scope.credentials);
-        }
-      })
-      .then(() => {
-        $location.path('/');
-      })
-      .catch(e => {
-        alert('some wierd error occured, try again.');
-        console.log(e);
-      });
-  }
- 
-});
 
-app.controller('NewSubmissionController', function($scope, Submissions) {
-  
-  $scope.newSubmission = {
-    title: '',
-    description: '',
-    link_to: ''
-  };
-  
-  // if something goes wrong in the server side eg db write error
-  $scope.backEndMsg = ''; 
-  
-  $scope.submit = () => {
-    Submissions.create($scope.newSubmission)
-      .then(resp => {
-        console.log(resp);
-      })
-      .catch(e => {
-        console.log(e);    
-      })
-  };
-  
-});
 
-app.controller('SubmissionDetailViewController', function (submission, $scope, Comment) {
-  $scope.sub = submission;
-  
-  $scope.newcomment = '';
-  
-  $scope.postNewComment = () => {
-    
-    Comment.create({
-      body: $scope.newcomment,
-      subId: submission.id
-    }).then(newComment => {
-      $scope.sub.comments.push(newComment);
-      $scope.newcomment = '';
-    });
-  };
-  
-});
+
+
+
+
+
