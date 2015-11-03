@@ -96,6 +96,7 @@ nav[role="navigation"] ul.nav-left .highlight {
   padding: 0 10px;
   font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
   font-family: 'open sans';
+  min-height: calc(100vh - 92px);
 }
 @media screen and (min-width: 1280px) {
   .container {
@@ -383,3 +384,56 @@ html body .submission-detail-view  ul.comments li .comment-body {
   word-wrap: break-word;
 }
 
+footer[role="site-footer"] {
+  background-color: #009688;
+  padding: 0;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+footer[role="site-footer"] .row {
+  padding: 24px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  font-family: 'Roboto' sans-serif;
+  font-size: 16px 21px;
+}
+
+footer[role="site-footer"] .row h3 {
+ display: inline-block; 
+ padding: 0;
+ margin: 0;
+ font-weight: 400;
+ margin: 12px 0;
+}
+
+
+footer[role="site-footer"] .row ul.shortcuts {
+  list-style: none;
+  margin: 12px 0;
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer[role="site-footer"] .row .shortcuts li {
+  margin: 0 40px;
+  padding: 0;
+  display: inline-block;
+}
+
+footer[role="site-footer"] .row .shortcuts li a {
+  text-decoration: inherit;
+  color: inherit;
+  
+}

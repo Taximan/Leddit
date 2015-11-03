@@ -22,6 +22,7 @@ import './styling/container.css';
 import './styling/submissions.css';
 import './styling/form.css';
 import './styling/submission-detail.css';
+import './styling/footer.css'
 
 const app = angular.module('Leddit', [ngRoute, 'angularMoment']);
 
