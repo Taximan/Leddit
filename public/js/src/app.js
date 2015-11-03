@@ -4,8 +4,13 @@
 | core modules
 */
 import angular from 'angular';
+import moment from 'moment';
 import ngRoute from 'angular-route';
+import ngMoment from 'angular-moment';
 import { debounce, decodeToken } from './utils';
+
+window.angularMoment = ngMoment;
+window.moment = moment;
 
 /*
 | import styles here
@@ -18,7 +23,7 @@ import './styling/submissions.css';
 import './styling/form.css';
 import './styling/submission-detail.css';
 
-const app = angular.module('Leddit', [ngRoute]);
+const app = angular.module('Leddit', [ngRoute, 'angularMoment']);
 
 app.config(function($routeProvider, $httpProvider) {
    
