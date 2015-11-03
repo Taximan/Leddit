@@ -30665,7 +30665,7 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.controller('NewSubmissionController', function ($scope, Submissions) {
+	  app.controller('NewSubmissionController', function ($scope, Submissions, $location) {
 
 	    $scope.newSubmission = {
 	      title: '',
@@ -30678,7 +30678,7 @@
 
 	    $scope.submit = function () {
 	      Submissions.create($scope.newSubmission).then(function (resp) {
-	        console.log(resp);
+	        $location.path('/submission/' + resp.data.id);
 	      })['catch'](function (e) {
 	        console.log(e);
 	      });
