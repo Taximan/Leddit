@@ -4,15 +4,13 @@ var requireAuth = require('../../middleware/requireAuth');
 var resource = require('../../middleware/resource');
 var comments = require('./comments');
 
-var dbWriteError = require('../errors').dbWriteError;
-
-module.exports = function(Submission, Comment, Like) {
+module.exports = function(Submission, Comment) {
     
   comments = comments(Comment);  
     
   router.get('/submissions', function* () {
     yield Submission
-      .fetchAll({ require: true, withRelated: ['user', 'comments', 'likes.users'] })
+      .fetchAll({ require: true, withRelated: ['user', 'comments'] })
       .then(data => {
         
         var submissions = data.serialize();
@@ -26,7 +24,7 @@ module.exports = function(Submission, Comment, Like) {
           return sub;
         });
         
-        this.body = slimedSubmissions.reverse();
+        this.body = slimedSubmissions;
         
       })
       .catch(e => {
@@ -34,8 +32,7 @@ module.exports = function(Submission, Comment, Like) {
         this.err = e;
       });
   });
-  
-  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user', 'likes.users']));
+  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
 
 
   router.post('/submissions', requireAuth(), function* () {
@@ -59,7 +56,11 @@ module.exports = function(Submission, Comment, Like) {
             id: inserted.attributes.id
           };
         })
-        .catch(e => dbWriteError(this, e));
+        .catch(e => {
+          console.log('[ERROR] failed to write to DB', e);
+          this.status = 500;
+          this.body = { message: 'opps, looks like something went wrongm, try again latter.' };   
+        });
 
     } else {
       
@@ -68,42 +69,6 @@ module.exports = function(Submission, Comment, Like) {
 
     }
 
-  });
-  
-  router.post('/submissions/:subId/likes', requireAuth(), function* () {
-    var newLike = new Like({ submission_id: this.params.subId, user_id: this.Auth.userId });
-    var collection = yield newLike.fetch();
-    
-    if(!collection) {
-      
-      var saved = yield newLike.save();
-      
-      this.status = 201;
-      this.body = {
-        message: 'saved',
-        id: saved.attributes.id
-      };
-      
-    } else {
-      
-      var destroyed = yield newLike.destroy();
-      
-      this.body = {
-        messaged: 'destroyed',
-        id: destroyed.attributes.id
-      };
-      
-    }
-    
-  });
-  
-  router.get('/submissions/:subId/likes', function* () {
-    
-    yield Like.where('submission_id', this.params.subId)
-      .fetchAll({withRelated: ['users']})
-      .then(likes => {
-        this.body = likes.toJSON();
-      });
   });
   
   router.use('/submissions/:subId/comments', comments.routes());

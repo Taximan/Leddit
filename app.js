@@ -25,7 +25,7 @@ var models = require('./models/index')(bookshelf);
 var User = models.User;
 var Submission = models.Submission;
 var Comment = models.Comment;
-var Like = models.Like;
+
 
 /*
 | Middleware
@@ -42,7 +42,7 @@ app.use(verify(secret));
 */
 
 var users = require('./routes/api/users')(User);
-var submissions = require('./routes/api/submissions')(Submission, Comment, Like);
+var submissions = require('./routes/api/submissions')(Submission, Comment);
 var auth = require('./routes/api/auth')(User, secret);
 
 app.use(users.prefix('/api').routes());
