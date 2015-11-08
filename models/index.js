@@ -5,6 +5,7 @@
 |  | User
 |  | Submission
 |  | Comment
+|  | Like
 | 
 | Todo
 |  | split into multiple files
@@ -48,6 +49,10 @@ module.exports = function(bookshelf) {
       return this.hasMany(exports.Comment);
     },
     
+    likes: function() {
+      return this.morphMany(exports.Like, 'likeable', ['likeable_type', 'likeable_id'], 'Submission');  
+    }
+    
   });
 
   /*
@@ -62,6 +67,26 @@ module.exports = function(bookshelf) {
       return this.belongsTo(exports.User);
     }
   });
+  
+  /*
+  | Like Model
+  */
+  
+  exports.Like = bookshelf.Model.extend({
+    tableName: 'likes',
+    hasTimestamps: false,
+    hidden: ['likeable_id', 'likeable_type', 'id'],
+    
+    likeable: function() {
+      return this.morphTo('likeable', exports.Submission);
+    },
+    
+    user: function() {
+      return this.belongsTo(exports.User);
+    }
+    
+    
+  }); 
 
   return exports;
 

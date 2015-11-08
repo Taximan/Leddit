@@ -32,7 +32,7 @@ module.exports = function(Submission, Comment) {
         this.err = e;
       });
   });
-  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user']));
+  router.get('/submissions/:id', resource.fetchOne(Submission, ['user', 'comments', 'comments.user', 'likes.user']));
 
 
   router.post('/submissions', requireAuth(), function* () {
