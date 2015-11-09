@@ -98,14 +98,13 @@ module.exports = function(Submission, Comment, User) {
       
       yield user.unlikeSubmission(this.params.subId);
 
-
-      this.body = { message: 'you already liked this resource!', didLike: false };
+      this.body = { message: 'disliked', likes: false };
 
     } else {
 
       yield user.likeSubmission(this.params.subId);
 
-      this.body = { message: 'liked', didLike: true };
+      this.body = { message: 'liked', likes: true };
 
     }
 

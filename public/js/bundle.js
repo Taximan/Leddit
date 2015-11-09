@@ -42432,7 +42432,8 @@
 
 	    return {
 	      isLoggedIn: !!$window.localStorage.token,
-	      username: this.isLoggedIn && (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
+	      username: $window.localStorage.token && (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
+	      userId: $window.localStorage.token && (0, _utils.decodeToken)($window.localStorage.token).claim.userId || -1,
 
 	      attempt: function attempt(credentials) {
 	        var _this = this;
@@ -42798,13 +42799,31 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.controller('HotController', function ($scope, submissions, Submissions) {
+	  app.controller('HotController', function ($scope, submissions, Submissions, Login) {
 	    $scope.msg = 'from the hot controller';
 	    $scope.submissions = submissions;
 
 	    $scope.likeSub = function (subId) {
-	      Submissions.likeById(subId).then(function (r) {
-	        return console.log(r.data);
+	      Submissions.likeById(subId).then(function (resp) {
+
+	        var likes = resp.data.likes;
+
+	        for (var i = $scope.submissions.length - 1; i >= 0; i--) {
+	          if ($scope.submissions[i].id === subId) {
+
+	            $scope.submissions[i].hasLiked = likes;
+
+	            if (!$scope.submissions[i].hasLiked) {
+
+	              $scope.submissions[i].likes = $scope.submissions[i].likes.filter(function (s) {
+	                return s.user_id != Login.userId;
+	              });
+	            } else {
+
+	              $scope.submissions[i].likes.push({ user_id: Login.userId });
+	            }
+	          }
+	        };
 	      });
 	    };
 	  });
