@@ -23,8 +23,25 @@ module.exports = function(Submission, Comment, User) {
           sub.comments = lengs[i];
           return sub;
         });
-        
-        this.body = slimedSubmissions.reverse();
+
+
+        if(this.Auth) {
+
+          var withLikeStatuses = slimedSubmissions.map(sub => {
+
+            var hasLiked = sub.likes.filter(like => like.user_id === this.Auth.userId).length > 0;
+
+            return Object.assign(sub, { hasLiked: hasLiked });
+
+          });
+
+          this.body = withLikeStatuses.reverse();
+
+        } else {
+
+          this.body = slimedSubmissions.reverse();
+
+        }
         
       })
       .catch(e => {
@@ -75,7 +92,23 @@ module.exports = function(Submission, Comment, User) {
   router.post('/submissions/:subId/likes', requireAuth(), function* () {
     var user = yield User.forge({ id: this.Auth.userId }).fetch();
     
-    this.body = yield user.canLikeSubmission(1);
+    var hasLiked = yield user.canLikeSubmission(this.params.subId);
+
+    if(hasLiked) {
+      
+      yield user.unlikeSubmission(this.params.subId);
+
+
+      this.body = { message: 'you already liked this resource!', didLike: false };
+
+    } else {
+
+      yield user.likeSubmission(this.params.subId);
+
+      this.body = { message: 'liked', didLike: true };
+
+    }
+
     
   });
   

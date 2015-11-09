@@ -6,7 +6,7 @@ export default function (app) {
     
     return {
       isLoggedIn: !!$window.localStorage.token,
-      username: decodeToken($window.localStorage.token).claim.username || '',
+      username: (this.isLoggedIn && decodeToken($window.localStorage.token).claim.username) || '',
       
       attempt(credentials) {
         return $http.post(endPoint, credentials)

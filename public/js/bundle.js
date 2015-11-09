@@ -42432,7 +42432,7 @@
 
 	    return {
 	      isLoggedIn: !!$window.localStorage.token,
-	      username: (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
+	      username: this.isLoggedIn && (0, _utils.decodeToken)($window.localStorage.token).claim.username || '',
 
 	      attempt: function attempt(credentials) {
 	        var _this = this;
@@ -42573,13 +42573,15 @@
 	exports['default'] = function (app) {
 	  app.factory('Like', function ($http) {
 
-	    return function (endpoint) {
+	    return function (entity) {
 	      var model = {};
 
-	      model.endpoint = endpoint + '/likes';
+	      model.endpoint = function (id) {
+	        return entity + '/' + id + '/likes';
+	      };
 
 	      model.likeById = function (id) {
-	        return $http.post(model.endpoint);
+	        return $http.post(model.endpoint(id));
 	      };
 
 	      return model;
@@ -42796,9 +42798,15 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.controller('HotController', function ($scope, submissions) {
+	  app.controller('HotController', function ($scope, submissions, Submissions) {
 	    $scope.msg = 'from the hot controller';
 	    $scope.submissions = submissions;
+
+	    $scope.likeSub = function (subId) {
+	      Submissions.likeById(subId).then(function (r) {
+	        return console.log(r.data);
+	      });
+	    };
 	  });
 	};
 

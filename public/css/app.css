@@ -155,7 +155,10 @@ nav[role="navigation"] ul.nav-left .highlight {
   background: rgba(233, 233, 233, 0.6);
 }
 
-form.leddit-form {
+html body .container .submissions li .submission-footer a.active {
+  background-color: #009688 !important;
+  color: rgba(255, 255, 255, 0.85); /* titanium hwite */
+}form.leddit-form {
   
 }
 

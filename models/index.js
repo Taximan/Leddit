@@ -33,14 +33,31 @@ module.exports = function(bookshelf) {
     comments: function() {
       return this.hasMany(exports.Comment);
     },
-    
+
+    likes: function() {
+      return this.hasMany(exports.Like);
+    },
+
+    unlikeSubmission: function(subId) {
+      // return new exports.Like({ likeable_id: subId, user_id: this.attributes.user_id }).where('likeable_type', 'Submission').destroy();
+      return new exports.Like({})
+        .where('likeable_type', 'Submission')
+        .where('likeable_id', subId)
+        .where('user_id', this.attributes.id)
+        .destroy();
+    },
     
     canLikeSubmission: function(subId) {
       return exports.Submission.forge({ id: subId }).fetch({withRelated: 'likes.user'}).then(submission => {
-        var e = submission.serialize().likes.filter(l => l.user_id === this.attributes.id);
-        console.log(e);
-        return submission.serialize();
+
+        var hasliked = (submission.serialize().likes.filter(l => l.user_id === this.attributes.id)).length > 0;
+        
+        return hasliked;
       })
+    },
+
+    likeSubmission: function(subId) {
+      return new exports.Like({ user_id: this.attributes.id, likeable_id: subId, likeable_type: 'Submission' }).save();
     }
     
   });
@@ -87,7 +104,7 @@ module.exports = function(bookshelf) {
   exports.Like = bookshelf.Model.extend({
     tableName: 'likes',
     hasTimestamps: false,
-    hidden: ['likeable_id', 'likeable_type', 'id'],
+    hidden: ['likeable_id', 'likeable_type'],
     
     likeable: function() {
       return this.morphTo('likeable', exports.Submission);

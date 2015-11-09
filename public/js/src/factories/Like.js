@@ -1,12 +1,12 @@
 export default function (app) {
   app.factory('Like', function ($http) {
     
-    return function (endpoint) {
+    return function (entity) {
       var model = {};
       
-      model.endpoint = `${endpoint}/likes`;
+      model.endpoint = (id) => `${entity}/${id}/likes`;
       
-      model.likeById = (id) => $http.post(model.endpoint);
+      model.likeById = (id) => $http.post(model.endpoint(id));
           
       return model;
     }
