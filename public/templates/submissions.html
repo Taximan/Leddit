@@ -5,6 +5,10 @@
     </h3>
     <div class="subtitle">by <a href="#">{{sub.user.name}}</a> <span am-time-ago="sub.created_at"></span>, source <a href="#">{{sub.link_to | httpify |hostify}}</a></div>
     <div class="description">{{sub.description}}</div>
-    <div class="submission-footer"><a href="#/submission/{{sub.id}}">{{ sub.comments | plurify : 'comment' }}</a> <a href="">share</a></div>
+    <div class="submission-footer">
+      <a href="#/submission/{{sub.id}}">{{ sub.comments | plurify : 'comment' }}</a>
+      <a href="">share</a>
+      <a href="#">{{sub.likes.length | plurify: 'like' }}</a>
+    </div>
   </li>
 </ul>

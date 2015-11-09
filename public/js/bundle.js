@@ -114,19 +114,23 @@
 
 	var _factoriesUser2 = _interopRequireDefault(_factoriesUser);
 
+	var _factoriesLike = __webpack_require__(116);
+
+	var _factoriesLike2 = _interopRequireDefault(_factoriesLike);
+
 	/*
 	| Filters
 	*/
 
-	var _filtersHttpify = __webpack_require__(116);
+	var _filtersHttpify = __webpack_require__(117);
 
 	var _filtersHttpify2 = _interopRequireDefault(_filtersHttpify);
 
-	var _filtersHostify = __webpack_require__(117);
+	var _filtersHostify = __webpack_require__(118);
 
 	var _filtersHostify2 = _interopRequireDefault(_filtersHostify);
 
-	var _filtersPlurify = __webpack_require__(118);
+	var _filtersPlurify = __webpack_require__(119);
 
 	var _filtersPlurify2 = _interopRequireDefault(_filtersPlurify);
 
@@ -134,11 +138,11 @@
 	| Directives
 	*/
 
-	var _directivesIsUnique = __webpack_require__(119);
+	var _directivesIsUnique = __webpack_require__(120);
 
 	var _directivesIsUnique2 = _interopRequireDefault(_directivesIsUnique);
 
-	var _directivesPwMatch = __webpack_require__(120);
+	var _directivesPwMatch = __webpack_require__(121);
 
 	var _directivesPwMatch2 = _interopRequireDefault(_directivesPwMatch);
 
@@ -146,39 +150,39 @@
 	| Controllers
 	*/
 
-	var _controllersNavigation = __webpack_require__(121);
+	var _controllersNavigation = __webpack_require__(122);
 
 	var _controllersNavigation2 = _interopRequireDefault(_controllersNavigation);
 
-	var _controllersAlltime = __webpack_require__(122);
+	var _controllersAlltime = __webpack_require__(123);
 
 	var _controllersAlltime2 = _interopRequireDefault(_controllersAlltime);
 
-	var _controllersHot = __webpack_require__(123);
+	var _controllersHot = __webpack_require__(124);
 
 	var _controllersHot2 = _interopRequireDefault(_controllersHot);
 
-	var _controllersLatest = __webpack_require__(124);
+	var _controllersLatest = __webpack_require__(125);
 
 	var _controllersLatest2 = _interopRequireDefault(_controllersLatest);
 
-	var _controllersLogin = __webpack_require__(125);
+	var _controllersLogin = __webpack_require__(126);
 
 	var _controllersLogin2 = _interopRequireDefault(_controllersLogin);
 
-	var _controllersLogout = __webpack_require__(126);
+	var _controllersLogout = __webpack_require__(127);
 
 	var _controllersLogout2 = _interopRequireDefault(_controllersLogout);
 
-	var _controllersNewSubmission = __webpack_require__(127);
+	var _controllersNewSubmission = __webpack_require__(128);
 
 	var _controllersNewSubmission2 = _interopRequireDefault(_controllersNewSubmission);
 
-	var _controllersRegister = __webpack_require__(128);
+	var _controllersRegister = __webpack_require__(129);
 
 	var _controllersRegister2 = _interopRequireDefault(_controllersRegister);
 
-	var _controllersSubmissionDetail = __webpack_require__(129);
+	var _controllersSubmissionDetail = __webpack_require__(130);
 
 	var _controllersSubmissionDetail2 = _interopRequireDefault(_controllersSubmissionDetail);
 
@@ -239,6 +243,7 @@
 	(0, _factoriesSubmission2['default'])(app);
 	(0, _factoriesComment2['default'])(app);
 	(0, _factoriesUser2['default'])(app);
+	(0, _factoriesLike2['default'])(app);
 
 	(0, _filtersHostify2['default'])(app);
 	(0, _filtersHttpify2['default'])(app);
@@ -42465,7 +42470,7 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.factory('Submissions', function ($http, $location) {
+	  app.factory('Submissions', function ($http, $location, Like) {
 	    var model = {};
 
 	    var endpoint = '/api/submissions';
@@ -42479,6 +42484,8 @@
 	    model.getById = function (id) {
 	      return $http.get(endpoint + '/' + id);
 	    };
+
+	    model.likeById = Like(endpoint).likeById;
 
 	    /* props must contain: title, description, link_to properties */
 	    model.create = function (props) {
@@ -42564,6 +42571,35 @@
 	});
 
 	exports['default'] = function (app) {
+	  app.factory('Like', function ($http) {
+
+	    return function (endpoint) {
+	      var model = {};
+
+	      model.endpoint = endpoint + '/likes';
+
+	      model.likeById = function (id) {
+	        return $http.post(model.endpoint);
+	      };
+
+	      return model;
+	    };
+	  });
+	};
+
+	module.exports = exports['default'];
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, '__esModule', {
+	  value: true
+	});
+
+	exports['default'] = function (app) {
 	  app.filter('httpify', function () {
 	    return function (link) {
 	      var result;
@@ -42582,7 +42618,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42604,7 +42640,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports) {
 
 	/*
@@ -42635,7 +42671,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42678,7 +42714,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42709,7 +42745,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42732,7 +42768,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42750,7 +42786,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42769,7 +42805,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42787,7 +42823,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42820,7 +42856,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42841,7 +42877,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42875,7 +42911,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42913,7 +42949,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports) {
 
 	'use strict';

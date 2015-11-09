@@ -28,9 +28,21 @@ module.exports = function(bookshelf) {
     submissions: function() {
       return this.hasMany(exports.Submission);
     },
+    
+    
     comments: function() {
       return this.hasMany(exports.Comment);
+    },
+    
+    
+    canLikeSubmission: function(subId) {
+      return exports.Submission.forge({ id: subId }).fetch({withRelated: 'likes.user'}).then(submission => {
+        var e = submission.serialize().likes.filter(l => l.user_id === this.attributes.id);
+        console.log(e);
+        return submission.serialize();
+      })
     }
+    
   });
 
   /*

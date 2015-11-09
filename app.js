@@ -42,7 +42,7 @@ app.use(verify(secret));
 */
 
 var users = require('./routes/api/users')(User);
-var submissions = require('./routes/api/submissions')(Submission, Comment);
+var submissions = require('./routes/api/submissions')(Submission, Comment, User);
 var auth = require('./routes/api/auth')(User, secret);
 
 app.use(users.prefix('/api').routes());

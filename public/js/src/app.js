@@ -91,12 +91,14 @@ import LoginFactory from './factories/Login';
 import SubmissionFactory from './factories/Submission';
 import CommentFactory from './factories/Comment';
 import UserFactory from './factories/User';
+import LikeFactory from './factories/Like';
 
 authInterceptor(app);
 LoginFactory(app);
 SubmissionFactory(app);
 CommentFactory(app);
 UserFactory(app);
+LikeFactory(app);
 
 
 /*

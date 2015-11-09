@@ -4,13 +4,13 @@ var requireAuth = require('../../middleware/requireAuth');
 var resource = require('../../middleware/resource');
 var comments = require('./comments');
 
-module.exports = function(Submission, Comment) {
+module.exports = function(Submission, Comment, User) {
     
   comments = comments(Comment);  
     
   router.get('/submissions', function* () {
     yield Submission
-      .fetchAll({ require: true, withRelated: ['user', 'comments'] })
+      .fetchAll({ require: true, withRelated: ['user', 'comments', 'likes'] })
       .then(data => {
         
         var submissions = data.serialize();
@@ -24,7 +24,7 @@ module.exports = function(Submission, Comment) {
           return sub;
         });
         
-        this.body = slimedSubmissions;
+        this.body = slimedSubmissions.reverse();
         
       })
       .catch(e => {
@@ -69,6 +69,14 @@ module.exports = function(Submission, Comment) {
 
     }
 
+  });
+  
+  
+  router.post('/submissions/:subId/likes', requireAuth(), function* () {
+    var user = yield User.forge({ id: this.Auth.userId }).fetch();
+    
+    this.body = yield user.canLikeSubmission(1);
+    
   });
   
   router.use('/submissions/:subId/comments', comments.routes());
