@@ -27,9 +27,9 @@ import './styling/footer.css'
 const app = angular.module('Leddit', [ngRoute, 'angularMoment']);
 
 app.config(function($routeProvider, $httpProvider) {
-   
+
    $httpProvider.interceptors.push('authInterceptor');
-   
+
    $routeProvider
     .when('/', {
       redirectTo: '/hot'
@@ -40,13 +40,31 @@ app.config(function($routeProvider, $httpProvider) {
     })
     .when('/register', {
       templateUrl: '/templates/register.html',
-      controller: 'RegisterController'  
+      controller: 'RegisterController'
     })
     .when('/hot', {
       templateUrl: '/templates/submissions.html',
-      controller: 'HotController',
+      controller: 'SubmissionsController',
       resolve: {
         submissions: function(Submissions) {
+          return Submissions.getSubmissions();
+        }
+      }
+    })
+    .when('/latest', {
+      templateUrl: '/templates/submissions.html',
+      controller: 'SubmissionsController',
+      resolve: {
+        submissions: function(Submissions){
+          return Submissions.getSubmissions();
+        }
+      }
+    })
+    .when('/alltime', {
+      templateUrl: '/templates/submissions.html',
+      controller: 'SubmissionsController',
+      resolve: {
+        submissions: function(Submissions){
           return Submissions.getSubmissions();
         }
       }
@@ -54,14 +72,6 @@ app.config(function($routeProvider, $httpProvider) {
     .when('/logout', {
       controller: 'LogoutController',
       template: 'loggin you out...'
-    })
-    .when('/latest', {
-      templateUrl: '/templates/submissions.html',
-      controller: 'LatestController'
-    })
-    .when('/alltime', {
-      templateUrl: '/templates/submissions.html',
-      controller: 'AlltimeController'
     })
     .when('/add', {
       templateUrl: '/templates/new.html',
@@ -77,10 +87,10 @@ app.config(function($routeProvider, $httpProvider) {
       },
       controller: 'SubmissionDetailViewController'
     })
-    .otherwise({ 
+    .otherwise({
       templateUrl: '/templates/404.html'
     })
-    
+
 });
 
 /*
@@ -130,9 +140,7 @@ pwMatchDirective(app);
 */
 
 import NavigationController from './controllers/Navigation';
-import AlltimeController from './controllers/Alltime';
-import HotController from './controllers/Hot';
-import LatestController from './controllers/Latest';
+import SubmissionsController from './controllers/Submissions.js';
 import LoginController from './controllers/Login';
 import LogoutController from './controllers/Logout';
 import NewSubmissionController from './controllers/NewSubmission';
@@ -140,23 +148,9 @@ import RegisterController from './controllers/Register';
 import SubmissionDetailController from './controllers/SubmissionDetail';
 
 NavigationController(app);
-AlltimeController(app);
-HotController(app);
-LatestController(app);
+SubmissionsController(app);
 LoginController(app);
 LogoutController(app);
 NewSubmissionController(app);
 RegisterController(app);
 SubmissionDetailController(app);
-
-
-
-
-
-
-
-
-
-
-
-

@@ -154,35 +154,27 @@
 
 	var _controllersNavigation2 = _interopRequireDefault(_controllersNavigation);
 
-	var _controllersAlltime = __webpack_require__(123);
+	var _controllersSubmissionsJs = __webpack_require__(123);
 
-	var _controllersAlltime2 = _interopRequireDefault(_controllersAlltime);
+	var _controllersSubmissionsJs2 = _interopRequireDefault(_controllersSubmissionsJs);
 
-	var _controllersHot = __webpack_require__(124);
-
-	var _controllersHot2 = _interopRequireDefault(_controllersHot);
-
-	var _controllersLatest = __webpack_require__(125);
-
-	var _controllersLatest2 = _interopRequireDefault(_controllersLatest);
-
-	var _controllersLogin = __webpack_require__(126);
+	var _controllersLogin = __webpack_require__(124);
 
 	var _controllersLogin2 = _interopRequireDefault(_controllersLogin);
 
-	var _controllersLogout = __webpack_require__(127);
+	var _controllersLogout = __webpack_require__(125);
 
 	var _controllersLogout2 = _interopRequireDefault(_controllersLogout);
 
-	var _controllersNewSubmission = __webpack_require__(128);
+	var _controllersNewSubmission = __webpack_require__(126);
 
 	var _controllersNewSubmission2 = _interopRequireDefault(_controllersNewSubmission);
 
-	var _controllersRegister = __webpack_require__(129);
+	var _controllersRegister = __webpack_require__(127);
 
 	var _controllersRegister2 = _interopRequireDefault(_controllersRegister);
 
-	var _controllersSubmissionDetail = __webpack_require__(130);
+	var _controllersSubmissionDetail = __webpack_require__(128);
 
 	var _controllersSubmissionDetail2 = _interopRequireDefault(_controllersSubmissionDetail);
 
@@ -205,7 +197,23 @@
 	    controller: 'RegisterController'
 	  }).when('/hot', {
 	    templateUrl: '/templates/submissions.html',
-	    controller: 'HotController',
+	    controller: 'SubmissionsController',
+	    resolve: {
+	      submissions: function submissions(Submissions) {
+	        return Submissions.getSubmissions();
+	      }
+	    }
+	  }).when('/latest', {
+	    templateUrl: '/templates/submissions.html',
+	    controller: 'SubmissionsController',
+	    resolve: {
+	      submissions: function submissions(Submissions) {
+	        return Submissions.getSubmissions();
+	      }
+	    }
+	  }).when('/alltime', {
+	    templateUrl: '/templates/submissions.html',
+	    controller: 'SubmissionsController',
 	    resolve: {
 	      submissions: function submissions(Submissions) {
 	        return Submissions.getSubmissions();
@@ -214,12 +222,6 @@
 	  }).when('/logout', {
 	    controller: 'LogoutController',
 	    template: 'loggin you out...'
-	  }).when('/latest', {
-	    templateUrl: '/templates/submissions.html',
-	    controller: 'LatestController'
-	  }).when('/alltime', {
-	    templateUrl: '/templates/submissions.html',
-	    controller: 'AlltimeController'
 	  }).when('/add', {
 	    templateUrl: '/templates/new.html',
 	    controller: 'NewSubmissionController'
@@ -253,9 +255,7 @@
 	(0, _directivesPwMatch2['default'])(app);
 
 	(0, _controllersNavigation2['default'])(app);
-	(0, _controllersAlltime2['default'])(app);
-	(0, _controllersHot2['default'])(app);
-	(0, _controllersLatest2['default'])(app);
+	(0, _controllersSubmissionsJs2['default'])(app);
 	(0, _controllersLogin2['default'])(app);
 	(0, _controllersLogout2['default'])(app);
 	(0, _controllersNewSubmission2['default'])(app);
@@ -42781,25 +42781,7 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.controller('AlltimeController', function ($scope) {
-	    $scope.msg = 'from the alltime controller!';
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 124 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('HotController', function ($scope, submissions, Submissions, Login) {
+	  app.controller('SubmissionsController', function ($scope, submissions, Submissions, Login) {
 	    $scope.msg = 'from the hot controller';
 	    $scope.submissions = submissions;
 
@@ -42832,25 +42814,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 125 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	Object.defineProperty(exports, '__esModule', {
-	  value: true
-	});
-
-	exports['default'] = function (app) {
-	  app.controller('LatestController', function ($scope) {
-	    $scope.msg = 'from the latest controller';
-	  });
-	};
-
-	module.exports = exports['default'];
-
-/***/ },
-/* 126 */
+/* 124 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42883,7 +42847,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 127 */
+/* 125 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42904,7 +42868,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 128 */
+/* 126 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42938,7 +42902,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 129 */
+/* 127 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -42976,7 +42940,7 @@
 	module.exports = exports['default'];
 
 /***/ },
-/* 130 */
+/* 128 */
 /***/ function(module, exports) {
 
 	'use strict';

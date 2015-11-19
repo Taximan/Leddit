@@ -1,5 +1,5 @@
 export default function (app) {
-  app.controller('HotController', function($scope, submissions, Submissions, Login) {
+  app.controller('SubmissionsController', function($scope, submissions, Submissions, Login) {
     $scope.msg = 'from the hot controller';
     $scope.submissions = submissions;
 
@@ -13,7 +13,7 @@ export default function (app) {
             if($scope.submissions[i].id === subId) {
 
               $scope.submissions[i].hasLiked = likes;
-              
+
               if(!$scope.submissions[i].hasLiked) {
 
                 $scope.submissions[i].likes = $scope.submissions[i].likes.filter(s => s.user_id != Login.userId);
