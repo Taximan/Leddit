@@ -5,20 +5,21 @@ var resource = require('../../middleware/resource');
 var comments = require('./comments');
 
 module.exports = function(Submission, Comment, User) {
-    
-  comments = comments(Comment);  
-    
+
+  // provide the comments resource the Comment model
+  comments = comments(Comment);
+
   router.get('/submissions', function* () {
     yield Submission
       .fetchAll({ require: true, withRelated: ['user', 'comments', 'likes'] })
       .then(data => {
-        
+
         var submissions = data.serialize();
-        
+
         var lengs = submissions.map(entry => {
           return entry.comments.length;
         });
-        
+
         var slimedSubmissions = submissions.map((sub, i) => {
           sub.comments = lengs[i];
           return sub;
@@ -42,7 +43,7 @@ module.exports = function(Submission, Comment, User) {
           this.body = slimedSubmissions.reverse();
 
         }
-        
+
       })
       .catch(e => {
         this.status = 500;
@@ -76,26 +77,26 @@ module.exports = function(Submission, Comment, User) {
         .catch(e => {
           console.log('[ERROR] failed to write to DB', e);
           this.status = 500;
-          this.body = { message: 'opps, looks like something went wrongm, try again latter.' };   
+          this.body = { message: 'opps, looks like something went wrongm, try again latter.' };
         });
 
     } else {
-      
+
       this.status = 400;
       this.body = { message: 'missing one of title|description|link_to fields' };
 
     }
 
   });
-  
-  
+
+
   router.post('/submissions/:subId/likes', requireAuth(), function* () {
     var user = yield User.forge({ id: this.Auth.userId }).fetch();
-    
+
     var hasLiked = yield user.canLikeSubmission(this.params.subId);
 
     if(hasLiked) {
-      
+
       yield user.unlikeSubmission(this.params.subId);
 
       this.body = { message: 'disliked', likes: false };
@@ -108,10 +109,10 @@ module.exports = function(Submission, Comment, User) {
 
     }
 
-    
+
   });
-  
+
   router.use('/submissions/:subId/comments', comments.routes());
-  
+
   return router;
 }
