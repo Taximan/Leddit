@@ -8,7 +8,7 @@
     <div class="submission-footer">
       <a href="#/submission/{{sub.id}}">{{ sub.comments | plurify : 'comment' }}</a>
       <a href="#/">share</a>
-      <a ng-click="likeSub(sub.id)" ng-class="{active: sub.hasLiked}">{{sub.likes.length | plurify: 'like' }}</a>
+      <a ng-click="likeSub(sub.id)" ng-class="{active: sub.hasLiked}" href="javascript:void(0)">{{sub.likes.length | plurify: 'like' }}</a>
     </div>
   </li>
 </ul>
