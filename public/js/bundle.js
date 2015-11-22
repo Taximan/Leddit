@@ -42956,14 +42956,15 @@
 	    $scope.newcomment = '';
 
 	    $scope.postNewComment = function () {
-
-	      Comment.create({
-	        body: $scope.newcomment,
-	        subId: submission.id
-	      }).then(function (newComment) {
-	        $scope.sub.comments.push(newComment);
-	        $scope.newcomment = '';
-	      });
+	      if ($scope.newcomment.length) {
+	        Comment.create({
+	          body: $scope.newcomment,
+	          subId: submission.id
+	        }).then(function (newComment) {
+	          $scope.sub.comments.push(newComment);
+	          $scope.newcomment = '';
+	        });
+	      }
 	    };
 	  });
 	};
