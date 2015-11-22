@@ -4,13 +4,13 @@ this section talk's about the **MUST HAVE** top hierarchy app features.
 
 #### the unlogged user
 
-* can view other users submissions & comments
+* can view other users submissions & comments :heavy_check_mark:
 
 #### the logged in user
 
-* can submit new content
-* can comment on other users content
-* can "like" submissions, commnets
+* can submit new content :heavy_check_mark:
+* can comment on other users content :heavy_check_mark:
+* can "like" submissions, commnets 
 * can remove his own content
 * can be temporary or permanently disabled
 
@@ -22,10 +22,10 @@ this section talk's about the **MUST HAVE** top hierarchy app features.
 
 ### a submission
 
-* is likeable
-* can have comments
-
+* is likeable :heavy_check_mark:
+* can have comments :heavy_check_mark:
+ 
 ### an comment
 
-* is likeable
+* is likeable 
 * can have sub comments
