@@ -28,5 +28,5 @@ run the following commands
 
 
 Because this site isn't meant to be any serious its been done on sqlite, 
-however you should be able to just run it with any supproted by knex db like postgresql, 
+however you should be able to just run it with any supported by knex db like postgresql, 
 mysql or (risky) mongodb. 
