@@ -94,7 +94,7 @@ nav[role="navigation"] ul.nav-left .highlight {
   max-width: 980px;
   margin: 16px auto;
   padding: 0 10px;
-  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 4 * ((100vw - 420px) / 860));
   font-family: 'open sans';
   min-height: calc(100vh - 92px);
 }
@@ -176,7 +176,7 @@ form.leddit-form .input-group input, form.leddit-form .input-group textarea {
   display: block;
   width: 100%;
   padding: 7px 3px;
-  font-size: calc(17px + 4 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 4 * ((100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
@@ -200,7 +200,7 @@ form.leddit-form button[type="submit"] {
   color: rgba(255, 255, 255, .86);
   width: 75%;
   min-width: 12em;
-  font-size: calc(17px + 6 * ( (100vw - 420px) / 860));
+  font-size: calc(17px + 6 * ((100vw - 420px) / 860));
   display: block;
   margin: 1.5em auto;
   padding: 1em 0px;
@@ -297,7 +297,7 @@ form.leddit-form button[type="submit"].active {
   display: block;
   width: 100%;
   margin: 7px 0;
-  font-size: calc(16px + 7 * ( (100vw - 420px) / 860));
+  font-size: calc(16px + 7 * ((100vw - 420px) / 860));
 }
 
 @media screen and (min-width: 1280px) {
@@ -321,7 +321,7 @@ form.leddit-form button[type="submit"].active {
   cursor: pointer;
   color: rgba(255, 255, 255, .86);
   width: 100%;
-  font-size: calc(16px + 7 * ( (100vw - 420px) / 860));
+  font-size: calc(16px + 7 * ((100vw - 420px) / 860));
   display: block;
   margin: .5em auto;
   padding: .3em 0px;
@@ -387,7 +387,10 @@ html body .submission-detail-view  ul.comments li .comment-body {
   word-wrap: break-word;
 }
 
-footer[role="site-footer"] {
+.sub-stats a.active {
+  background-color: #009688 !important;
+  color: rgba(255, 255, 255, 0.85); /* titanium hwite */
+}footer[role="site-footer"] {
   background-color: #009688;
   padding: 0;
   margin: 0;

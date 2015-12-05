@@ -14,6 +14,7 @@
   
   <div class="sub-stats">
     <a href="javascript:void(0)"> {{sub.comments.length | plurify: 'comment'}}</a> 
+    <a ng-click="likeSub(sub.id)" ng-class="{active: sub.hasLiked}" href="javascript:void(0)">{{sub.likes.length | plurify: 'like' }}</a>
     <a href="#">share</a>
   </div>
   

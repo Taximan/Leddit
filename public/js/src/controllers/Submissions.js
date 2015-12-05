@@ -1,6 +1,6 @@
 export default function (app) {
   app.controller('SubmissionsController', function($scope, submissions, Submissions, Login) {
-    $scope.msg = 'from the hot controller';
+   
     $scope.submissions = submissions;
 
     $scope.likeSub = (subId) => {
