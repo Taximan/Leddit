@@ -42408,6 +42408,7 @@
 	exports.debounce = debounce;
 	exports.decodeToken = decodeToken;
 	exports.getLocation = getLocation;
+	exports.placeCaretAtEnd = placeCaretAtEnd;
 
 	function debounce(func, wait, immediate) {
 	  var timeout;
@@ -42450,6 +42451,23 @@
 	  var l = document.createElement("a");
 	  l.href = href;
 	  return l;
+	}
+
+	function placeCaretAtEnd(el) {
+	  el.focus();
+	  if (typeof window.getSelection != "undefined" && typeof document.createRange != "undefined") {
+	    var range = document.createRange();
+	    range.selectNodeContents(el);
+	    range.collapse(false);
+	    var sel = window.getSelection();
+	    sel.removeAllRanges();
+	    sel.addRange(range);
+	  } else if (typeof document.body.createTextRange != "undefined") {
+	    var textRange = document.body.createTextRange();
+	    textRange.moveToElementText(el);
+	    textRange.collapse(false);
+	    textRange.select();
+	  }
 	}
 
 /***/ },
@@ -42641,6 +42659,12 @@
 	      return $http.post(endpoint(props.subId), props).then(function (res) {
 	        var comId = res.data.id;
 	        return model.getOne(props.subId, comId);
+	      });
+	    };
+
+	    model.update = function (subId, comId, newCommentBody) {
+	      $http.put(endpoint(subId) + '/' + comId, {
+	        body: newCommentBody
 	      });
 	    };
 
@@ -43055,13 +43079,15 @@
 
 /***/ },
 /* 128 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
 	  value: true
 	});
+
+	var _utilsJs = __webpack_require__(94);
 
 	exports['default'] = function (app) {
 	  app.controller('SubmissionDetailViewController', function (submission, $scope, Comment, Submissions, Login) {
@@ -43075,6 +43101,9 @@
 	    });
 
 	    $scope.newcomment = '';
+	    $scope.Login = Login;
+
+	    $scope.editing = { comId: null };
 
 	    $scope.postNewComment = function () {
 	      if ($scope.newcomment.length) {
@@ -43102,6 +43131,24 @@
 	          });
 	        }
 	      });
+	    };
+
+	    $scope.makeCommentEdditable = function (comId) {
+	      // filfy DOM manipulation in a controller, but I really just want to get it done.
+
+	      var target = document.querySelector('[data-comment-id="' + comId + '"]');
+	      target.setAttribute('contenteditable', "true");
+	      target.focus();
+	      (0, _utilsJs.placeCaretAtEnd)(target);
+	      $scope.editing.comId = comId;
+	    };
+
+	    $scope.editComment = function (comId) {
+	      var target = document.querySelector('[data-comment-id="' + comId + '"]');
+	      target.setAttribute('contenteditable', "false");
+	      $scope.editing.comId = null;
+	      var nextCommentBody = target.innerHTML;
+	      Comment.update(submission.id, comId, nextCommentBody);
 	    };
 	  });
 	};

@@ -17,6 +17,12 @@ export default function (app) {
         });
     }
     
+    model.update = (subId, comId, newCommentBody) => {
+      $http.put(`${endpoint(subId)}/${comId}`, {
+        body: newCommentBody
+      });
+    } 
+    
     return model;
   });
 }

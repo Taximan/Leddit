@@ -33,7 +33,9 @@
         <span class="timeago"><span am-time-ago="comment.created_at"></span></span>
         wrote
       </div>
-      <div class="comment-body">{{comment.body}}</div>
+      <div class="comment-body" data-comment-id="{{comment.id}}">{{comment.body}}</div>
+      <a class="edit" ng-show="comment.user.id == Login.userId && !editing.comId" href="javascript:void(0)" ng-click="makeCommentEdditable(comment.id)">edit</a>
+      <a class="edit" ng-show="editing.comId == comment.id" href="javascript:void(0)" ng-click="editComment(comment.id)">submit</a>
     </li>
   </ul>
   

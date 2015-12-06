@@ -41,6 +41,14 @@ module.exports = function (Comment) {
 
   });
   
+  router.put('/:comId', function * () {
+    var com = yield Comment.forge({id: this.params.comId}).fetch();
+    var newcommentbody = (yield parse(this)).body;
+    com.set('body', newcommentbody);
+    yield com.save()
+      .then(_ => this.body = 'updated')
+      .catch(e => this.body = e);    
+  });
   
   router.get('/:comId', function* () {
     yield Comment

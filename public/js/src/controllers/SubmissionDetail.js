@@ -1,3 +1,5 @@
+import {placeCaretAtEnd} from '../utils.js';
+
 export default function (app) {
   app.controller('SubmissionDetailViewController', function (submission, $scope, Comment, Submissions, Login) {
     $scope.sub = Object.assign({}, submission, {
@@ -8,6 +10,9 @@ export default function (app) {
     });
     
     $scope.newcomment = '';
+    $scope.Login = Login;
+    
+    $scope.editing = { comId: null };
     
     $scope.postNewComment = () => {
       if($scope.newcomment.length) {
@@ -36,6 +41,24 @@ export default function (app) {
           
     
         });
+    };
+    
+    $scope.makeCommentEdditable = (comId) => {
+      // filfy DOM manipulation in a controller, but I really just want to get it done. 
+      
+      var target = document.querySelector('[data-comment-id="' + comId + '"]');
+      target.setAttribute('contenteditable', "true");
+      target.focus();
+      placeCaretAtEnd(target);
+      $scope.editing.comId = comId;
+    };
+    
+    $scope.editComment = (comId) => {
+      var target = document.querySelector('[data-comment-id="' + comId + '"]');
+      target.setAttribute('contenteditable', "false");
+      $scope.editing.comId = null;
+      var nextCommentBody = target.innerHTML;
+      Comment.update(submission.id, comId, nextCommentBody);
     };
     
   }); 
