@@ -27,6 +27,7 @@ module.exports = function verifyRequest(secret) {
       this.Auth = yield verify(token, secret);
 
     } catch (err) {
+      this.Auth = null;
 
       // if the user has an invalid token then we will treat him as unsigned.
       console.log('[WARNING] somebody tired to use an invalid token');

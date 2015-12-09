@@ -42915,38 +42915,38 @@
 	'use strict';
 
 	Object.defineProperty(exports, '__esModule', {
-	              value: true
+	  value: true
 	});
 
 	exports['default'] = function (app) {
-	              app.controller('SubmissionsController', function ($scope, submissions, Submissions, Login) {
+	  app.controller('SubmissionsController', function ($scope, submissions, Submissions, Login) {
 
-	                            $scope.submissions = submissions;
+	    $scope.submissions = submissions;
 
-	                            $scope.likeSub = function (subId) {
-	                                          Submissions.likeById(subId).then(function (resp) {
+	    $scope.likeSub = function (subId) {
+	      Submissions.likeById(subId).then(function (resp) {
 
-	                                                        var likes = resp.data.likes;
+	        var likes = resp.data.likes;
 
-	                                                        for (var i = $scope.submissions.length - 1; i >= 0; i--) {
-	                                                                      if ($scope.submissions[i].id === subId) {
+	        for (var i = $scope.submissions.length - 1; i >= 0; i--) {
+	          if ($scope.submissions[i].id === subId) {
 
-	                                                                                    $scope.submissions[i].hasLiked = likes;
+	            $scope.submissions[i].hasLiked = likes;
 
-	                                                                                    if (!$scope.submissions[i].hasLiked) {
+	            if (!$scope.submissions[i].hasLiked) {
 
-	                                                                                                  $scope.submissions[i].likes = $scope.submissions[i].likes.filter(function (s) {
-	                                                                                                                return s.user_id != Login.userId;
-	                                                                                                  });
-	                                                                                    } else {
-
-	                                                                                                  $scope.submissions[i].likes.push({ user_id: Login.userId });
-	                                                                                    }
-	                                                                      }
-	                                                        };
-	                                          });
-	                            };
+	              $scope.submissions[i].likes = $scope.submissions[i].likes.filter(function (s) {
+	                return s.user_id != Login.userId;
 	              });
+	            } else {
+
+	              $scope.submissions[i].likes.push({ user_id: Login.userId });
+	            }
+	          }
+	        };
+	      });
+	    };
+	  });
 	};
 
 	module.exports = exports['default'];
@@ -42962,7 +42962,7 @@
 	});
 
 	exports['default'] = function (app) {
-	  app.controller('LoginController', function ($scope, $http, Login, $location) {
+	  app.controller('LoginController', function ($scope, $http, Login, $location, $route) {
 	    $scope.errmsg = '';
 
 	    $scope.credentials = {
@@ -42974,6 +42974,7 @@
 	      Login.attempt($scope.credentials).then(function (isLoggedIn) {
 	        $scope.errmsg = '';
 	        $location.path('/');
+	        window.location.reload();
 	      })['catch'](function (err) {
 
 	        $scope.errmsg = err.data.message;

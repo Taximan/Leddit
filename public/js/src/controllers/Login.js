@@ -1,5 +1,5 @@
 export default function (app) {
-  app.controller('LoginController', function($scope, $http, Login, $location) {
+  app.controller('LoginController', function($scope, $http, Login, $location, $route) {
     $scope.errmsg = '';
     
     $scope.credentials = {
@@ -12,6 +12,7 @@ export default function (app) {
         .then(isLoggedIn => {
           $scope.errmsg = '';
           $location.path('/');
+	  window.location.reload();
         })
         .catch(err => {
           

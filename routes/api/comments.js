@@ -2,6 +2,7 @@ var router = require('koa-router')();
 var parse = require('co-body');
 var _ = require('lodash');
 var requireAuth = require('../../middleware/requireAuth');
+var verify = require('../../middleware/verify');
 
 module.exports = function (Comment) {
   
@@ -41,7 +42,7 @@ module.exports = function (Comment) {
 
   });
   
-  router.put('/:comId', function * () {
+  router.put('/:comId', requireAuth(), verify(),function * () {
     var com = yield Comment.forge({id: this.params.comId}).fetch();
     var newcommentbody = (yield parse(this)).body;
     com.set('body', newcommentbody);
